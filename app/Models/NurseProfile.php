@@ -17,6 +17,11 @@ class NurseProfile extends Model
         'education',
         'phone',
         'hospital_id',
+        'is_approved',
+    ];
+
+    protected $casts = [
+        'is_approved' => 'boolean',
     ];
 
     public function user()

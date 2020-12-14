@@ -20,6 +20,7 @@ class CreatePerawatProfilesTable extends Migration
             $table->integer('education');
             $table->integer('phone');
             $table->foreignId('hospital_id');
+            $table->boolean('is_approved');
             $table->timestamps();
 
             $table->foreignId('hospital_id')->references('id')->on('hospitals');

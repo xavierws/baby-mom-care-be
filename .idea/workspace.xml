@@ -11,43 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Anjuran.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Forum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Kontrol.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Kuis.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Materi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/NotificationLog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/NurseProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/PatientProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Question.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/QuestionChoice.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Survey.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/UserLog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2013_12_10_042020_create_roles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_09_082042_create_hospitals_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_035935_create_nurse_profiles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_040419_create_patient_profiles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042229_create_kuis_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042349_create_surveys_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042417_create_anjurans_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042505_create_forums_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042531_create_images_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042613_create_questions_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042654_create_question_choices_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/HospitalSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/sanctum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/backend_kontrolIbuDanBayi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend_kontrolIbuDanBayi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NurseProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NurseProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PatientProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PatientProfile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_035935_create_nurse_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_035935_create_nurse_profiles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_040419_create_patient_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_040419_create_patient_profiles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lQfsS4HVsEcvSjijIDGe9SJRmo" />
@@ -211,7 +190,9 @@
       <workItem from="1607849985512" duration="1069000" />
       <workItem from="1607858053238" duration="1274000" />
       <workItem from="1607876316521" duration="4948000" />
-      <workItem from="1607926989715" duration="298000" />
+      <workItem from="1607926989715" duration="3771000" />
+      <workItem from="1607958982543" duration="2616000" />
+      <workItem from="1607963521892" duration="2402000" />
     </task>
     <servers />
   </component>

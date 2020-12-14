@@ -149,4 +149,10 @@ return [
 
     'attributes' => [],
 
+    'values' => [
+        'role' => [
+            'super_admin' => 'super admin'
+        ]
+    ]
+
 ];

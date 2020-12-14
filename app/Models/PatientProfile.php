@@ -14,8 +14,8 @@ class PatientProfile extends Model
     protected $fillable = [
         'baby_name',
         'baby_birthday',
-        'baby_weight',
-        'baby_length',
+        'born_weight',
+        'born_length',
         'baby_gender',
         'mother_name',
         'mother_birthday',

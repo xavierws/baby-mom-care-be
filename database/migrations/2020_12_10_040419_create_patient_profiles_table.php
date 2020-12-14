@@ -17,9 +17,9 @@ class CreatePasienProfilesTable extends Migration
             $table->id();
             $table->string('baby_name');
             $table->date('baby_birthday');
-            $table->integer('baby_weight');
-            $table->integer('baby_length');
-            $table->enum('baby_gender', ['l', 'p']);
+            $table->integer('born_weight');
+            $table->integer('born_length');
+            $table->enum('baby_gender', ['male', 'female']);
             $table->string('mother_name');
             $table->date('mother_birthday');
             $table->string('mother_religion');
