@@ -21,6 +21,8 @@ class User extends Authenticatable
         'password',
         'role_id',
         'email',
+        'userable_id',
+        'userable_type'
     ];
 
     /**
@@ -48,5 +50,15 @@ class User extends Authenticatable
     public function userable()
     {
         return $this->morphTo();
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function getUserRoleAttribute()
+    {
+        return $this->role->name;
     }
 }
