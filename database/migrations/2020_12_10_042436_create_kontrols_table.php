@@ -15,7 +15,17 @@ class CreateKontrolsTable extends Migration
     {
         Schema::create('kontrols', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->date('date');
+            $table->string('tempat_kontrol');
+            $table->integer('weight');
+            $table->integer('length');
+            $table->integer('lingkar_kepala');
+            $table->integer('temperature');
+            $table->foreignId('patient_profile_id');
             $table->timestamps();
+
+            $table->foreign('patient_profile_id')->references('id')->on('patient_profiles');
         });
     }
 

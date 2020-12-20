@@ -11,10 +11,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NurseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Kontrol.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Materi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Kontrol.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kontrol.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Materi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Materi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PatientProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PatientProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042531_create_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042531_create_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +198,12 @@
       <workItem from="1607963521892" duration="8284000" />
       <workItem from="1608020651104" duration="1918000" />
       <workItem from="1608057070027" duration="1190000" />
-      <workItem from="1608111420788" duration="641000" />
+      <workItem from="1608111420788" duration="1673000" />
+      <workItem from="1608115089652" duration="5987000" />
+      <workItem from="1608196897756" duration="22514000" />
+      <workItem from="1608412403524" duration="5903000" />
+      <workItem from="1608442128370" duration="3845000" />
+      <workItem from="1608476721015" duration="524000" />
     </task>
     <servers />
   </component>
@@ -205,29 +224,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607849911872">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1607849911872" />
-    <state x="492" y="172" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607846413757">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="492" y="172" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1607846413757" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1607918394864">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1607918394864" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Models/PatientProfile.php</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -117,7 +117,17 @@ class AuthController extends Controller
         ]);
     }
 
+    public function logout()
+    {
+
+    }
+
     public function resetPassword()
+    {
+
+    }
+
+    public function user()
     {
 
     }

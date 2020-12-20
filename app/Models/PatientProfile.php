@@ -30,8 +30,23 @@ class PatientProfile extends Model
         'father_job',
     ];
 
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
+    }
+
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function kontrols()
+    {
+        return $this->hasMany(Kontrol::class, 'patient_profile_id');
     }
 }
