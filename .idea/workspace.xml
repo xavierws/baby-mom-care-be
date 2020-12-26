@@ -11,23 +11,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NurseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Kontrol.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Materi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Topic.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042206_create_categories_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042504_create_topics_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Kontrol.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kontrol.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Materi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Materi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Materi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Materi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NurseProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NurseProfile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/PatientProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PatientProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_09_082042_create_hospitals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_09_082042_create_hospitals_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_040419_create_patient_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_040419_create_patient_profiles_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042531_create_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042531_create_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +207,13 @@
       <workItem from="1608196897756" duration="22514000" />
       <workItem from="1608412403524" duration="5903000" />
       <workItem from="1608442128370" duration="3845000" />
-      <workItem from="1608476721015" duration="524000" />
+      <workItem from="1608476721015" duration="3111000" />
+      <workItem from="1608496494526" duration="1231000" />
+      <workItem from="1608550158489" duration="1304000" />
+      <workItem from="1608615718009" duration="1174000" />
+      <workItem from="1608627115568" duration="8238000" />
+      <workItem from="1608915089760" duration="3971000" />
+      <workItem from="1608958610743" duration="8659000" />
     </task>
     <servers />
   </component>

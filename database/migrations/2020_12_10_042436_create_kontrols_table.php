@@ -18,11 +18,13 @@ class CreateKontrolsTable extends Migration
             $table->string('title');
             $table->date('date');
             $table->string('tempat_kontrol');
-            $table->integer('weight');
-            $table->integer('length');
-            $table->integer('lingkar_kepala');
+            $table->integer('weight')->nullable();
+            $table->integer('length')->nullable();
+            $table->integer('lingkar_kepala')->nullable();
             $table->integer('temperature');
             $table->foreignId('patient_profile_id');
+            $table->string('note', 500)->nullable();
+            $table->string('nurse_note', 500)->nullable();
             $table->timestamps();
 
             $table->foreign('patient_profile_id')->references('id')->on('patient_profiles');

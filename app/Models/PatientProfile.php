@@ -49,4 +49,16 @@ class PatientProfile extends Model
     {
         return $this->hasMany(Kontrol::class, 'patient_profile_id');
     }
+
+    public function nurses()
+    {
+        return $this->belongsToMany(NurseProfile::class, 'nurse_patient', 'patient_id', 'nurse_id')
+            ->withTimestamps();
+    }
+
+    public function materis()
+    {
+        return $this->belongsToMany(Materi::class, 'materi_patient', 'patient_id', 'materi_id')
+            ->withTimestamps();
+    }
 }

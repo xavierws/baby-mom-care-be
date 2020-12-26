@@ -14,7 +14,9 @@ class CreateMateriPatientTable extends Migration
     public function up()
     {
         Schema::create('materi_patient', function (Blueprint $table) {
-            $table->id();
+//            $table->id();
+            $table->foreignId('materi_id')->constrained('materis');
+            $table->foreignId('patient_id')->constrained('patient_profiles');
             $table->timestamps();
         });
     }

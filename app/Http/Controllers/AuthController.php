@@ -16,9 +16,10 @@ class AuthController extends Controller
     {
         $request->validate([
             'role' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:users',
             'password' => 'required',
 
+            'nurse_id' => 'required_if:role,patient',
             'baby_name' => 'required_if:role,patient',
             'baby_birthday' => 'required_if:role,patient',
             'born_weight' => 'required_if:role,patient|integer',
@@ -77,6 +78,8 @@ class AuthController extends Controller
 
             $userable_id = PatientProfile::orderBy('id', 'desc')->pluck('id')->first();
             $userable_type = 'App\Models\PatientProfile';
+
+            NurseProfile::find($request->nurse_id)->patients()->attach($userable_id);
         }
 
         User::create([
@@ -89,7 +92,8 @@ class AuthController extends Controller
         ]);
 
         return response()->json([
-           'message' => 'account created'
+            'message' => 'account created',
+            'id' => $userable_id,
         ]);
     }
 
@@ -117,9 +121,14 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        $username = $request->user()->username()->first();
+        User::where('username', $username)->tokens()->delete();
 
+        return response()->json([
+            'message' => 'logout successful'
+        ]);
     }
 
     public function resetPassword()
@@ -127,8 +136,10 @@ class AuthController extends Controller
 
     }
 
-    public function user()
+    public function user(Request $request)
     {
-
+        return response()->json([
+            'user' => $request->user(),
+        ]);
     }
 }

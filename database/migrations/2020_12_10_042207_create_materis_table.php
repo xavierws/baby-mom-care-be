@@ -20,7 +20,10 @@ class CreateMaterisTable extends Migration
             $table->string('content_url')->nullable();
             $table->string('video_url')->nullable();
             $table->string('doc_url')->nullable();
+            $table->foreignId('category_id');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

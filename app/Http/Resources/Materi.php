@@ -14,6 +14,14 @@ class Materi extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'title' => $this->title,
+            'content' => $this->content,
+            'content_url' => $this->content_url,
+            'video_url' => $this->video_url,
+            'doc_url' => $this->doc_url,
+            'image' => asset($this->image->filename),
+            'forum',
+        ];
     }
 }

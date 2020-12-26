@@ -26,6 +26,11 @@ class NurseProfile extends Model
 
     public function user()
     {
-        return $this->morphOne(User::class, 'userabel');
+        return $this->morphOne(User::class, 'userable');
+    }
+
+    public function patients()
+    {
+        return $this->belongsToMany(PatientProfile::class, 'nurse_patient', 'nurse_id', 'patient_id');
     }
 }

@@ -23,4 +23,10 @@ class Materi extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function patients()
+    {
+        return $this->belongsToMany(PatientProfile::class, 'materi_patient', 'materi_id', 'patient_id')
+            ->withTimestamps();
+    }
 }

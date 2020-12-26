@@ -18,8 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('/test', function () {
-//   return response()->json([
-//      'message' => ['something' => 'ini', 'one']
-//   ]);
-//});
+Route::get('/test', function () {
+    $data = array();
+    $n = 0;
+    $arr = ['a', 'b', 'c'];
+    foreach ($arr as $a) {
+        $data[$n] = [
+            'id'  => $n,
+            'title' => $a,
+        ];
+        $n++;
+    }
+
+    return response()->json([
+        'data' => $data
+    ]);
+});

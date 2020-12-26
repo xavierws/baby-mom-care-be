@@ -31,7 +31,11 @@ class CreatePasienProfilesTable extends Migration
             $table->string('father_religion');
             $table->string('father_education');
             $table->string('father_job');
+            $table->enum('status', ['hospital', 'home']);
+            $table->foreignId('hospital_id');
             $table->timestamps();
+
+            $table->foreign('hospital_id')->references('id')->on('hospital');
         });
     }
 
