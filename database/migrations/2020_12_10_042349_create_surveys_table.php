@@ -15,6 +15,7 @@ class CreateSurveysTable extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
+            $table->enum('title', ['kuisioner_1', 'kuisioner_2']);
             $table->string('question', 1000);
             $table->enum('choice_type', ['number', 'text']);
             $table->timestamps();

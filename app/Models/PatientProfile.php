@@ -61,4 +61,11 @@ class PatientProfile extends Model
         return $this->belongsToMany(Materi::class, 'materi_patient', 'patient_id', 'materi_id')
             ->withTimestamps();
     }
+
+    public function surveys()
+    {
+        return $this->belongsToMany(Survey::class, 'patient_survey', 'patient_id', 'survey_id')
+            ->withTimestamps()
+            ->withPivot('answer');
+    }
 }

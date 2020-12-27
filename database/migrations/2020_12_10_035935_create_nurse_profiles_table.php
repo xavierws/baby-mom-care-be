@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePerawatProfilesTable extends Migration
+class CreateNurseProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,7 +23,7 @@ class CreatePerawatProfilesTable extends Migration
             $table->boolean('is_approved');
             $table->timestamps();
 
-            $table->foreignId('hospital_id')->references('id')->on('hospitals');
+            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 

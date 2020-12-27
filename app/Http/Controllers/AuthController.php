@@ -17,7 +17,7 @@ class AuthController extends Controller
         $request->validate([
             'role' => 'required',
             'username' => 'required|unique:users',
-            'password' => 'required',
+            'password' => 'required|alpha_num',
 
             'nurse_id' => 'required_if:role,patient',
             'baby_name' => 'required_if:role,patient',

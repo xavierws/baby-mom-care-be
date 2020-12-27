@@ -72,6 +72,7 @@ class MateriController extends Controller
             'video_url' => $request->input('video_url', null),
             'doc_url' => $request->input('doc_url', null),
             'category_id' => Category::where('name', $request->category)->pluck('id')->first(),
+            'forum_id' => $request->input('forum_id', null),
         ]);
 
         $materiId = Materi::orderBy('id', 'desc')->pluck('id')->first();
