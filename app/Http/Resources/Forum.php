@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Materi extends JsonResource
+class Forum extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +16,8 @@ class Materi extends JsonResource
     {
         return [
             'title' => $this->title,
-            'content' => $this->content,
-            'content_url' => $this->content_url,
-            'video_url' => $this->video_url,
-            'doc_url' => $this->doc_url,
-            'image' => asset($this->image->filename),
-            'quiz',
-            'forum' => $this->forum_title,
+            'question' => $this->question,
+            'comments' => Comment::collection($this->comments),
         ];
     }
 }

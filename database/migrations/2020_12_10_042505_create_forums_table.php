@@ -15,6 +15,10 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('question');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('topic_id')->constrained('topics');
             $table->timestamps();
         });
     }

@@ -4,27 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function Symfony\Component\Translation\t;
 
-class Forum extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = 'forums';
+    protected $table = 'comments';
 
     protected $fillable = [
-        'title',
-        'question',
+        'text',
+        'forum_id',
         'user_id',
     ];
 
-    public function topic()
+    public function forums()
     {
-        return $this->belongsTo(Topic::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Forum::class);
     }
 
     public function user()

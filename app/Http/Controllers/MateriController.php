@@ -59,9 +59,10 @@ class MateriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'title' => 'required',
-           'content' => 'required',
-           'base64_img' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+            'base64_img' => 'required',
+            'category' => 'required',
         ]);
 
         Materi::create([
@@ -70,6 +71,7 @@ class MateriController extends Controller
             'content_url' => $request->input('content_url', null),
             'video_url' => $request->input('video_url', null),
             'doc_url' => $request->input('doc_url', null),
+            'category_id' => Category::where('name', $request->category)->pluck('id')->first(),
         ]);
 
         $materiId = Materi::orderBy('id', 'desc')->pluck('id')->first();

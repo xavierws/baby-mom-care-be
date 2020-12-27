@@ -57,8 +57,23 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function forum()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
     public function getUserRoleAttribute()
     {
         return $this->role->name;
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->userable->name;
     }
 }

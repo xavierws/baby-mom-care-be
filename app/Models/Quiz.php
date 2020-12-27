@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class Quiz extends Model
 {
     use HasFactory;
 
-    protected $table = 'topics';
+    protected $table = 'quizzes';
 
     protected $fillable = [
-        'name',
+
     ];
 
-    protected $with = [
-        'forums',
-    ];
-
-    public function forums()
+    public function materi()
     {
-        return $this->hasMany(Forum::class);
+        return $this->hasOne(Materi::class);
     }
 }

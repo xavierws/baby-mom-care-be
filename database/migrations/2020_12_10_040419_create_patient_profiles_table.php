@@ -35,7 +35,7 @@ class CreatePasienProfilesTable extends Migration
             $table->foreignId('hospital_id');
             $table->timestamps();
 
-            $table->foreign('hospital_id')->references('id')->on('hospital');
+            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 

@@ -21,6 +21,7 @@ class CreateMaterisTable extends Migration
             $table->string('video_url')->nullable();
             $table->string('doc_url')->nullable();
             $table->foreignId('category_id');
+            $table->foreignId('forum_id')->nullable()->constrained('forums');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

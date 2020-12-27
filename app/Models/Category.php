@@ -15,6 +15,10 @@ class Category extends Model
         'name',
     ];
 
+    protected $with = [
+        'materis'
+    ];
+
     public function materis()
     {
         return $this->hasMany(Materi::class);
