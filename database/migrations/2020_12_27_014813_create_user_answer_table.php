@@ -17,7 +17,9 @@ class CreateUserAnswerTable extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained('patient_profiles');
             $table->foreignId('answer_id')->constrained('question_choices');
-            $table->foreignId('');
+            $table->integer('point');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('quiz_id')->constrained('quizzes');
             $table->timestamps();
         });
     }
