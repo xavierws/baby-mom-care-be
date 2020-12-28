@@ -28,6 +28,7 @@ class PatientProfile extends Model
         'father_religion',
         'father_education',
         'father_job',
+        'hospital_id'
     ];
 
     /**
