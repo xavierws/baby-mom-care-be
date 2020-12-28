@@ -8,6 +8,7 @@ use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\Kontrol as KontrolRes;
+use Illuminate\Support\Str;
 
 class KontrolController extends Controller
 {
@@ -68,7 +69,8 @@ class KontrolController extends Controller
         $kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
 
         $image = base64_decode($request->input('base64_img'));
-        $filename = 'public/kontrol/' . (string)$kontrolId . $request->input('title');
+        $str = Str::random(10);
+        $filename = 'public/kontrol/' . (string)$kontrolId . $request->input('title') . '$' . $str;
         Storage::put($filename, $image);
 
         Image::create([
@@ -87,14 +89,48 @@ class KontrolController extends Controller
 
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $kontrol = Kontrol::find($request->id);
 
+        $kontrol->title = $request->input('title');
+        $kontrol->date = $request->input('date');
+        $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
+        $kontrol->weight = $request->input('weight');
+        $kontrol->length = $request->input('length');
+        $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
+        $kontrol->temperature = $request->input('temperature');
+
+        $kontrol->save();
+
+        $image = $kontrol->image;
+
+        Storage::delete($image->filename);
+        $image = base64_decode($request->input('base64_img'));
+        $str = Str::random(10);
+        $filename = 'public/kontrol/' . (string)$request->id . $request->input('title') . '$' . $str;
+        Storage::put($filename, $image);
+
+        $image->filename = $filename;
+        $image->save();
+
+        return response()->json([
+            'message' => 'kontrol is updated'
+        ]);
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
+        $kontrol = Kontrol::find($request->id);
+        $image = $kontrol->image;
 
+        Storage::delete($image->filename);
+        $image->delete();
+        $kontrol->delete();
+
+        return response()->json([
+            'message' => 'kontrol is deleted'
+        ]);
     }
 
 }
