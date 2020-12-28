@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'userable_id',
         'userable_type',
+        'fcm_token',
     ];
 
     /**
@@ -73,7 +74,7 @@ class User extends Authenticatable
         return $this->role->name;
     }
 
-    public function getNameAttribute()
+    public function getUserNameAttribute()
     {
         return $this->userable->name;
     }
