@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('fcm_token')->nullable();
             $table->foreignId('role_id');
             $table->foreignId('userable_id');
-            $table->foreignId('userable_type');
+            $table->string('userable_type');
             $table->rememberToken();
             $table->timestamps();
 
