@@ -49,7 +49,7 @@ class AuthController extends Controller
             NurseProfile::create([
                 'name' => $request->input('nurse_name'),
                 'working_exp' => $request->input('working_exp'),
-                'education' => $request->input(''),
+                'education' => $request->input('education'),
                 'phone' => $request->input('nurse_name'),
                 'hospital_id' => $request->input('nurse_name'),
                 'is_approved' => false,
