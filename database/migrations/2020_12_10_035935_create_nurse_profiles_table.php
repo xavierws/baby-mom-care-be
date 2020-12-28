@@ -17,8 +17,8 @@ class CreateNurseProfilesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('working_exp');
-            $table->integer('education');
-            $table->integer('phone');
+            $table->string('education');
+            $table->string('phone');
             $table->foreignId('hospital_id');
             $table->boolean('is_approved');
             $table->timestamps();
