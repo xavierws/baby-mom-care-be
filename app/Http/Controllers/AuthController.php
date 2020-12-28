@@ -50,8 +50,8 @@ class AuthController extends Controller
                 'name' => $request->input('nurse_name'),
                 'working_exp' => $request->input('working_exp'),
                 'education' => $request->input('education'),
-                'phone' => $request->input('nurse_name'),
-                'hospital_id' => $request->input('nurse_name'),
+                'phone' => $request->input('phone'),
+                'hospital_id' => $request->input('hospital_id'),
                 'is_approved' => false,
             ]);
 
