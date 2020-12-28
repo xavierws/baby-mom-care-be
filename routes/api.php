@@ -1,9 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\KontrolController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdviceController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\NurseController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\SurveyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MateriController;
 
 /*
 |--------------------------------------------------------------------------
