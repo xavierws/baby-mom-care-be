@@ -50,9 +50,9 @@ class AuthController extends Controller
                 'name' => $request->input('nurse_name'),
                 'working_exp' => $request->input('working_exp'),
                 'education' => $request->input('education'),
-                'phone' => $request->input('nurse_name'),
-                'hospital_id' => $request->input('nurse_name'),
-                'is_approved' => false,
+                'phone' => $request->input('phone'),
+                'hospital_id' => $request->input('hospital_id'),
+                'is_approved' => true,
             ]);
 
             $userable_id = NurseProfile::orderBy('id', 'desc')->pluck('id')->first();
