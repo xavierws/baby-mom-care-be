@@ -52,7 +52,7 @@ class AuthController extends Controller
                 'education' => $request->input('education'),
                 'phone' => $request->input('phone'),
                 'hospital_id' => $request->input('hospital_id'),
-                'is_approved' => false,
+                'is_approved' => true,
             ]);
 
             $userable_id = NurseProfile::orderBy('id', 'desc')->pluck('id')->first();
