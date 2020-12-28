@@ -41,7 +41,7 @@ class AuthController extends Controller
             'nurse_name' => 'required_if:role,nurse',
             'working_exp' => 'required_if:role,nurse|integer',
             'education' => 'required_if:role,nurse',
-            'phone' => 'required_if:role,nurse|integer',
+            'phone' => 'required_if:role,nurse',
             'hospital_id' => 'required_if:role,nurse|integer',
         ]);
 
