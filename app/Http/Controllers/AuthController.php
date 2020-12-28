@@ -20,7 +20,7 @@ class AuthController extends Controller
             'username' => 'required|unique:users',
             'password' => 'required|alpha_num',
 
-            'nurse_id' => 'required_if:role,patient',
+//            'nurse_id' => 'required_if:role,patient',
             'baby_name' => 'required_if:role,patient',
             'baby_birthday' => 'required_if:role,patient',
             'born_weight' => 'required_if:role,patient|integer',
@@ -58,6 +58,7 @@ class AuthController extends Controller
             $userable_id = NurseProfile::orderBy('id', 'desc')->pluck('id')->first();
             $userable_type = 'App\Models\NurseProfile';
         } elseif ($request->role == 'patient') {
+            $nurse = $request->user();
             PatientProfile::create([
                 'baby_name' => $request->input('baby_name'),
                 'baby_birthday' => $request->input('baby_birthday'),
@@ -75,12 +76,13 @@ class AuthController extends Controller
                 'father_religion' => $request->input('father_religion'),
                 'father_education' => $request->input('father_education'),
                 'father_job' => $request->input('father_job'),
+                'hospital_id' => $nurse->userable->hospital_id,
             ]);
 
             $userable_id = PatientProfile::orderBy('id', 'desc')->pluck('id')->first();
             $userable_type = 'App\Models\PatientProfile';
 
-            NurseProfile::find($request->nurse_id)->patients()->attach($userable_id);
+            NurseProfile::find($nurse->userable_id)->patients()->attach($userable_id);
         }
 
         User::create([
@@ -124,8 +126,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $username = $request->user()->username()->first();
-        User::where('username', $username)->tokens()->delete();
+        $username = $request->user()->username;
+        User::where('username', $username)->first()->tokens()->delete();
 
         return response()->json([
             'message' => 'logout successful'

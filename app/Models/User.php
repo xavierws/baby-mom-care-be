@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->userable->name;
     }
+
+//    public function getHospitalIdAttribute()
+//    {
+//        return $this->userable->hospital_id;
+//    }
 }

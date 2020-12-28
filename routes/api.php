@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MateriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,14 +37,19 @@ use Illuminate\Support\Facades\Route;
 //    ]);
 //});
 
-Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    //register the nurse or patient
+    Route::post('register', [AuthController::class, 'register']);
+    //assign materi for patient
+    Route::get('/register/materi', [MateriController::class, 'listMateri']);
+    Route::post('/register/materi', [MateriController::class, 'assignMateri']);
 
     //get the user details
     Route::get('/user', [AuthController::class, 'user']);
 
+    //logout the user
+    Route::post('logout', [AuthController::class, 'logout']);
 
 });
