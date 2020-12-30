@@ -60,4 +60,38 @@ Route::middleware('auth:sanctum')->group(function () {
     //logout the user
     Route::post('logout', [AuthController::class, 'logout']);
 
+    //kontrol
+    //create kontrol
+    Route::post('materi/create', [MateriController::class, 'store']);
+    //list kontrol
+    Route::get('materi/index', [MateriController::class, 'index']);
+    //show specific kontrol
+    Route::get('materi/show', [MateriController::class, 'show']);
+    //update kontrol
+    Route::put('materi/update', [MateriController::class, 'update']);
+    //delete kontrol
+    Route::delete('materi/delete', [MateriController::class, 'delete']);
+    //search kontrol
+
+    //materi
+    //create materi
+    //list materi
+    //show specific materi
+    //update materi
+    //delete materi
+
+    //quiz
+
+    //forum
+
+    //advice
+
+    //nurse
+
+    //admin
+
+    //survey
+
+    //chat
+
 });
