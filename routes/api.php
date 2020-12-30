@@ -94,6 +94,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //advice
 
     //nurse
+    Route::post('nurse/index', [NurseController::class, 'listPatient']);
 
     //admin
 
