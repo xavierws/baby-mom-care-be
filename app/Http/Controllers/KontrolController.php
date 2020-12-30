@@ -106,10 +106,10 @@ class KontrolController extends Controller
         $image = $kontrol->image;
 
         Storage::delete($image->filename);
-        $image = base64_decode($request->input('base64_img'));
+        $newImg = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
         $filename = 'public/kontrol/' . (string)$request->id . $request->input('title') . '$' . $str;
-        Storage::put($filename, $image);
+        Storage::put($filename, $newImg);
 
         $image->filename = $filename;
         $image->save();

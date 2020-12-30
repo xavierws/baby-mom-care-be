@@ -9,6 +9,7 @@ use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\Materi as MateriRes;
+use Illuminate\Support\Str;
 
 class MateriController extends Controller
 {
@@ -78,7 +79,8 @@ class MateriController extends Controller
         $materiId = Materi::orderBy('id', 'desc')->pluck('id')->first();
 
         $image = base64_decode($request->input('base64_img'));
-        $filename = 'public/materi/' . (string)$materiId . $request->input('title');
+        $str = Str::random(10);
+        $filename = 'public/materi/' . (string)$materiId . $request->input('title') . '$' . $str;
         Storage::put($filename, $image);
 
         Image::create([
@@ -97,14 +99,49 @@ class MateriController extends Controller
 
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $request->validate([
+            'id' => 'required'
+        ]);
 
+        $materi = Materi::find($request->id);
+
+        $materi->title = $request->input('title');
+        $materi->content = $request->input('content');
+        $materi->content_url = $request->input('content_url');
+        $materi->video_url = $request->input('video_url');
+        $materi->doc_url = $request->input('doc_url');
+//        $materi->forum_id = $request->input('forum_id');
+        $materi->save();
+
+        $image = $materi->image;
+        Storage::delete($image->filename);
+        $newImg = base64_decode($request->input('base64_img'));
+        $str = Str::random(10);
+        $filename = 'public/materi/' . (string)$materi->id . $request->input('title') . '$' . $str;
+        Storage::put($filename, $newImg);
+
+        $image->filename = $filename;
+        $image->save();
+
+        return response()->json([
+            'message' => 'materi is updated'
+        ]);
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
+        $materi = Materi::find($request->id);
+        $image = $materi->image;
 
+        Storage::delete($image->filename);
+        $image->delete();
+        $materi->delete();
+
+        return response()->json([
+            'message' => 'materi is deleted'
+        ]);
     }
 
     public function listMateri()

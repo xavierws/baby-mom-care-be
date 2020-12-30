@@ -61,24 +61,31 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
     //kontrol
-    //create kontrol
-    Route::post('materi/create', [MateriController::class, 'store']);
+    //store kontrol
+    Route::post('kontrol/store', [KontrolController::class, 'store']);
     //list kontrol
-    Route::get('materi/index', [MateriController::class, 'index']);
+    Route::get('kontrol/index', [KontrolController::class, 'index']);
     //show specific kontrol
-    Route::get('materi/show', [MateriController::class, 'show']);
+    Route::get('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
-    Route::put('materi/update', [MateriController::class, 'update']);
+    Route::put('kontrol/update', [KontrolController::class, 'update']);
     //delete kontrol
-    Route::delete('materi/delete', [MateriController::class, 'delete']);
+    Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
 
     //materi
-    //create materi
+    //store materi
+    Route::post('materi/store', [MateriController::class, 'store']);
+    //list category
+    Route::get('materi/category', [MateriController::class, 'listCategory']);
     //list materi
+    Route::get('materi/index', [MateriController::class, 'index']);
     //show specific materi
+    Route::get('materi/show', [MateriController::class, 'show']);
     //update materi
+    Route::put('materi/update', [MateriController::class, 'update']);
     //delete materi
+    Route::delete('materi/delete', [MateriController::class, 'delete']);
 
     //quiz
 
