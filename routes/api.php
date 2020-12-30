@@ -86,19 +86,32 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('materi/update', [MateriController::class, 'update']);
     //delete materi
     Route::delete('materi/delete', [MateriController::class, 'delete']);
+    //search materi
 
     //quiz
+    //store quiz
+    //show specific quiz
+    //update quiz
+    //delete quiz
+    //send the patient's answer
 
     //forum
+    //store forum
+    //list topic
+    //list forum
+    //show specific forum
+    //update forum
+    //delete forum
+    //add comment
+    //show all comment related to forum
 
-    //advice
+    //advice - CRUD
 
-    //nurse
+    //nurse - dashboard
     Route::post('nurse/index', [NurseController::class, 'listPatient']);
+    //admin - dashboard
 
-    //admin
-
-    //survey
+    //survey - CRUD
 
     //chat
 
