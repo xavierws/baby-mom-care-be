@@ -87,7 +87,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list materi
     Route::post('materi/index', [MateriController::class, 'index']);
     //show specific materi
-    Route::get('materi/show', [MateriController::class, 'show']);
+    Route::post('materi/show', [MateriController::class, 'show']);
     //update materi
     Route::put('materi/update', [MateriController::class, 'update']);
     //delete materi
