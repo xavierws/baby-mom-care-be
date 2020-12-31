@@ -61,7 +61,7 @@ class KontrolController extends Controller
             $patient_id = $user->userable->id;
         }
 
-        $kontrol = Kontrol::where('patient_id', $patient_id);
+        $kontrol = Kontrol::where('patient_profile_id', $patient_id);
         if (!$kontrol) {
             $order = 1;
         } else {
