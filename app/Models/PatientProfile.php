@@ -72,6 +72,6 @@ class PatientProfile extends Model
 
     public function getResumePulangAttribute()
     {
-        return $this->kontrols->where('mode', 'resume');
+        return $this->kontrols->where('mode', 'resume')->first();
     }
 }
