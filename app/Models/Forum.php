@@ -31,4 +31,9 @@ class Forum extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function materi()
+    {
+        return $this->hasOne(Materi::class);
+    }
 }
