@@ -55,6 +55,7 @@ class KontrolController extends Controller
             'lingkar_kepala' => 'required',
             'temperature' => 'required',
             'base64_img' => 'required',
+            'mode' => 'required'
         ]);
 
         $user = $request->user();
@@ -82,6 +83,7 @@ class KontrolController extends Controller
             'patient_profile_id' => $patient_id,
             'note' => $request->input('note'),
             'nurse_note' => $request->input('nurse_note'),
+            'mode' => $request->input('mode'),
         ]);
 
 //        $kontrol = new Kontrol;
