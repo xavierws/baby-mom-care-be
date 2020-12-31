@@ -19,7 +19,7 @@ class KontrolController extends Controller
 
         $data = array();
         $n = 0;
-        foreach ($patient->kontrols as $kontrol) {
+        foreach ($patient->kontrols->where('mode', 'kontrol') as $kontrol) {
             $data[$n] = [
                 'id' => $kontrol->id,
                 'date' => $kontrol->date,
@@ -166,10 +166,8 @@ class KontrolController extends Controller
     {
         $pasien = $request->user();
         $patient = PatientProfile::find($pasien->userable->id);
-        $resume = $patient->resume_pulang;
+        $resume = $patient->kontrols->where('mode', 'resume');
 
-        return response()->json([
-            'data' => $resume,
-        ]);
+        return new KontrolRes($resume);
     }
 }

@@ -47,10 +47,25 @@ class Materi extends Model
         return $this->hasOne(Forum::class);
     }
 
-    public function getForumTitleAtrribute()
+    public function getRelatedForumAttribute()
     {
-        if (!$this->forum->isEmpty()) return $this->forum->title;
+        if (!$this->forum->isEmpty()) {
+            return [
+                'title' => $this->forum->title,
+                'id' => $this->forum()->id,
+            ];
+        }
 
         return null;
+    }
+
+    public function getRelatedQuizAttribute()
+    {
+        if (!$this->quiz->isEmpty()) {
+            return [
+                'title' => $this->quiz->title,
+                'id' => $this->quiz->id,
+            ];
+        }
     }
 }
