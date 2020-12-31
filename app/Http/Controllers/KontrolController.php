@@ -62,7 +62,7 @@ class KontrolController extends Controller
         }
 
         $kontrol = Kontrol::where('patient_id', $patient_id);
-        if ($kontrol->doesntExists()) {
+        if (!$kontrol) {
             $order = 1;
         } else {
             $order = $kontrol->count() + 1;
