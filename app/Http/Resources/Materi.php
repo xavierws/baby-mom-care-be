@@ -23,6 +23,7 @@ class Materi extends JsonResource
             'image' => asset($this->image->filename),
             'quiz' => $this->related_quiz,
             'forum' => $this->related_forum,
+            'date'=>$this->created_at
         ];
     }
 }
