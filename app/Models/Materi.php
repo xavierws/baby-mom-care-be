@@ -44,7 +44,7 @@ class Materi extends Model
 
     public function forum()
     {
-        return $this->hasOne(Forum::class);
+        return $this->belongsTo(Forum::class);
     }
 
     public function getRelatedForumAttribute()
