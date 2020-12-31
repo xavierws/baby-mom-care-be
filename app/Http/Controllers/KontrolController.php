@@ -75,6 +75,8 @@ class KontrolController extends Controller
         $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
         $kontrol->temperature = $request->input('temperature');
         $kontrol->patient_profile_id = $pasien->userable->id;
+        $kontrol->note = $request->input('note');
+        $kontrol->nurse_note = $request->input('nurse_note');
         $kontrol->save();
 
         //$kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
