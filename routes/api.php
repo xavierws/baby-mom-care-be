@@ -45,8 +45,12 @@ use Illuminate\Support\Facades\Route;
 //    ]);
 //});
 
+//login
 Route::post('login', [AuthController::class, 'login']);
 
+//register nurse using web
+
+//all route that need auth token
 Route::middleware('auth:sanctum')->group(function () {
     //register the nurse or patient
     Route::post('register', [AuthController::class, 'register']);
