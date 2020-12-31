@@ -49,23 +49,21 @@ class Materi extends Model
 
     public function getRelatedForumAttribute()
     {
-        if (!$this->forum->isEmpty()) {
-            return [
-                'title' => $this->forum->title,
-                'id' => $this->forum()->id,
-            ];
-        }
+        if (!$this->forum) return null;
 
-        return null;
+        return [
+            'title' => $this->forum->title,
+            'id' => $this->forum()->id,
+        ];
     }
 
     public function getRelatedQuizAttribute()
     {
-        if (!$this->quiz->isEmpty()) {
-            return [
-                'title' => $this->quiz->title,
-                'id' => $this->quiz->id,
-            ];
-        }
+        if (!$this->quiz) return null;
+
+        return [
+            'title' => $this->quiz->title,
+            'id' => $this->quiz->id,
+        ];
     }
 }
