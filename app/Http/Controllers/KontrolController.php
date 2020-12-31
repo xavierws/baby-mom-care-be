@@ -65,7 +65,7 @@ class KontrolController extends Controller
             $patient_id = $user->userable->id;
         }
 
-        $kontrol = Kontrol::where('patient_profile_id', $patient_id);
+        $kontrol = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patient_id);
         if (!$kontrol) {
             $order = 1;
         } else {
@@ -160,6 +160,17 @@ class KontrolController extends Controller
 
         return response()->json([
             'message' => 'kontrol is deleted'
+        ]);
+    }
+
+    public function showResume(Request $request)
+    {
+        $pasien = $request->user();
+        $patient = PatientProfile::find($pasien->userable->id);
+        $resume = $patient->resume_pulang;
+
+        return response()->json([
+            'data' => $resume,
         ]);
     }
 }

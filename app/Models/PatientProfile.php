@@ -69,4 +69,9 @@ class PatientProfile extends Model
             ->withTimestamps()
             ->withPivot('answer');
     }
+
+    public function getResumePulangAttribute()
+    {
+        return $this->kontrols->where('mode', 'resume');
+    }
 }
