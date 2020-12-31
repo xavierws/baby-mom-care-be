@@ -32,9 +32,7 @@ class KontrolController extends Controller
     }
 
     public function search()
-    {
-
-    }
+    { }
 
     public function show(Request $request)
     {
@@ -54,6 +52,7 @@ class KontrolController extends Controller
             'base64_img' => 'required',
         ]);
         $pasien = $request->user();
+        /*
         Kontrol::create([
             'title' => $request->input('title'),
             'date' => $request->input('date'),
@@ -64,12 +63,24 @@ class KontrolController extends Controller
             'temperature' => $request->input('temperature'),
             'patient_profile_id' => $pasien->userable->id,
         ]);
-
-        $kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
-
+*/
+        $kontrol = new Kontrol;
+        $kontrol->title = $request->input('title');
+        $kontrol->date = $request->input('date');
+        $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
+        $kontrol->weight = $request->input('weight');
+        $kontrol->length = $request->input('length');
+        $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
+        $kontrol->temperature = $request->input('temperature');
+        $kontrol->patient_profile_id = $pasien->userable->id;
+        $kontrol->save();
+        
+        //$kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
+        
+        $kontrolId = $kontrol->id;
         $image = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/kontrol/' . (string)$kontrolId . $request->input('title') . '$' . $str;
+        $filename = 'public/kontrol/' . (string) $kontrolId . $request->input('title') . '$' . $str;
         Storage::put($filename, $image);
 
         Image::create([
@@ -84,9 +95,7 @@ class KontrolController extends Controller
     }
 
     public function edit()
-    {
-
-    }
+    { }
 
     public function update(Request $request)
     {
@@ -107,7 +116,7 @@ class KontrolController extends Controller
         Storage::delete($image->filename);
         $newImg = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/kontrol/' . (string)$request->id . $request->input('title') . '$' . $str;
+        $filename = 'public/kontrol/' . (string) $request->id . $request->input('title') . '$' . $str;
         Storage::put($filename, $newImg);
 
         $image->filename = $filename;
@@ -131,5 +140,4 @@ class KontrolController extends Controller
             'message' => 'kontrol is deleted'
         ]);
     }
-
 }

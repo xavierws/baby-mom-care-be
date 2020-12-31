@@ -13,7 +13,7 @@ class Image extends Model
 
     protected $fillable = [
         'filename',
-        'iamgeable_id',
+        'imageable_id',
         'imageable_type',
     ];
 
