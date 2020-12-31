@@ -68,18 +68,39 @@ class ForumController extends Controller
     }
 
     public function edit()
-    {
+    { }
 
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        $forum = Forum::find($request->id);
+        $forum->title = $request->input('title');
+        $forum->question = $request->input('question');
+        $forum->save();
+
+        return response()->json([
+            'message' => 'forum is updated'
+        ]);
     }
 
-    public function update()
+    public function delete(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+        ]);
 
-    }
+        $forum = Forum::find($request->id);
+        foreach ($forum->comments as $comment) {
+            $comment->delete();
+        }
+        $forum->delete();
 
-    public function delete()
-    {
-
+        return response()->json([
+            'message' => 'forum is deleted',
+        ]);
     }
 
     public function storeComment(Request $request)

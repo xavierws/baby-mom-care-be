@@ -97,13 +97,19 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //forum
     //store forum
+    Route::post('forum/store', [ForumController::class, 'store']);
     //list topic
+    Route::get('forum/topic', [ForumController::class, 'listTopic']);
     //list forum
+    Route::get('forum/index', [ForumController::class, 'index']);
     //show specific forum
+    Route::get('forum/show', [ForumController::class, 'show']);
     //update forum
+    Route::put('forum/update', [ForumController::class, 'update']);
     //delete forum
+    Route::delete('forum/delete', [ForumController::class, 'delete']);
     //add comment
-    //show all comment related to forum
+    Route::post('forum/comment/store', [ForumController::class, 'storeComment']);
 
     //advice - CRUD
 
