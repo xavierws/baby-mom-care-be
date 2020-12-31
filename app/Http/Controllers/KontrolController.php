@@ -51,10 +51,9 @@ class KontrolController extends Controller
             'length' => 'required',
             'lingkar_kepala' => 'required',
             'temperature' => 'required',
-            'patient_id' => 'required',
             'base64_img' => 'required',
         ]);
-
+        $pasien = $request->user();
         Kontrol::create([
             'title' => $request->input('title'),
             'date' => $request->input('date'),
@@ -63,7 +62,7 @@ class KontrolController extends Controller
             'length' => $request->input('length'),
             'lingkar_kepala' => $request->input('lingkar_kepala'),
             'temperature' => $request->input('temperature'),
-            'patient_profile_id' => $request->input('patient_id'),
+            'patient_profile_id' => $pasien->userable->id,
         ]);
 
         $kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
