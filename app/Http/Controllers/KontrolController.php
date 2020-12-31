@@ -14,7 +14,8 @@ class KontrolController extends Controller
 {
     public function index(Request $request)
     {
-        $patient = PatientProfile::find($request->id);
+        $pasien = $request->user();
+        $patient = PatientProfile::find($pasien->userable->id);
 
         $data = array();
         $n = 0;
@@ -76,7 +77,7 @@ class KontrolController extends Controller
         $kontrol->save();
         
         //$kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
-        
+
         $kontrolId = $kontrol->id;
         $image = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
