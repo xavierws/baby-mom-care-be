@@ -66,7 +66,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list kontrol
     Route::post('kontrol/index', [KontrolController::class, 'index']);
     //show specific kontrol
-    Route::get('kontrol/show', [KontrolController::class, 'show']);
+    Route::post('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
     Route::put('kontrol/update', [KontrolController::class, 'update']);
     //delete kontrol
