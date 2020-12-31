@@ -23,6 +23,7 @@ class KontrolController extends Controller
             $data[$n] = [
                 'id' => $kontrol->id,
                 'title' => $kontrol->title,
+                'tanggal' => $kontrol->date
             ];
             $n++;
         }
@@ -75,7 +76,7 @@ class KontrolController extends Controller
         $kontrol->temperature = $request->input('temperature');
         $kontrol->patient_profile_id = $pasien->userable->id;
         $kontrol->save();
-        
+
         //$kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
 
         $kontrolId = $kontrol->id;
