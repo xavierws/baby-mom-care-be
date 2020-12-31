@@ -64,7 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //store kontrol
     Route::post('kontrol/store', [KontrolController::class, 'store']);
     //list kontrol
-    Route::get('kontrol/index', [KontrolController::class, 'index']);
+    Route::post('kontrol/index', [KontrolController::class, 'index']);
     //show specific kontrol
     Route::get('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
