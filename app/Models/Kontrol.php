@@ -12,7 +12,7 @@ class Kontrol extends Model
     protected $table = 'kontrols';
 
     protected $fillable = [
-        'title',
+        'order',
         'date',
         'tempat_kontrol',
         'weight',
@@ -20,6 +20,8 @@ class Kontrol extends Model
         'lingkar_kepala',
         'temperature',
         'patient_profile_id',
+        'note',
+        'nurse_note',
     ];
 
     public function patient()

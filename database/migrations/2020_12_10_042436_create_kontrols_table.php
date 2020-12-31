@@ -15,7 +15,7 @@ class CreateKontrolsTable extends Migration
     {
         Schema::create('kontrols', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->integer('order');
             $table->date('date');
             $table->string('tempat_kontrol');
             $table->integer('weight')->nullable();
