@@ -16,23 +16,22 @@ class KontrolController extends Controller
     {
         $pasien = $request->user();
         $patient = PatientProfile::find($pasien->userable->id);
-/*
+
         $data = array();
         $n = 0;
         foreach ($patient->kontrols as $kontrol) {
             $data[$n] = [
                 'id' => $kontrol->id,
-                'title' => $kontrol->title,
-                'tanggal' => $kontrol->date,
+                'date' => $kontrol->date,
                 'order'=>$kontrol->order,
                 'note'=>$kontrol->note,
                 'nurse_note'=>$kontrol->nurse_note
             ];
             $n++;
         }
-*/
+
         return response()->json([
-            'data' => $patient->kontrols,
+            'data' => $data
         ]);
     }
 
