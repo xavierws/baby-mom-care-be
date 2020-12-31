@@ -80,7 +80,7 @@ class MateriController extends Controller
 
         $image = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/materi/' . (string)$materiId . $request->input('title') . '$' . $str;
+        $filename = 'public/materi/' . (string)$materiId . $request->input('title') . '$' . $str . '.jpg';
         Storage::put($filename, $image);
 
         Image::create([
@@ -119,7 +119,7 @@ class MateriController extends Controller
         Storage::delete($image->filename);
         $newImg = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/materi/' . (string)$materi->id . $request->input('title') . '$' . $str;
+        $filename = 'public/materi/' . (string)$materi->id . $request->input('title') . '$' . $str . '.jpg';
         Storage::put($filename, $newImg);
 
         $image->filename = $filename;
