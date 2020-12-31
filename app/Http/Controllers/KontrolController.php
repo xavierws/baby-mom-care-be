@@ -166,7 +166,7 @@ class KontrolController extends Controller
     {
         $pasien = $request->user();
         $patient = PatientProfile::find($pasien->userable->id);
-        $resume = $patient->kontrols->where('mode', 'resume');
+        $resume = $patient->kontrols->where('mode', 'resume')->first();
 
         return new KontrolRes($resume);
     }
