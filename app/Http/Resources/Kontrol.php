@@ -24,6 +24,8 @@ class Kontrol extends JsonResource
             'lingkar_kepala' => $this->lingkar_kepala,
             'temperature' => $this->temperature,
             'image' => asset($this->image->filename),
+            'note' => $this->note,
+            'nurse_note' => $this->nuser_note,
         ];
     }
 }
