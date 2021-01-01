@@ -30,17 +30,19 @@ class SurveyController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'datas' => 'required|array',
+            //'datas' => 'required|array',
         ]);
-
-        foreach ($request->datas as $data) {
+        $i = 0;
+        foreach ($request->questions as $question) {
             Survey::create([
                 'title' => $request->input('title'),
-                'question' => $data['question'],
-                'choice_type' => $data['choice_type'],
+                'question' => $question,
+                //'choice_type' => $data['choice_type'],
+                'choice_type' => $request->choice[$i]
             ]);
+            $i++;
         }
-
+  
         return response()->json([
             'message' => 'survey is created'
         ]);
