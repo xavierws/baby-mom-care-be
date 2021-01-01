@@ -56,6 +56,7 @@ class ForumController extends Controller
             'title' => 'required',
             'question' => 'required',
             'topic' => 'required',
+            'category' => 'required',
         ]);
 
         $user = $request->user();
