@@ -41,7 +41,6 @@ class ForumController extends Controller
             'data' => $data,
         ]);
     }
-
     public function show(Request $request)
     {
         return new ForumRes(Forum::find($request->id));
