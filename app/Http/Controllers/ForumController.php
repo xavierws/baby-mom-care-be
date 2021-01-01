@@ -80,8 +80,8 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'question' => 'required',
-            //'topic' => 'required',
-            'category' => 'required',
+            'topic_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         $user = $request->user();
@@ -90,8 +90,8 @@ class ForumController extends Controller
             'title' => $request->input('title'),
             'question' => $request->input('question'),
             'user_id' => $user->id,
-            //'topic_id' => Topic::where('name', $request->topic)->pluck('id')->first(),
-            'category_id' => Category::where('name', $request->category)->pluck('id')->first(),
+            'topic_id' => $request->input('topic_id'),
+            'category_id' => $request->input('category_id'),
         ]);
 
         return response()->json([
