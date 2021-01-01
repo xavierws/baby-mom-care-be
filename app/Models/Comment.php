@@ -18,7 +18,7 @@ class Comment extends Model
         'user_id',
     ];
 
-    public function forums()
+    public function forum()
     {
         return $this->belongsTo(Forum::class);
     }

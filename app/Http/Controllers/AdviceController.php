@@ -57,4 +57,9 @@ class AdviceController extends Controller
             'message' => 'advice is deleted',
         ]);
     }
+
+    public function showNotification()
+    {
+
+    }
 }

@@ -6,10 +6,11 @@ use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use App\Http\Resources\Quiz as QuizRes;
 
 class QuizController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
 
     }

@@ -15,6 +15,8 @@ class Forum extends JsonResource
     public function toArray($request)
     {
         return [
+            'name' => $this->user->user_name,
+            'role' => $this->user->user_role,
             'title' => $this->title,
             'question' => $this->question,
             'comments' => Comment::collection($this->comments),
