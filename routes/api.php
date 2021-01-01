@@ -117,7 +117,18 @@ Route::middleware('auth:sanctum')->group(function () {
     //add comment
     Route::post('forum/comment/store', [ForumController::class, 'storeComment']);
 
-    //advice - CRUD
+    //advice
+    //store advice
+    Route::post('advice/store', [AdviceController::class, 'store']);
+    //list advice
+    Route::get('advice/index', [AdviceController::class, 'index']);
+    //update advice
+    Route::put('advice/update', [AdviceController::class, 'update']);
+    //delete advice
+    Route::delete('advice/delete', [AdviceController::class, 'delete']);
+    //search advice
+
+    //show notification
 
     //nurse - dashboard
     Route::post('nurse/index', [NurseController::class, 'listPatient']);
