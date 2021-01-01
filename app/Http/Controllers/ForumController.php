@@ -28,14 +28,16 @@ class ForumController extends Controller
         $data = array();
         $n = 0;
         foreach ($topic->forum as $forum) {
-            $data[$n] = [
-                'id'  => $forum->id,
-                'title' => $forum->title,
-                'question' => $forum->question,
-                'user' => $forum->user->user_name,
-//                'category' => $forum->category->name,
-            ];
-            $n++;
+            if ($forum->category->id == $request->category_id) {
+                $data[$n] = [
+                    'id'  => $forum->id,
+                    'title' => $forum->title,
+                    'question' => $forum->question,
+                    'user' => $forum->user->user_name,
+                    'category' => $forum->category->name,
+                ];
+                $n++;
+            }
         }
 
         return response()->json([
@@ -54,22 +56,17 @@ class ForumController extends Controller
             'title' => 'required',
             'question' => 'required',
             'topic' => 'required',
+            'category' => 'required',
         ]);
 
         $user = $request->user();
-
-//        if (!$request->category) {
-//            $categoryId = null;
-//        } else {
-//            $categoryId = Category::where('name', $request->category)->pluck('id')->first();
-//        }
 
         Forum::create([
             'title' => $request->input('title'),
             'question' => $request->input('question'),
             'user_id' => $user->id,
             'topic_id' => Topic::where('name', $request->topic)->pluck('id')->first(),
-//            'category_id' => $categoryId,
+            'category_id' => Category::where('name', $request->category)->pluck('id')->first(),
         ]);
 
         return response()->json([
