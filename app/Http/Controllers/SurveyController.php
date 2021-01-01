@@ -42,26 +42,40 @@ class SurveyController extends Controller
         }
 
         return response()->json([
-            'message' => 'survey created'
+            'message' => 'survey is created'
         ]);
     }
 
     public function edit()
-    {
+    { }
 
+    public function update(Request $request)
+    {
+        foreach ($request->data as $data) {
+            $survey = Survey::find($data['id']);
+            $survey->title = $request->input('title');
+            $survey->question = $data['question'];
+            $survey->choice_type = $data['choice_type'];
+            $survey->save();
+        }
+
+        return response()->json([
+            'message' => 'survey is updated',
+        ]);
     }
 
-    public function update()
+    public function delete(Request $request)
     {
+        foreach ($request->data as $data) {
+            Survey::find($data['id'])->delete();
+        }
 
+        return response()->json([
+            'message' => 'survey is deleted'
+        ]);
     }
 
-    public function delete()
-    {
-
-    }
-
-    public function saveAnswer(Request $request)
+    public function storeAnswer(Request $request)
     {
         $request->validate([
             'data.*.id' => 'required',
