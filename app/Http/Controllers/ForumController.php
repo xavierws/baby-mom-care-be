@@ -15,11 +15,11 @@ class ForumController extends Controller
     {
         return response(Topic::all()->toArray());
     }
-
+/*
     public function index(Request $request)
     {
         $request->validate([
-            'topic_id' => 'required',
+            //'topic_id' => 'required',
             'category_id' => 'required',
         ]);
 
@@ -44,7 +44,32 @@ class ForumController extends Controller
             'data' => $data,
         ]);
     }
+    */
+    public function index(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
 
+        $category = Category::find($request->id);
+
+        $data = array();
+        $n = 0;
+        foreach ($category->forums as $forum) {
+            $data[$n] = [
+                'id'  => $forum->id,
+                'title' => $forum->title,
+                'question' => $forum->question,
+                'user' => $forum->user->user_name,
+                'category' => $forum->category->name,
+            ];
+            $n++;
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
     public function show(Request $request)
     {
         return new ForumRes(Forum::find($request->id));
@@ -55,7 +80,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'question' => 'required',
-            'topic' => 'required',
+            //'topic' => 'required',
             'category' => 'required',
         ]);
 
@@ -65,7 +90,7 @@ class ForumController extends Controller
             'title' => $request->input('title'),
             'question' => $request->input('question'),
             'user_id' => $user->id,
-            'topic_id' => Topic::where('name', $request->topic)->pluck('id')->first(),
+            //'topic_id' => Topic::where('name', $request->topic)->pluck('id')->first(),
             'category_id' => Category::where('name', $request->category)->pluck('id')->first(),
         ]);
 
