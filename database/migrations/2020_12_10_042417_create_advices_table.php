@@ -17,6 +17,7 @@ class CreateAdvicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('frequency');
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -13,20 +13,20 @@ class AdviceController extends Controller
     }
 
     public function show()
-    {
-
-    }
+    { }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'frequency' => 'required|integer'
+            'frequency' => 'required|integer',
+            'description' => 'required',
         ]);
 
         Advice::create([
             'name' => $request->input('name'),
             'frequency' => $request->input('frequency'),
+            'description' => $request->input('description'),
         ]);
 
         return response()->json([
@@ -35,17 +35,26 @@ class AdviceController extends Controller
     }
 
     public function edit()
-    {
+    { }
 
+    public function update(Request $request)
+    {
+        $advice = Advice::find($request->id);
+        $advice->name = $request->input('name');
+        $advice->frequency = $request->input('frequency');
+        $advice->description = $request->input('description');
+
+        return response()->json([
+            'message' => 'advice is updated',
+        ]);
     }
 
-    public function update()
+    public function delete(Request $request)
     {
+        Advice::find($request->id)->delete();
 
-    }
-
-    public function delete()
-    {
-
+        return response()->json([
+            'message' => 'advice is deleted',
+        ]);
     }
 }

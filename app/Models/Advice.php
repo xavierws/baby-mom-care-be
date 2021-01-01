@@ -14,5 +14,6 @@ class Advice extends Model
     protected $fillable = [
         'name',
         'frequency',
+        'description',
     ];
 }
