@@ -26,7 +26,7 @@ class ForumController extends Controller
 
         $data = array();
         $n = 0;
-        foreach ($topic->forum as $forum) {
+        foreach ($topic->forums as $forum) {
             $data[$n] = [
                 'id'  => $forum->id,
                 'title' => $forum->title,
