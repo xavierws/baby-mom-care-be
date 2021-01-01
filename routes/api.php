@@ -109,7 +109,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list forum
     Route::post('forum/index', [ForumController::class, 'index']);
     //show specific forum
-    Route::get('forum/show', [ForumController::class, 'show']);
+    Route::post('forum/show', [ForumController::class, 'show']);
     //update forum
     Route::put('forum/update', [ForumController::class, 'update']);
     //delete forum
