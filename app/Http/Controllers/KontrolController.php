@@ -59,12 +59,12 @@ class KontrolController extends Controller
 
         $user = $request->user();
         if ($user->user_role == 'nurse') {
-            $patient_id = $request->input('patient_id');
+            $patientId = $request->input('patient_id');
         } else {
-            $patient_id = $user->userable->id;
+            $patientId = $user->userable->id;
         }
 
-        $kontrol = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patient_id);
+        $kontrol = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patientId);
         if (!$kontrol) {
             $order = 1;
         } else {
@@ -79,12 +79,17 @@ class KontrolController extends Controller
             'length' => $request->input('length'),
             'lingkar_kepala' => $request->input('lingkar_kepala'),
             'temperature' => $request->input('temperature'),
-            'patient_profile_id' => $patient_id,
+            'patient_profile_id' => $patientId,
             'note' => $request->input('note'),
             'nurse_note' => $request->input('nurse_note'),
             'mode' => $request->input('mode'),
         ]);
 
+        if ($request->mode == 'resume') {
+            $patient = PatientProfile::find($patientId);
+            $patient->status = 'home';
+            $patient->save();
+        }
 //        $kontrol = new Kontrol;
 //        $kontrol->order = $order;
 //        $kontrol->date = $request->input('date');
