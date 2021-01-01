@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function getUserNameAttribute()
     {
-        if ($this->user_role == 'patient') return $this->userable->baby_name;
+        if ($this->user_role == 'patient') return $this->userable->mother_name;
 
         return $this->userable->name;
     }
