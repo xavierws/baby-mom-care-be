@@ -22,7 +22,7 @@ class ForumController extends Controller
             'topic_id' => 'required',
         ]);
 
-        $topic = Topic::find($request->id);
+        $topic = Topic::find($request->topic_id);
 
         $data = array();
         $n = 0;
