@@ -11,7 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +204,8 @@
       <workItem from="1609386233914" duration="14889000" />
       <workItem from="1609430251601" duration="1204000" />
       <workItem from="1609468694012" duration="515000" />
+      <workItem from="1609475145556" duration="2930000" />
+      <workItem from="1609485284527" duration="4294000" />
     </task>
     <servers />
   </component>
