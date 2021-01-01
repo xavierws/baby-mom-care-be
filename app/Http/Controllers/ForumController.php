@@ -15,20 +15,20 @@ class ForumController extends Controller
     {
         return response(Topic::all()->toArray());
     }
-/*
+
     public function index(Request $request)
     {
         $request->validate([
-            //'topic_id' => 'required',
-            'category_id' => 'required',
+            'topic_id' => 'required',
+            //'category_id' => 'required',
         ]);
 
         $topic = Topic::find($request->id);
 
         $data = array();
         $n = 0;
-        foreach ($topic->forum as $forum) {
-            if ($forum->category->id == $request->category_id) {
+        foreach ($topic->forums as $forum) {
+        
                 $data[$n] = [
                     'id'  => $forum->id,
                     'title' => $forum->title,
@@ -37,14 +37,15 @@ class ForumController extends Controller
                     'category' => $forum->category->name,
                 ];
                 $n++;
-            }
+        
         }
 
         return response()->json([
             'data' => $data,
         ]);
     }
-    */
+   
+    /*
     public function index(Request $request)
     {
         $request->validate([
@@ -70,6 +71,7 @@ class ForumController extends Controller
             'data' => $data,
         ]);
     }
+    */
     public function show(Request $request)
     {
         return new ForumRes(Forum::find($request->id));
