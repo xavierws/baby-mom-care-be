@@ -15,6 +15,8 @@ class Forum extends Model
         'title',
         'question',
         'user_id',
+        'topic_id',
+        'category_id'
     ];
 
     public function topic()
@@ -35,5 +37,10 @@ class Forum extends Model
     public function materi()
     {
         return $this->hasOne(Materi::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

@@ -15,4 +15,9 @@ class NurseController extends Controller
         $patients = NurseProfile::find($user->userable_id)->patients;
         return PatientRes::collection($patients);
     }
+
+    public function showPatient()
+    {
+
+    }
 }

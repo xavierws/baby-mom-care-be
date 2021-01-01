@@ -16,7 +16,12 @@ class AdminController extends Controller
 
     }
 
-    public function allPatient()
+    public function listPatient()
+    {
+
+    }
+
+    public function showPatient()
     {
 
     }
