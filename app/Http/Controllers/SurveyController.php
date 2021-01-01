@@ -30,10 +30,10 @@ class SurveyController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'data' => 'required|array',
+            'datas' => 'required|array',
         ]);
 
-        foreach ($request->data as $data) {
+        foreach ($request->datas as $data) {
             Survey::create([
                 'title' => $request->input('title'),
                 'question' => $data['question'],
