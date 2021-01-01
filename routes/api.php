@@ -124,6 +124,18 @@ Route::middleware('auth:sanctum')->group(function () {
     //admin - dashboard
 
     //survey - CRUD
+    //store survey
+    Route::post('survey/store', [SurveyController::class, 'store']);
+    //list survey
+    Route::get('survey/index', [SurveyController::class, 'index']);
+    //show spesific survey
+    Route::get('survey/show', [SurveyController::class, 'show']);
+    //update survey
+    Route::put('survey/update', [SurveyController::class, 'update']);
+    //delete survey
+    Route::delete('survey/delete', [SurveyController::class, 'delete']);
+    //store answer
+    Route::post('survey/answer/store', [SurveyController::class, 'storeAnswer']);
 
     //chat
 
