@@ -18,12 +18,12 @@ class Quiz extends Model
 
     public function materi()
     {
-        return $this->hasOne(Materi::class);
+        return $this->belongsTo(Materi::class);
     }
 
     public function questions()
     {
-        return $this->belongsTo(Question::class);
+        return $this->hasMany(Question::class);
     }
 
     public function choices()

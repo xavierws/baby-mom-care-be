@@ -71,6 +71,13 @@ class PatientProfile extends Model
             ->withPivot('answer');
     }
 
+    public function quizzes()
+    {
+        return $this->belongsToMany(QuestionChoice::class, 'user_answer', 'patient_id', 'answer_id')
+            ->withTimestamps()
+            ->withPivot('point', 'question_id', 'quiz_id');
+    }
+
     public function getResumePulangAttribute()
     {
         return $this->kontrols->where('mode', 'resume')->first();

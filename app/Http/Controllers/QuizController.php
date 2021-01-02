@@ -75,9 +75,22 @@ class QuizController extends Controller
 
     }
 
-    public function storeAnswer()
+    public function storeAnswer(Request $request)
     {
+        $request->validate([
 
+        ]);
+
+        $user = $request->user();
+        $i = 0;
+        foreach ($request->answers as $answer) {
+            $choice = QuestionChoice::find($request->id[$i]);
+            $choice->patients()->attach($user->userable_id, [
+                'point' => $choice->is_true? 1:0,
+                'question_id' => $choice->question_id,
+                'quiz_id' => $choice->question->quiz_id,
+            ]);
+        }
     }
 
     public function showAnswer()
