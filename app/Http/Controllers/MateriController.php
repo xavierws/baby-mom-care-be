@@ -32,6 +32,7 @@ class MateriController extends Controller
             $data[$n] = [
                 'id'  => $materi->id,
                 'title' => $materi->title,
+                'quiz' => $materi->related_quiz,
             ];
             $n++;
         }
