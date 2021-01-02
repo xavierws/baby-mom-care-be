@@ -105,6 +105,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('quiz/answer/store', [QuizController::class, 'storeAnswer']);
     //show patient's answer
     Route::post('quiz/answer/show', [QuizController::class, 'showAnswer']);
+    //show quiz status to specific user
+    Route::get('quiz/status', [QuizController::class, 'showStatus']);
 
     //forum
     //store forum

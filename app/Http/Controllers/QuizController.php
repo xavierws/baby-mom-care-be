@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Materi;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\Quiz;
@@ -112,15 +113,40 @@ class QuizController extends Controller
                     'point' => $quiz->pivot->point,
                 ];
                 $i++;
-                $point = $point + $quiz->point;
+                $point = $point + $quiz->pivot->point;
             }
         }
 
         return response()->json([
             'data' => $data,
-            'total_question' => $quizzes->count(),
+            'total_question' => $i,
             'total_point' => $point,
         ]);
 
+    }
+
+    public function showStatus(Request $request)
+    {
+        $patient = $request->user()->userable;
+
+        $quizId = Materi::find($request->id)->quiz->id;
+
+        $status = 0;
+        $data = array();
+        $point = 0;
+        $i = 0;
+        foreach ($patient->quizzes as $quiz) {
+            if ($quiz->pivot->quiz_id == $quizId) {
+                $i++;
+                $point = $point + $quiz->pivot->point;
+                $status = 1;
+            }
+        }
+
+        return response()->json([
+            'status' => $status,
+            'total_question' => $i,
+            'total_point' => $point,
+        ]);
     }
 }
