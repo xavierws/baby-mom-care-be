@@ -14,7 +14,7 @@ class TopicSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('topics')->insert([
             ['id' => 1, 'name' => 'topic_1', 'created_at' => now(), 'updated_at' => now()],
             ['id' => 2, 'name' => 'topic_2', 'created_at' => now(), 'updated_at' => now()],
             ['id' => 3, 'name' => 'topic_3', 'created_at' => now(), 'updated_at' => now()],
