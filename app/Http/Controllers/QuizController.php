@@ -112,7 +112,7 @@ class QuizController extends Controller
                     'point' => $quiz->pivot->point,
                 ];
                 $i++;
-                $point = $point + $quiz->point;
+                $point = $point + $quiz->pivot->point;
             }
         }
 
