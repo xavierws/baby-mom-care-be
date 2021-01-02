@@ -10,7 +10,6 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SurveyController;
-use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -103,6 +102,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //update quiz
     //delete quiz
     //send the patient's answer
+    Route::post('quiz/answer/store', [QuizController::class, 'store']);
     //show patient's answer
 
     //forum
