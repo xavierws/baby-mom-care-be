@@ -109,7 +109,7 @@ class QuizController extends Controller
             if ($quiz->pivot->quiz_id == $request->quiz_id) {
                 $data[$i] = [
                     'question' => Question::find($quiz->question_id)->value('question'),
-                    'point' => $quiz->point,
+                    'point' => $quiz->pivot->point,
                 ];
                 $i++;
                 $point = $point + $quiz->point;
