@@ -104,7 +104,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //send the patient's answer
     Route::post('quiz/answer/store', [QuizController::class, 'storeAnswer']);
     //show patient's answer
-    Route::get('quiz/answer/show', [QuizController::class, 'showAnswer']);
+    Route::post('quiz/answer/show', [QuizController::class, 'showAnswer']);
 
     //forum
     //store forum
