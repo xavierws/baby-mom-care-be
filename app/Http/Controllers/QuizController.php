@@ -100,7 +100,7 @@ class QuizController extends Controller
     {
         $user = $request->user();
 
-        $quizzes = $user->userable->quizzes->where('quiz_id', $request->quiz_id);
+        $quizzes = $user->userable->quizzes->wherePivot('quiz_id', $request->quiz_id);
 
         $data = array();
         $point = 0;
