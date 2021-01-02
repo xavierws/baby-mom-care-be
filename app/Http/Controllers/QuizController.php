@@ -20,11 +20,10 @@ class QuizController extends Controller
         $request->validate([
             'materi_id' => 'required',
             'title' => 'required',
-
-            'data.*.question' => 'required',
-            'data.*.choice1' => 'required',
-            'data.*.choice2' => 'required',
-            'data.*.choice3' => 'required',
+            //'data.*.question' => 'required',
+            //'data.*.choice1' => 'required',
+            //'data.*.choice2' => 'required',
+            //'data.*.choice3' => 'required',
         ]);
 
         Quiz::create([
@@ -33,30 +32,32 @@ class QuizController extends Controller
         ]);
 
         $quizId = Quiz::orderBy('id', 'desc')->pluck('id')->first();
-        foreach ($request->data as $data) {
+        $i = 0;
+        foreach ($request->questions as $question) {
             Question::create([
-                'question' => $data['question'],
+                'question' => $question,
                 'quiz_id' => $quizId,
             ]);
 
             $questionId = Question::orderBy('id', 'desc')->pluck('id')->first();
             QuestionChoice::create([
-                'choice' => $data['choice1']['text'],
-                'is_true' => $data['choice1']['is_true'],
+                'choice' => $request->choice1[$i],
+                'is_true' => $request->is_true[$i] == "choice1"?1:0,
                 'question_id' => $questionId,
             ]);
 
             QuestionChoice::create([
-                'choice' => $data['choice2']['text'],
-                'is_true' => $data['choice2']['is_true'],
+                'choice' => $request->choice2[$i],
+                'is_true' => $request->is_true[$i] == "choice2"?1:0,
                 'question_id' => $questionId,
             ]);
-
             QuestionChoice::create([
-                'choice' => $data['choice3']['text'],
-                'is_true' => $data['choice3']['is_true'],
+                'choice' => $request->choice3[$i],
+                'is_true' => $request->is_true[$i] == "choice3"?1:0,
                 'question_id' => $questionId,
             ]);
+           
+            $i++;
         }
 
         return response()->json([
