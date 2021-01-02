@@ -82,7 +82,7 @@ class QuizController extends Controller
         ]);
 
         $user = $request->user();
-       
+
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
             $choice->patients()->attach($user->userable_id, [
@@ -96,8 +96,29 @@ class QuizController extends Controller
         ]);
     }
 
-    public function showAnswer()
+    public function showAnswer(Request $request)
     {
+        $user = $request->user();
+
+        $quizzes = $user->userable->quizzes->where('quiz_id', $request->quiz_id);
+
+        $data = array();
+        $point = 0;
+        $i = 0;
+        foreach ($quizzes as $quiz) {
+            $data[$i] = [
+                'question' => $quiz->question->question,
+                'point' => $quiz->pivot->point,
+            ];
+            $i++;
+            $point = $point + $quiz->pivot->point;
+        }
+
+        return response()->json([
+            'data' => $data,
+            'total_question' => $quizzes->count(),
+            'total_point' => $point,
+        ]);
 
     }
 }
