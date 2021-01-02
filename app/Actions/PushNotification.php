@@ -6,14 +6,14 @@ namespace App\Actions;
 
 class PushNotification
 {
-    public static function handle()
+    public static function handle($token, $title, $description)
     {
         $data = [
-            "to" => "/topics/event",
+            "to" => $token,
             "notification" =>
                 [
                     "title" => $title,
-                    "body" => $description
+                    "body" => $description,
                 ],
         ];
         $dataString = json_encode($data);
