@@ -43,18 +43,18 @@ class QuizController extends Controller
             $questionId = Question::orderBy('id', 'desc')->pluck('id')->first();
             QuestionChoice::create([
                 'choice' => $request->choice1[$i],
-                'is_true' => $request->is_true[$i] == "choice1"?1:0,
+                'is_true' => $request->is_true[$i] == "choice1" ? 1 : 0,
                 'question_id' => $questionId,
             ]);
 
             QuestionChoice::create([
                 'choice' => $request->choice2[$i],
-                'is_true' => $request->is_true[$i] == "choice2"?1:0,
+                'is_true' => $request->is_true[$i] == "choice2" ? 1 : 0,
                 'question_id' => $questionId,
             ]);
             QuestionChoice::create([
                 'choice' => $request->choice3[$i],
-                'is_true' => $request->is_true[$i] == "choice3"?1:0,
+                'is_true' => $request->is_true[$i] == "choice3" ? 1 : 0,
                 'question_id' => $questionId,
             ]);
 
@@ -67,27 +67,21 @@ class QuizController extends Controller
     }
 
     public function edit()
-    {
-
-    }
+    { }
 
     public function delete()
-    {
-
-    }
+    { }
 
     public function storeAnswer(Request $request)
     {
-        $request->validate([
-
-        ]);
+        $request->validate([]);
 
         $user = $request->user();
 
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
             $choice->patients()->attach($user->userable_id, [
-                'point' => $choice->is_true? 1:0,
+                'point' => $choice->is_true ? 1 : 0,
                 'question_id' => $choice->question_id,
                 'quiz_id' => $choice->question->quiz_id,
             ]);
@@ -122,31 +116,35 @@ class QuizController extends Controller
             'total_question' => $i,
             'total_point' => $point,
         ]);
-
     }
 
     public function showStatus(Request $request)
     {
         $patient = $request->user()->userable;
-
-        $quizId = Materi::find($request->id)->quiz->id;
-
-        $status = 0;
-        $data = array();
-        $point = 0;
-        $i = 0;
-        foreach ($patient->quizzes as $quiz) {
-            if ($quiz->pivot->quiz_id == $quizId) {
-                $i++;
-                $point = $point + $quiz->pivot->point;
-                $status = 1;
+        $a = Materi::find($request->id);
+        if ($a->quiz) {
+            $quizId = $a->quiz->id;
+            $status = 0;
+            $data = array();
+            $point = 0;
+            $i = 0;
+            foreach ($patient->quizzes as $quiz) {
+                if ($quiz->pivot->quiz_id == $quizId) {
+                    $i++;
+                    $point = $point + $quiz->pivot->point;
+                    $status = 1;
+                }
             }
-        }
 
-        return response()->json([
-            'status' => $status,
-            'total_question' => $i,
-            'total_point' => $point,
-        ]);
+            return response()->json([
+                'status' => $status,
+                'total_question' => $i,
+                'total_point' => $point,
+            ]);
+        } else {
+            return response()->json([
+                'status' => "not_available",
+            ]);
+        }
     }
 }
