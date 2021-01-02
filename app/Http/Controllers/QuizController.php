@@ -82,15 +82,18 @@ class QuizController extends Controller
         ]);
 
         $user = $request->user();
-        $i = 0;
+       
         foreach ($request->answers as $answer) {
-            $choice = QuestionChoice::find($request->id[$i]);
+            $choice = QuestionChoice::find($answer);
             $choice->patients()->attach($user->userable_id, [
                 'point' => $choice->is_true? 1:0,
                 'question_id' => $choice->question_id,
                 'quiz_id' => $choice->question->quiz_id,
             ]);
         }
+        return response()->json([
+            'message' => 'quiz is created',
+        ]);
     }
 
     public function showAnswer()
