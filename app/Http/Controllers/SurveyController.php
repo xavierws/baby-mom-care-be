@@ -10,8 +10,8 @@ class SurveyController extends Controller
     public function index()
     {
         return response()->json([
-           'title_1' => 'kuisioner_1',
-           'title_2' => 'kuisioner_2'
+            'title_1' => 'kuisioner_1',
+            'title_2' => 'kuisioner_2'
         ]);
     }
 
@@ -42,7 +42,7 @@ class SurveyController extends Controller
             ]);
             $i++;
         }
-  
+
         return response()->json([
             'message' => 'survey is created'
         ]);
@@ -79,15 +79,22 @@ class SurveyController extends Controller
 
     public function storeAnswer(Request $request)
     {
+        /*
         $request->validate([
             'data.*.id' => 'required',
             'data.*.answer' => 'required|integer',
         ]);
-
+*/
         $user = $request->user();
-
+        /*
         foreach ($request->data as $data) {
             Survey::find($data['id'])->patients()->attach($user->userable_id, ['answer' => $data['answer']]);
+        }
+*/
+        $i = 0;
+        foreach ($request->answer as $answer) {
+            Survey::find($request->id[$i])->patients()->attach($user->userable_id, ['answer' => $answer]);
+            $i++;
         }
 
         return response()->json([

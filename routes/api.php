@@ -140,7 +140,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list survey
     Route::get('survey/index', [SurveyController::class, 'index']);
     //show spesific survey
-    Route::get('survey/show', [SurveyController::class, 'show']);
+    Route::post('survey/show', [SurveyController::class, 'show']);
     //update survey
     Route::put('survey/update', [SurveyController::class, 'update']);
     //delete survey
