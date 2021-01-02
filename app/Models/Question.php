@@ -15,4 +15,9 @@ class Question extends Model
         'question',
         'quiz_id',
     ];
+
+    public function choices()
+    {
+        return $this->hasMany(QuestionChoice::class);
+    }
 }

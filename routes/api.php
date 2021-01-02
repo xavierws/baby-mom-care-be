@@ -99,9 +99,11 @@ Route::middleware('auth:sanctum')->group(function () {
     //store quiz
     Route::post('quiz/store', [QuizController::class, 'store']);
     //show specific quiz
+    Route::get('quiz/show', [QuizController::class, 'show']);
     //update quiz
     //delete quiz
     //send the patient's answer
+    //show patient's answer
 
     //forum
     //store forum

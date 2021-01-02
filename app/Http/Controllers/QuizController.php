@@ -12,7 +12,7 @@ class QuizController extends Controller
 {
     public function show(Request $request)
     {
-
+        return new QuizRes(Quiz::find($request->id));
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ class QuizController extends Controller
                 'is_true' => $request->is_true[$i] == "choice3"?1:0,
                 'question_id' => $questionId,
             ]);
-           
+
             $i++;
         }
 
@@ -76,6 +76,11 @@ class QuizController extends Controller
     }
 
     public function storeAnswer()
+    {
+
+    }
+
+    public function showAnswer()
     {
 
     }
