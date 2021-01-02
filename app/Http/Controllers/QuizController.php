@@ -100,18 +100,20 @@ class QuizController extends Controller
     {
         $user = $request->user();
 
-        $quizzes = $user->userable->quizzes->pivot->where('quiz_id', $request->quiz_id);
+        $quizzes = $user->userable->quizzes;
 
         $data = array();
         $point = 0;
         $i = 0;
         foreach ($quizzes as $quiz) {
-            $data[$i] = [
-                'question' => Question::find($quiz->question_id)->value('question'),
-                'point' => $quiz->point,
-            ];
-            $i++;
-            $point = $point + $quiz->point;
+            if ($quiz->pivot->quiz_id == $request->quiz_id) {
+                $data[$i] = [
+                    'question' => Question::find($quiz->question_id)->value('question'),
+                    'point' => $quiz->point,
+                ];
+                $i++;
+                $point = $point + $quiz->point;
+            }
         }
 
         return response()->json([
