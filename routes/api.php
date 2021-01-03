@@ -130,7 +130,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //delete advice
     Route::delete('advice/delete', [AdviceController::class, 'delete']);
     //search advice
-
+    Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
 

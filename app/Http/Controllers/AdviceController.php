@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advice;
 use App\Models\NotificationLog;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,16 @@ class AdviceController extends Controller
             'message' => 'advice is deleted',
         ]);
     }
-
+    public function send_fcm(Request $request)
+    {
+        $username = $request->user()->username;
+        $user = User::where('username', $username)->first();
+        $user->fcm_token = $request->fcm_token;
+        $user->save();
+        return response()->json([
+            'fcm_token' => $user->fcm_token,
+        ]);
+    }
     public function showNotification()
     {
         $now = now();
