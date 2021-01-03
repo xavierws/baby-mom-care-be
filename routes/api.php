@@ -167,5 +167,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('survey/answer/store', [SurveyController::class, 'storeAnswer']);
 
     //chat
+    //send chat
+    Route::post('chat/send-message', [ChatController::class, 'store']);
+    //show all chat
+    Route::post('chat/show-message', [ChatController::class, 'show']);
 
 });
