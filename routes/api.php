@@ -131,7 +131,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('advice/update', [AdviceController::class, 'update']);
     //delete advice
     Route::delete('advice/delete', [AdviceController::class, 'delete']);
-    //search advice
+    //send fcm_token
     Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
@@ -145,6 +145,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('admin/list/unapproved-nurse', [AdminController::class, 'listUnApprovedNurse']);
     //approve the nurse
     Route::post('admin/approve-nurse', [AdminController::class, 'approveNurse']);
+    //list all approved nurses
+    Route::get('admin/list/approved-nurse', [AdminController::class, 'listApprovedNurse']);
+    //list all patient that not in relation with the specific nurse
+    Route::get('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
+    //add relation between nurse and patient
+    Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
 
     //survey
     //store survey
