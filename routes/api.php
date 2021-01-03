@@ -46,8 +46,6 @@ Route::get('/test', function () {
 //login
 Route::post('login', [AuthController::class, 'login']);
 
-//register nurse using web
-
 //all route that need auth token
 Route::middleware('auth:sanctum')->group(function () {
     //register the nurse or patient
@@ -73,8 +71,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
     Route::put('kontrol/update', [KontrolController::class, 'update']);
+    //add nurse note
     Route::put('kontrol/nurse_note', [KontrolController::class, 'nurse_note']);
- 
     //delete kontrol
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
@@ -143,7 +141,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('nurse/show', [NurseController::class, 'showPatient']);
     //admin - dashboard
 
-    //survey - CRUD
+    //survey
     //store survey
     Route::post('survey/store', [SurveyController::class, 'store']);
     //list survey

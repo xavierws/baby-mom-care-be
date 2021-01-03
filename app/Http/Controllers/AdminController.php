@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function approveNurse()
+    public function approveNurse(Request $request)
     {
 
     }
 
-    public function addRelation()
+    public function addRelation(Request $request)
     {
 
     }
