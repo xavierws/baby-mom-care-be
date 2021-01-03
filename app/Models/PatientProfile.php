@@ -83,4 +83,22 @@ class PatientProfile extends Model
     {
         return $this->kontrols->where('mode', 'resume')->first();
     }
+
+    public function getCurrentWeightAttribute()
+    {
+        if (!$this->kontrols) return $this->born_weight;
+
+        $kontrol = $this->kontrols->orderBy('created_at', 'desc')->first();
+
+        return $kontrol->weight;
+    }
+
+    public function getCurrentLengthAttribute()
+    {
+        if (!$this->kontrols) return $this->born_length;
+
+        $kontrol = $this->kontrols->orderBy('created_at', 'desc')->first();
+
+        return $kontrol->length;
+    }
 }
