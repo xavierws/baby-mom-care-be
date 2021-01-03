@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hospital;
 use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use App\Models\Role;
@@ -139,12 +140,48 @@ class AuthController extends Controller
     }
 
     public function resetPassword()
-    {
-
-    }
+    { }
 
     public function user(Request $request)
     {
         return new UserRes($request->user());
+    }
+
+    public function showRegisterPage()
+    {
+        $hospitals = Hospital::all();
+
+        return view('register', compact('hospitals'));
+    }
+
+    public function registerNurse(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|unique:users',
+            'password' => 'required|confirmed|alpha_num',
+        ]);
+
+        NurseProfile::create([
+            'name' => $request->input('nurse_name'),
+            'working_exp' => $request->input('working_exp'),
+            'education' => $request->input('education'),
+            'phone' => $request->input('phone'),
+            'hospital_id' => $request->input('hospital_id'),
+            'is_approved' => false,
+        ]);
+
+        $userable_id = NurseProfile::orderBy('id', 'desc')->pluck('id')->first();
+        $userable_type = 'App\Models\NurseProfile';
+
+        User::create([
+            'role_id' => 20,
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
+            'email' => $request->input('email', null),
+            'userable_id' => $userable_id,
+            'userable_type' => $userable_type,
+        ]);
+
+        return redirect('register')->with('status', 'Perawat berhasil register');
     }
 }
