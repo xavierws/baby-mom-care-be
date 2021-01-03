@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+use App\Actions\PushNotification;
 use App\Models\Advice;
 use App\Models\NotificationLog;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -43,7 +46,21 @@ class Kernel extends ConsoleKernel
         })->daily();
 
         $schedule->call(function () {
+            $users = User::where('role_id', 10)->get();
+            $now = now();
 
+            foreach ($users as $user) {
+                $date = Carbon::parse($user->return_date);
+
+                if ($now->diffInDays($date) == 7 && $user->fcm_token) {
+                    $title = 'reminder kontrol';
+                    $des = 'jangan lupa untuk mengisi kontrol';
+                    PushNotification::handle($user->fcm_token, $title, $des);
+
+                    $user->return_date = $now;
+                    $user->save();
+                }
+            }
         })->daily();
     }
 

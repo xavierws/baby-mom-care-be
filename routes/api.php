@@ -30,14 +30,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
     $now = now();
-    $date = \Carbon\Carbon::parse('2021-1-3 13:00:00');
+    $date = \Carbon\Carbon::parse(\App\Models\Role::find(10)->created_at);
     $diff = $now->diffInDays($date);
+    $diff2 = $date->diffInDays($now);
     return response()->json([
         'now' => $now,
         'date' => $date,
         'diff'  => $diff,
-        'dayOfYear' => $now->dayOfYear,
-        'date2' => $now->format('Y-m-d H:i:s')
+        'diff2' => $diff2,
+        'dayOfYear' => $date->dayOfYear,
+        'date2' => $date->format('Y-m-d H:i:s')
     ]);
 });
 

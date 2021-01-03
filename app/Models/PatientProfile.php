@@ -29,6 +29,7 @@ class PatientProfile extends Model
         'father_education',
         'father_job',
         'status',
+        'return_date',
         'hospital_id',
     ];
 

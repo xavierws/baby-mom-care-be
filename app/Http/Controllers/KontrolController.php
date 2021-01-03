@@ -88,6 +88,7 @@ class KontrolController extends Controller
         if ($request->mode == 'resume') {
             $patient = PatientProfile::find($patientId);
             $patient->status = 'home';
+            $patient->return_date = now();
             $patient->save();
         }
 //        $kontrol = new Kontrol;

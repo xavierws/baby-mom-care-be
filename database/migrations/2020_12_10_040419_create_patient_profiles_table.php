@@ -32,6 +32,7 @@ class CreatePatientProfilesTable extends Migration
             $table->string('father_education');
             $table->string('father_job');
             $table->enum('status', ['hospital', 'home']);
+            $table->dateTime('return_date')->nullable();
             $table->foreignId('hospital_id');
             $table->timestamps();
 
