@@ -23,7 +23,6 @@ class NurseController extends Controller
         $patient = PatientProfile::find($request->id);
         $user = $patient->user;
 
-        return new PatientRes($patient)
-            && new UserRes($user);
+        return [new PatientRes($patient), new UserRes($user)];
     }
 }
