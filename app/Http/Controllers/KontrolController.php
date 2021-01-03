@@ -14,8 +14,12 @@ class KontrolController extends Controller
 {
     public function index(Request $request)
     {
-        $pasien = $request->user();
-        $patient = PatientProfile::find($pasien->userable->id);
+        if ($request->id) {
+            $pasien = $request->id;
+        } else {
+            $pasien = $request->user()->userable->id;
+        }
+        $patient = PatientProfile::find($pasien);
 
         $data = array();
         $n = 0;
@@ -23,9 +27,9 @@ class KontrolController extends Controller
             $data[$n] = [
                 'id' => $kontrol->id,
                 'date' => $kontrol->date,
-                'order'=>$kontrol->order,
-                'note'=>$kontrol->note,
-                'nurse_note'=>$kontrol->nurse_note
+                'order' => $kontrol->order,
+                'note' => $kontrol->note,
+                'nurse_note' => $kontrol->nurse_note
             ];
             $n++;
         }
@@ -91,18 +95,18 @@ class KontrolController extends Controller
             $patient->return_date = now();
             $patient->save();
         }
-//        $kontrol = new Kontrol;
-//        $kontrol->order = $order;
-//        $kontrol->date = $request->input('date');
-//        $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
-//        $kontrol->weight = $request->input('weight');
-//        $kontrol->length = $request->input('length');
-//        $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
-//        $kontrol->temperature = $request->input('temperature');
-//        $kontrol->patient_profile_id = $patient_id;
-//        $kontrol->note = $request->input('note');
-//        $kontrol->nurse_note = $request->input('nurse_note');
-//        $kontrol->save();
+        //        $kontrol = new Kontrol;
+        //        $kontrol->order = $order;
+        //        $kontrol->date = $request->input('date');
+        //        $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
+        //        $kontrol->weight = $request->input('weight');
+        //        $kontrol->length = $request->input('length');
+        //        $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
+        //        $kontrol->temperature = $request->input('temperature');
+        //        $kontrol->patient_profile_id = $patient_id;
+        //        $kontrol->note = $request->input('note');
+        //        $kontrol->nurse_note = $request->input('nurse_note');
+        //        $kontrol->save();
 
         $kontrolId = Kontrol::orderBy('id', 'desc')->limit(1)->value('id');
         $image = base64_decode($request->input('base64_img'));
@@ -148,6 +152,17 @@ class KontrolController extends Controller
 
         $image->filename = $filename;
         $image->save();
+
+        return response()->json([
+            'message' => 'kontrol is updated'
+        ]);
+    }
+
+    public function nurse_note(Request $request)
+    {
+        $kontrol = Kontrol::find($request->id);
+        $kontrol->nurse_note = $request->input('nurse_note');
+        $kontrol->save();
 
         return response()->json([
             'message' => 'kontrol is updated'

@@ -73,6 +73,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
     Route::put('kontrol/update', [KontrolController::class, 'update']);
+    Route::put('kontrol/nurse_note', [KontrolController::class, 'nurse_note']);
+ 
     //delete kontrol
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
@@ -132,7 +134,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //delete advice
     Route::delete('advice/delete', [AdviceController::class, 'delete']);
     //search advice
-
+    Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
 
