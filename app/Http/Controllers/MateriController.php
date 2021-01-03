@@ -164,12 +164,8 @@ class MateriController extends Controller
 
     public function assignMateri(Request $request)
     {
-        $request->validate([
-            'materi' => 'required|array',
-            'id' => 'required',
-        ]);
-
-        foreach ($request->materi as $materi) {
+       
+        foreach ($request->materis as $materi) {
             Materi::find($materi)->patients()->attach($request->id);
         }
 
