@@ -140,6 +140,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //nurse - dashboard
     Route::post('nurse/index', [NurseController::class, 'listPatient']);
+    Route::post('nurse/show', [NurseController::class, 'showPatient']);
     //admin - dashboard
 
     //survey - CRUD
