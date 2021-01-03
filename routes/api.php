@@ -53,7 +53,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //register the nurse or patient
     Route::post('register', [AuthController::class, 'register']);
     //assign materi for patient
-//    Route::get('/register/materi', [MateriController::class, 'listMateri']);
+    Route::get('/register/materi', [MateriController::class, 'listMateri']);
     Route::post('/register/materi', [MateriController::class, 'assignMateri']);
 
     //get the user details
