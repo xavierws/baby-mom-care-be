@@ -131,7 +131,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('advice/update', [AdviceController::class, 'update']);
     //delete advice
     Route::delete('advice/delete', [AdviceController::class, 'delete']);
-    //search advice
+    //send fcm_token
     Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
