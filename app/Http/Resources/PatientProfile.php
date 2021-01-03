@@ -15,6 +15,7 @@ class PatientProfile extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=>$this->id,
             'baby_name' => $this->baby_name,
             'baby_birthday' => $this->baby_birthday,
             'born_weight' => $this->born_weight,
