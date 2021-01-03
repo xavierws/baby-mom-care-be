@@ -71,6 +71,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('kontrol/show', [KontrolController::class, 'show']);
     //update kontrol
     Route::put('kontrol/update', [KontrolController::class, 'update']);
+    Route::put('kontrol/nurse_note', [KontrolController::class, 'nurse_note']);
+ 
     //delete kontrol
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol

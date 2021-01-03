@@ -157,6 +157,17 @@ class KontrolController extends Controller
         ]);
     }
 
+    public function nurse_note(Request $request)
+    {
+        $kontrol = Kontrol::find($request->id);
+        $kontrol->nurse_note = $request->input('nurse_note');
+        $kontrol->save();
+
+        return response()->json([
+            'message' => 'kontrol is updated'
+        ]);
+    }
+
     public function delete(Request $request)
     {
         $kontrol = Kontrol::find($request->id);
