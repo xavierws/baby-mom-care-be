@@ -31,11 +31,11 @@ class ChatController extends Controller
     public function show(Request $request)
     {
         $chats = Chat::where([
-            ['sender_id', $request->patient_id],
-            ['receiver_id', $request->nurse_id],
+            ['sender_id', $request->sender_id],
+            ['receiver_id', $request->receiver_id],
         ])->orWhere([
-            ['sender_id', $request->nurse_id],
-            ['receiver_id', $request->patient_id],
+            ['sender_id', $request->receiver_id],
+            ['receiver_id', $request->sender_id],
         ])->orderBy('id', 'asc')->get();
 
         return response($chats);
