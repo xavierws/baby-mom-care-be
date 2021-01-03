@@ -185,8 +185,12 @@ class KontrolController extends Controller
 
     public function showResume(Request $request)
     {
-        $pasien = $request->user();
-        $patient = PatientProfile::find($pasien->userable->id);
+        if ($request->id) {
+            $pasien = $request->id;
+        } else {
+            $pasien = $request->user()->userable->id;
+        }
+        $patient = PatientProfile::find($pasien);
         $resume = $patient->kontrols->where('mode', 'resume')->first();
 
         return new KontrolRes($resume);
