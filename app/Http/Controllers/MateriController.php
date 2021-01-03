@@ -147,7 +147,7 @@ class MateriController extends Controller
 
     public function listMateri()
     {
-        $materis = Materi::all()->pluck(['id', 'title']);
+        $materis = Materi::all();
 
         return response($materis->toArray());
     }
