@@ -145,6 +145,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('admin/list/unapproved-nurse', [AdminController::class, 'listUnApprovedNurse']);
     //approve the nurse
     Route::post('admin/approve-nurse', [AdminController::class, 'approveNurse']);
+    //list all approved nurses
+    Route::get('admin/list/approved-nurse', [AdminController::class, 'listApprovedNurse']);
+    //list all patient that not in relation with the specific nurse
+    Route::get('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
+    //add relation between nurse and patient
+    Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
 
     //survey
     //store survey

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\NurseProfile;
 use App\Http\Resources\NurseProfile as NurseRes;
+use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -28,14 +29,45 @@ class AdminController extends Controller
         ]);
     }
 
-    public function addRelation(Request $request)
+    public function listApprovedNurse()
     {
+        $nurses = NurseProfile::where('is_approved', true)->get();
 
+        return NurseRes::collection($nurses);
     }
 
-    public function listPatient()
+    public function listPatient(Request $request)
     {
+        $patients = PatientProfile::all();
 
+        $data = array();
+        $i = 0;
+        foreach ($patients as $patient) {
+            if (!$patient->nurses || $patient->nurses->id != $request->id) {
+                $data[$i] = [
+                    'id' => $patient->id,
+                    'mother_name' => $patient->mother_name,
+                ];
+                $i++;
+            }
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
+
+    public function addRelation(Request $request)
+    {
+        $nurse = NurseProfile::find($request->nurse_id);
+
+        foreach ($request->patients as $patient) {
+            $nurse->patients()->attach($patient);
+        }
+
+        return response()->json([
+            'message' => 'relation is created',
+        ]);
     }
 
     public function showPatient()
