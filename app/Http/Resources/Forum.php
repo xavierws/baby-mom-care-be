@@ -20,6 +20,7 @@ class Forum extends JsonResource
             'title' => $this->title,
             'question' => $this->question,
             'comments' => Comment::collection($this->comments),
+            'id'=>$this->id
         ];
     }
 }
