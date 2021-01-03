@@ -10,6 +10,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -153,6 +154,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
+
+    //patient
+    //list all nurses that related to patient
+    Route::get('patient/related-nurse', [PatientController::class, 'listNurse']);
 
     //survey
     //store survey
