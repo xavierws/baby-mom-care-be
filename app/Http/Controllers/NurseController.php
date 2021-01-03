@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\User as UserRes;
 use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
@@ -19,6 +20,10 @@ class NurseController extends Controller
 
     public function showPatient(Request $request)
     {
-        return new PatientRes(PatientProfile::find($request->id));
+        $patient = PatientProfile::find($request->id);
+        $user = $patient->user;
+
+        return new PatientRes($patient)
+            && new UserRes($user);
     }
 }
