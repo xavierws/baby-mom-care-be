@@ -118,6 +118,9 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken($request->device_name)->plainTextToken;
+        
+        $user->fcm_token = $request->input('fcm_token', null);
+        $user->save();
 
         return response()->json([
             'token' => $token,
