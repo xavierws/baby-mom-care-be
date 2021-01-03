@@ -84,6 +84,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('materi/category', [MateriController::class, 'listCategory']);
     //list materi
     Route::post('materi/index', [MateriController::class, 'index']);
+    //show recommended materi for patient
+    Route::get('materi/recommended', [MateriController::class, 'showRecommendedMateri']);
     //show specific materi
     Route::post('materi/show', [MateriController::class, 'show']);
     //update materi

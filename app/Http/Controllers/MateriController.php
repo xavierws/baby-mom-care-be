@@ -148,7 +148,7 @@ class MateriController extends Controller
     public function listMateri()
     {
         $materi = Materi::all();
-  
+
         $data = array();
         for($i=0;$i<count($materi);$i++) {
             $data[$i] = [
@@ -164,13 +164,22 @@ class MateriController extends Controller
 
     public function assignMateri(Request $request)
     {
-       
+
         foreach ($request->materis as $materi) {
             Materi::find($materi)->patients()->attach($request->id);
         }
 
         return response()->json([
             'message' => 'materi are assigned'
+        ]);
+    }
+
+    public function showRecommendedMateri(Request $request)
+    {
+        $patient = $request->user()->userable;
+
+        return response()->json([
+            'materi' => $patient->materis,
         ]);
     }
 }

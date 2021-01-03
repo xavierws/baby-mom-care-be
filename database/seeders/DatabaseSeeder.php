@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\ChatController;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             TopicSeeder::class,
+            ChatSeeder::class,
         ]);
     }
 }
