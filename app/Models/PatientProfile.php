@@ -88,7 +88,7 @@ class PatientProfile extends Model
     {
         if (!$this->kontrols) return $this->born_weight;
 
-        $kontrol = $this->kontrols->orderBy('created_at', 'desc')->first();
+        $kontrol = $this->kontrols()->orderBy('order', 'desc')->first();
 
         return $kontrol->weight;
     }
@@ -97,7 +97,7 @@ class PatientProfile extends Model
     {
         if (!$this->kontrols) return $this->born_length;
 
-        $kontrol = $this->kontrols->orderBy('created_at', 'desc')->first();
+        $kontrol = $this->kontrols()->orderBy('order', 'desc')->first();
 
         return $kontrol->length;
     }
