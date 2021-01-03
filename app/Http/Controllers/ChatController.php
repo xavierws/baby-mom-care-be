@@ -30,13 +30,13 @@ class ChatController extends Controller
 
     public function show(Request $request)
     {
-        $chats = Chat::where(function (Builder $query, Request $request) {
-            $query->where('sender_id', $request->patient_id)
-                  ->where('receiver_id', $request->nurse_id);
-        })->orWhere(function (Builder $query, Request $request) {
-            $query->where('sender_id', $request->nurse_id)
-                  ->where('receiver_id', $request->patient_id);
-        })->orderBy('id', 'asc')->get();
+        $chats = Chat::where([
+            ['sender_id', $request->patient_id],
+            ['receiver_id', $request->nurse_id],
+        ])->orWhere([
+            ['sender_id', $request->nurse_id],
+            ['receiver_id', $request->patient_id],
+        ])->orderBy('id', 'asc')->get();
 
         return response($chats);
     }
