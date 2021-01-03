@@ -16,4 +16,9 @@ class Advice extends Model
         'frequency',
         'description',
     ];
+
+    public function notifications()
+    {
+        return $this->hasMany(NotificationLog::class);
+    }
 }

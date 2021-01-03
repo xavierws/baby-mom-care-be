@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advice;
+use App\Models\NotificationLog;
 use Illuminate\Http\Request;
 
 class AdviceController extends Controller
@@ -60,6 +61,18 @@ class AdviceController extends Controller
 
     public function showNotification()
     {
+        $now = now();
+        $data = array();
+        $i = 0;
+        foreach (NotificationLog::all() as $log) {
+            $date = $log->created_at;
 
+            if ($now->diffInDays($date) == 0) {
+                $data[$i] = $log->advice;
+                $i++;
+            }
+        }
+
+        return response($data);
     }
 }

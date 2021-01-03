@@ -15,8 +15,9 @@ class CreateNotificationLogsTable extends Migration
     {
         Schema::create('notification_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('notification');
-            $table->foreignId('patient_profile_id')->constrained('patient_profiles');
+//            $table->string('notification');
+            $table->foreignId('advice_id')->constrained('advices');
+//            $table->foreignId('patient_profile_id')->constrained('patient_profiles');
             $table->timestamps();
         });
     }

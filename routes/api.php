@@ -28,22 +28,18 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-//Route::get('/test', function () {
-//    $data = array();
-//    $n = 0;
-//    $arr = ['a', 'b', 'c'];
-//    foreach ($arr as $a) {
-//        $data[$n] = [
-//            'id'  => $n,
-//            'title' => $a,
-//        ];
-//        $n++;
-//    }
-//
-//    return response()->json([
-//        'data' => $data
-//    ]);
-//});
+Route::get('/test', function () {
+    $now = now();
+    $date = \Carbon\Carbon::parse('2021-1-3 13:00:00');
+    $diff = $now->diffInDays($date);
+    return response()->json([
+        'now' => $now,
+        'date' => $date,
+        'diff'  => $diff,
+        'dayOfYear' => $now->dayOfYear,
+        'date2' => $now->format('Y-m-d H:i:s')
+    ]);
+});
 
 //login
 Route::post('login', [AuthController::class, 'login']);
@@ -136,6 +132,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //search advice
 
     //show notification
+    Route::get('advice/notification', [AdviceController::class, 'showNotification']);
 
     //nurse - dashboard
     Route::post('nurse/index', [NurseController::class, 'listPatient']);
