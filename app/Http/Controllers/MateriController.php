@@ -147,9 +147,19 @@ class MateriController extends Controller
 
     public function listMateri()
     {
-        $materis = Materi::all();
+        $materi = Materi::all();
+  
+        $data = array();
+        for($i=0;$i<count($materi);$i++) {
+            $data[$i] = [
+                'id'  => $materi[$i]->id,
+                'name' => $materi[$i]->title
+            ];
+        }
 
-        return response($materis->toArray());
+        return response()->json([
+            'data' => $data,
+        ]);
     }
 
     public function assignMateri(Request $request)
