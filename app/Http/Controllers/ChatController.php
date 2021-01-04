@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chat;
+use App\Http\Resources\Chat as ChatRes;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
@@ -38,11 +39,9 @@ class ChatController extends Controller
             ['receiver_id', $request->sender_id],
         ])->orderBy('id', 'asc')->get();
 
-        return response($chats);
+        return ChatRes::collection($chats);
     }
 
     public function index()
-    {
-
-    }
+    { }
 }
