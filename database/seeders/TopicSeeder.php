@@ -15,11 +15,13 @@ class TopicSeeder extends Seeder
     public function run()
     {
         DB::table('topics')->insert([
-            ['id' => 1, 'name' => 'topic_1', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 2, 'name' => 'topic_2', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 3, 'name' => 'topic_3', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 4, 'name' => 'topic_4', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 5, 'name' => 'topic_5', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 1, 'name' => 'Seputar BBLR', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 2, 'name' => 'Nutrisi', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 3, 'name' => 'Perawatan BBLR', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 4, 'name' => 'Kegawatan bayi', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 5, 'name' => 'Imunisasi', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 6, 'name' => 'Pertumbuhan dan perkembangan', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 7, 'name' => 'Lain-lain', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
