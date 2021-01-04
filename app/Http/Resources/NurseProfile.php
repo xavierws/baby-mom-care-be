@@ -14,6 +14,17 @@ class NurseProfile extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'working_exp' => $this->working_exp,
+            'education' => $this->education,
+            'phone' => $this->phone,
+            'hospital' => $this->hospital_name,
+            'link' => $this->hospital_link,
+            'is_approved' => $this->is_approved,
+            'user_id' => $this->user->id,
+            'username' => $this->user->username,
+        ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NurseProfile as NurseRes;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -10,6 +11,6 @@ class PatientController extends Controller
     {
         $patient = $request->user()->userable;
 
-        return response($patient->nurses);
+        return NurseRes::collection($patient->nurses);
     }
 }

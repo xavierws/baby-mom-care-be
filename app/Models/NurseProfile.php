@@ -33,4 +33,19 @@ class NurseProfile extends Model
     {
         return $this->belongsToMany(PatientProfile::class, 'nurse_patient', 'nurse_id', 'patient_id');
     }
+
+    public function hospital()
+    {
+        return $this->belongsTo(Hospital::class);
+    }
+
+    public function getHospitalNameAttribute()
+    {
+        return $this->hospital->name;
+    }
+
+    public function getHospitalLinkAttribute()
+    {
+        return $this->hospital->link;
+    }
 }
