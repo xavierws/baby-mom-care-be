@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->hasMany(Forum::class);
     }
 
+    public function logs()
+    {
+        return $this->hasMany(UserLog::class);
+    }
+
     public function getUserRoleAttribute()
     {
         return $this->role->name;

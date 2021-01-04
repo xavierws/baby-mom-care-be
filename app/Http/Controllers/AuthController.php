@@ -7,6 +7,7 @@ use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -144,7 +145,14 @@ class AuthController extends Controller
 
     public function user(Request $request)
     {
-        return new UserRes($request->user());
+        $user = $request->user();
+
+        UserLog::create([
+            'log' => 'open homepage',
+            'user_id' => $user->id,
+        ]);
+
+        return new UserRes($user);
     }
 
     public function showRegisterPage()
