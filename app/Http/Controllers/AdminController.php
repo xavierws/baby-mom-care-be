@@ -81,6 +81,7 @@ class AdminController extends Controller
     {
         $surveys = Survey::all();
 
+        $color = ['#00f7ff', '#ff0000', '#ffd500', '#1bb525', '#1957bd'];
         $data = array();
         foreach ($surveys as $survey) {
             for ($i = 0; $i<=4; $i++) {
@@ -93,6 +94,7 @@ class AdminController extends Controller
                     'name' => $i+1,
                     'choice_type' => $survey->choice_type,
                     'count' => $count,
+                    'color' => $color[$i],
                 ];
             }
         }
