@@ -39,11 +39,11 @@ class Kernel extends ConsoleKernel
 
                 if ($dayOfYear % $freq == 0) {
                     NotificationLog::create([
-                        'advice' => $advice->id,
+                        'advice_id' => $advice->id,
                     ]);
                 }
             }
-        })->daily();
+        })->dailyAt('01:00');
 
         $schedule->call(function () {
             $users = User::where('role_id', 10)->get();

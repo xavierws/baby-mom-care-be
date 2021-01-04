@@ -12,7 +12,7 @@ class NotificationLog extends Model
     protected $table = 'notification_logs';
 
     protected $fillable = [
-        'notification',
+        'advice_id',
     ];
 
     public function advice()
