@@ -45,7 +45,7 @@ class AdminController extends Controller
         $data = array();
         $i = 0;
         foreach ($patients as $patient) {
-            if (!$patient->nurses || $patient->nurses->id != $request->id) {
+            if (!$patient->nurses || !$patient->nurses()->where('id', $request->id)) {
                 $data[$i] = [
                     'id' => $patient->id,
                     'mother_name' => $patient->mother_name,
