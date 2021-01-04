@@ -32,6 +32,7 @@ class ForumController extends Controller
                 'title' => $forum->title,
                 'question' => $forum->question,
                 'user' => $forum->user->profile_name,
+                'total_comment' => $forum->comments()->count(),
 //                'category' => $forum->category->name,
             ];
             $n++;
