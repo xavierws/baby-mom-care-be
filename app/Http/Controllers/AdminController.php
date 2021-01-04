@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NurseProfile;
 use App\Http\Resources\NurseProfile as NurseRes;
 use App\Models\PatientProfile;
+use App\Http\Resources\PatientProfile as PatientRes;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -75,6 +76,20 @@ class AdminController extends Controller
     public function showPatient()
     {
 
+    }
+
+    public function showNurse(Request $request)
+    {
+        return new NurseRes(NurseProfile::find($request->id));
+    }
+
+    public function showNurseRelation(Request $request)
+    {
+        $nurse = NurseProfile::find($request->id);
+
+        if (!$nurse->patients) return null;
+
+        return response(PatientRes::collection($nurse->patients));
     }
 
     public function showDataSurvey()
