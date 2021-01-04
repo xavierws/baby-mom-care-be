@@ -154,6 +154,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
+    //show pie chart data
+    Route::get('admin/survey/chart', [AdminController::class, 'showDataSurvey']);
 
     //patient
     //list all nurses that related to patient

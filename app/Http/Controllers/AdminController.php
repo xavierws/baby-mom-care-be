@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\NurseProfile;
 use App\Http\Resources\NurseProfile as NurseRes;
 use App\Models\PatientProfile;
+use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -73,5 +75,28 @@ class AdminController extends Controller
     public function showPatient()
     {
 
+    }
+
+    public function showDataSurvey()
+    {
+        $surveys = Survey::all();
+
+        $data = array();
+        foreach ($surveys as $survey) {
+            for ($i = 0; $i<=4; $i++) {
+                $count = DB::table('patient_survey')->where([
+                    ['survey_id', $survey->id],
+                    ['answer', $i+1]
+                ])->count();
+
+                $data[$i] = [
+                    'name' => $i+1,
+                    'choice_type' => $survey->choice_type,
+                    'count' => $count,
+                ];
+            }
+        }
+
+        return response($data);
     }
 }
