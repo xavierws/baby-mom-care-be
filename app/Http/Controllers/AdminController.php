@@ -58,6 +58,26 @@ class AdminController extends Controller
             'data' => $data,
         ]);
     }
+    public function listPatient2(Request $request)
+    {
+        $patients = PatientProfile::all();
+
+        $data = array();
+        $i = 0;
+        foreach ($patients as $patient) {
+          
+                $data[$i] = [
+                    'id' => $patient->id,
+                    'name' => $patient->mother_name,
+                ];
+                $i++;
+        
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
 
     public function addRelation(Request $request)
     {
