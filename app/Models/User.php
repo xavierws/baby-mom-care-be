@@ -74,7 +74,7 @@ class User extends Authenticatable
         return $this->role->name;
     }
 
-    public function getUserNameAttribute()
+    public function getProfileNameAttribute()
     {
         if ($this->user_role == 'patient') return $this->userable->mother_name;
 

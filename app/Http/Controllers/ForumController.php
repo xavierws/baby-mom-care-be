@@ -31,7 +31,7 @@ class ForumController extends Controller
                 'id'  => $forum->id,
                 'title' => $forum->title,
                 'question' => $forum->question,
-                'user' => $forum->user->user_name,
+                'user' => $forum->user->profile_name,
 //                'category' => $forum->category->name,
             ];
             $n++;
