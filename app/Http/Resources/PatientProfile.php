@@ -36,6 +36,7 @@ class PatientProfile extends JsonResource
             'father_job' => $this->father_job,
             'status' => $this->status,
             'materi' => $this->materis,
+            'user_id' => $this->user->id,
             'username' => $this->user->username,
             'email' => $this->user->email,
         ];
