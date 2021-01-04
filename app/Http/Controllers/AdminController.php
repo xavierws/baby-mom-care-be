@@ -95,6 +95,8 @@ class AdminController extends Controller
                     'choice_type' => $survey->choice_type,
                     'count' => $count,
                     'color' => $color[$i],
+                    'legendFontColor'=> "#7F7F7F",
+                    'legendFontSize'=> 15
                 ];
             }
         }
