@@ -151,7 +151,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list all approved nurses
     Route::get('admin/list/approved-nurse', [AdminController::class, 'listApprovedNurse']);
     //list all patient that not in relation with the specific nurse
-    Route::get('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
+    Route::post('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
     //show pie chart data

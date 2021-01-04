@@ -92,7 +92,6 @@ class AdminController extends Controller
 
                 $data[$i] = [
                     'name' => $i+1,
-                    'question' => $survey->question,
                     'choice_type' => $survey->choice_type,
                     'count' => $count,
                     'color' => $color[$i],
