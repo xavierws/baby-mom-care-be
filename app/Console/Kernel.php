@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                     ]);
                 }
             }
-        })->dailyAt('01:00');
+        })->everyMinute();
 
         $schedule->call(function () {
             $users = User::where('role_id', 10)->get();
@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
                     $user->save();
                 }
             }
-        })->dailyAt('08:00');
+        })->everyMinute();
     }
 
     /**
