@@ -39,6 +39,14 @@ class AuthController extends Controller
             'father_religion' => 'required_if:role,patient',
             'father_education' => 'required_if:role,patient',
             'father_job' => 'required_if:role,patient',
+            //xav tambahin
+            'usia_gestas' => 'required_if:role,patient', //int
+            'harapan_orangtua' => 'required_if:role,patient', //yes/no
+            'lingkar_kepala' => 'required_if:role,patient', //int
+            'jumlah_anak' => 'required_if:role,patient', //lebih dari 2/kurang dari sama dengan 2
+            'pendapatan_keluarga' => 'required_if:role,patient', //lebih dari 3jt/kurang dari sama dengan 3jt
+            'pengalaman_merawat' => 'required_if:role,patient', //yes/no
+            'tinggal_dengan_suami' => 'required_if:role,patient', //yes/no
 
             'nurse_name' => 'required_if:role,nurse',
             'working_exp' => 'required_if:role,nurse|integer',
