@@ -23,7 +23,7 @@ class PatientProfile extends JsonResource
             'lingkar_kepala_lahir' => $this->lingkar_kepala,
             'current_weight' => $this->current_weight,
             'current_length' => $this->current_length,
-            'lingkar_kepala_sekarang' => $this->get_current_lingkar_kepala,
+            'lingkar_kepala_sekarang' => $this->current_lingkar_kepala,
             'baby_gender' => $this->baby_gender,
             'harapan_orangtua' => $this->harapan_orangtua,
             'mother_name' => $this->mother_name,
