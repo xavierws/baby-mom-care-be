@@ -93,6 +93,7 @@ class KontrolController extends Controller
             $patient = PatientProfile::find($patientId);
             $patient->status = 'home';
             $patient->return_date = now();
+            $patient->marked_date = now();
             $patient->save();
         }
         //        $kontrol = new Kontrol;
