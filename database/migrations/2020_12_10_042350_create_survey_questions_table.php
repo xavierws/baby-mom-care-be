@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatientSurveyTable extends Migration
+class CreateSurveyQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePatientSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_survey', function (Blueprint $table) {
+        Schema::create('survey_questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patient_profiles');
-            $table->foreignId('question_id')->constrained('survey_questions');
-            $table->integer('answer');
+            $table->string('question');
+            $table->foreignId('survey_id')->constrained('surveys');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePatientSurveyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patient_survey');
+        Schema::dropIfExists('survey_questions');
     }
 }
