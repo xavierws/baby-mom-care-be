@@ -95,6 +95,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('materi/delete', [MateriController::class, 'delete']);
     //search materi
 
+    //category
+    //add new category
+    Route::post('materi/category/store', [MateriController::class, 'addCategory']);
+    //delete existing category
+    Route::post('materi/category/delete', [MateriController::class, 'destroyCategory']);
+
     //quiz
     //store quiz
     Route::post('quiz/store', [QuizController::class, 'store']);
@@ -166,6 +172,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list all nurses that related to patient
     Route::get('patient/related-nurse', [PatientController::class, 'listNurse']);
     Route::post('patient/show', [PatientController::class, 'showNurse']);
+
     //survey
     //store survey
     Route::post('survey/store', [SurveyController::class, 'store']);

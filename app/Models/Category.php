@@ -24,8 +24,8 @@ class Category extends Model
         return $this->hasMany(Materi::class);
     }
 
-    public function forums()
-    {
-        return $this->hasMany(Forum::class);
-    }
+//    public function forums()
+//    {
+//        return $this->hasMany(Forum::class);
+//    }
 }

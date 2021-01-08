@@ -13,6 +13,26 @@ use Illuminate\Support\Str;
 
 class MateriController extends Controller
 {
+    public function addCategory(Request $request)
+    {
+        Category::create([
+            'name' => $request->input('name')
+        ]);
+
+        return response()->json([
+            'message' => 'category is added'
+        ]);
+    }
+
+    public function destroyCategory(Request $request)
+    {
+        Category::find($request->input('id'))->delete();
+
+        return response()->json([
+            'message' => 'category is deleted'
+        ]);
+    }
+
     public function listCategory()
     {
         return response(Category::all()->toArray());
