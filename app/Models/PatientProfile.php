@@ -42,11 +42,11 @@ class PatientProfile extends Model
         'hospital_id',
     ];
 
-//    protected $with = [
-//        'kontrols',
-//        'user',
-//        'materis',
-//    ];
+    protected $with = [
+        'kontrols',
+        'user',
+        'materis',
+    ];
 
     public function user()
     {
