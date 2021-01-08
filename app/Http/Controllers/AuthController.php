@@ -93,6 +93,7 @@ class AuthController extends Controller
                 'father_education' => $request->input('father_education'),
                 'father_job' => $request->input('father_job'),
                 'pendapatan_keluarga' => $request->input('pendapatan_keluarga'),
+                'phone' => $request->input('phone'),
                 'status' => 'hospital',
                 'hospital_id' => $nurse->userable->hospital_id,
             ]);

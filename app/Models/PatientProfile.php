@@ -35,6 +35,7 @@ class PatientProfile extends Model
         'father_education',
         'father_job',
         'pendapatan_keluarga',
+        'phone',
         'status',
         'return_date',
         'marked_date',

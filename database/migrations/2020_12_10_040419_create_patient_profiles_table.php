@@ -38,6 +38,7 @@ class CreatePatientProfilesTable extends Migration
             $table->string('father_education');
             $table->string('father_job');
             $table->enum('pendapatan_keluarga', ['kd3', 'lds3']);
+            $table->string('phone');
             $table->enum('status', ['hospital', 'home']);
             $table->dateTime('return_date')->nullable();
             $table->dateTime('marked_date')->nullable();
