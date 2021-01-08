@@ -133,14 +133,14 @@ class KontrolController extends Controller
     {
         $kontrol = Kontrol::find($request->id);
 
-        $kontrol->title = $request->input('title');
+        $kontrol->order = $request->input('order');
         $kontrol->date = $request->input('date');
         $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
         $kontrol->weight = $request->input('weight');
         $kontrol->length = $request->input('length');
         $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
         $kontrol->temperature = $request->input('temperature');
-
+        $kontrol->note = $request->input('note');
         $kontrol->save();
 
         $image = $kontrol->image;
