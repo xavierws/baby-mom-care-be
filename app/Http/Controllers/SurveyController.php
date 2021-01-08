@@ -67,12 +67,24 @@ class SurveyController extends Controller
 
     public function update(Request $request)
     {
-        foreach ($request->data as $data) {
-            $survey = Survey::find($data['id']);
-            $survey->title = $request->input('title');
-            $survey->question = $data['question'];
-            $survey->choice_type = $data['choice_type'];
-            $survey->save();
+//        foreach ($request->data as $data) {
+//            $survey = Survey::find($data['id']);
+//            $survey->title = $request->input('title');
+//            $survey->question = $data['question'];
+//            $survey->choice_type = $data['choice_type'];
+//            $survey->save();
+//        }
+
+        $survey = Survey::find($request->id);
+        $survey->title = $request->input('title');
+        $survey->choice_type = $request->input('choice_type');
+        $survey->save();
+
+        $question[] = $request->input('questions');
+        $i = 0;
+        foreach ($survey->questions as $question) {
+            $question->question = $question[$i];
+            $i++;
         }
 
         return response()->json([
@@ -82,9 +94,16 @@ class SurveyController extends Controller
 
     public function delete(Request $request)
     {
-        foreach ($request->data as $data) {
-            Survey::find($data['id'])->delete();
+//        foreach ($request->data as $data) {
+//            Survey::find($data['id'])->delete();
+//        }
+
+        $survey = Survey::find($request->id);
+
+        foreach ($survey->questions as $question) {
+            $question->delete();
         }
+        $survey->delete();
 
         return response()->json([
             'message' => 'survey is deleted'
