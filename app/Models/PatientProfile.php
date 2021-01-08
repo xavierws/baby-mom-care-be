@@ -41,21 +41,17 @@ class PatientProfile extends Model
         'hospital_id',
     ];
 
-    /**
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
+    protected $with = [
+        'kontrols',
+        'user',
+        'materis',
+    ];
+
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
     }
 
-    /**
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function kontrols()
     {
         return $this->hasMany(Kontrol::class, 'patient_profile_id');
@@ -106,6 +102,15 @@ class PatientProfile extends Model
         if (!$this->kontrols) return $this->born_length;
 
         $kontrol = $this->kontrols()->orderBy('order', 'desc')->pluck('length')->first();
+
+        return $kontrol;
+    }
+
+    public function getCurrentLingkarKepalaAttribute()
+    {
+        if (!$this->kontrols) return $this->lingkar_kepala;
+
+        $kontrol = $this->kontrols()->orderBy('order', 'desc')->pluck('lingkar_kepala')->first();
 
         return $kontrol;
     }
