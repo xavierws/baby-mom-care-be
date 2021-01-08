@@ -80,10 +80,11 @@ class SurveyController extends Controller
         $survey->choice_type = $request->input('choice_type');
         $survey->save();
 
-        $question[] = $request->input('questions');
+//        $question[] = $request->input('questions');
         $i = 0;
         foreach ($survey->questions as $question) {
-            $question->question = $question[$i];
+            $question->question = $request->questions[$i];
+            $question->save();
             $i++;
         }
 
