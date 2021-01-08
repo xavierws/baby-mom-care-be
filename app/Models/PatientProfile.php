@@ -19,7 +19,7 @@ class PatientProfile extends Model
         'lingkar_kepala',
         'baby_gender',
         'usia_gestas',
-        'harapan_orangua',
+        'harapan_orangtua',
         'mother_name',
         'mother_birthday',
         'mother_religion',
