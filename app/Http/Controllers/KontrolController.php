@@ -14,26 +14,28 @@ class KontrolController extends Controller
 {
     public function index(Request $request)
     {
+
         if ($request->id) {
             $pasien = $request->id;
         } else {
             $pasien = $request->user()->userable->id;
         }
         $patient = PatientProfile::find($pasien);
-
         $data = array();
-        $n = 0;
-        foreach ($patient->kontrols->where('mode', 'kontrol') as $kontrol) {
-            $data[$n] = [
-                'id' => $kontrol->id,
-                'date' => $kontrol->date,
-                'order' => $kontrol->order,
-                'note' => $kontrol->note,
-                'nurse_note' => $kontrol->nurse_note
-            ];
-            $n++;
-        }
 
+        if ($patient) {
+            $n = 0;
+            foreach ($patient->kontrols->where('mode', 'kontrol') as $kontrol) {
+                $data[$n] = [
+                    'id' => $kontrol->id,
+                    'date' => $kontrol->date,
+                    'order' => $kontrol->order,
+                    'note' => $kontrol->note,
+                    'nurse_note' => $kontrol->nurse_note
+                ];
+                $n++;
+            }
+        }
         return response()->json([
             'data' => $data
         ]);
@@ -133,7 +135,7 @@ class KontrolController extends Controller
     {
         $kontrol = Kontrol::find($request->id);
 
-        $kontrol->order = $request->input('order');
+ 
         $kontrol->date = $request->input('date');
         $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
         $kontrol->weight = $request->input('weight');
