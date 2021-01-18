@@ -11,6 +11,7 @@ use App\Http\Controllers\NurseController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\PatientController;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,18 +31,19 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/test', function () {
-    $now = now();
-    $date = \Carbon\Carbon::parse(\App\Models\Role::find(10)->created_at);
-    $diff = $now->diffInDays($date);
-    $diff2 = $date->diffInDays($now);
-    return response()->json([
-        'now' => $now,
-        'date' => $date,
-        'diff'  => $diff,
-        'diff2' => $diff2,
-        'dayOfYear' => $date->dayOfYear,
-        'date2' => $date->format('Y-m-d H:i:s')
-    ]);
+    $date1 = Carbon::parse('2021-01-09');
+    $date2 = Carbon::parse('2021-01-16');
+    $divisor = (float)$date2->diffInDays($date1);
+
+    $diffWeight = 594.0 - 500.0;
+
+    if ($diffWeight/$divisor >= 15.0) {
+        return 'normal' . ' ' . $divisor . ' ' . $diffWeight;
+    } elseif ($diffWeight/$divisor >= 13.5 && $diffWeight/$divisor < 15.0) {
+        return 'warning' . ' ' . $divisor . ' ' . $diffWeight;
+    } else {
+        return 'danger' . ' ' . $divisor . ' ' . $diffWeight;
+    }
 });
 
 //login
