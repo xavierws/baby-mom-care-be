@@ -59,9 +59,15 @@ class MateriController extends Controller
         $i = 0;
         $data = array();
         foreach ($categories as $category) {
+            if (!$category->image->filename) {
+                $image = null;
+            } else {
+                $image = asset($category->image->filename);
+            }
+
             $data[$i] = [
                 'id' => $category->id,
-                'image' => asset($category->image->filename),
+                'image' => $image,
                 'name' => $category->name,
             ];
             $i++;
