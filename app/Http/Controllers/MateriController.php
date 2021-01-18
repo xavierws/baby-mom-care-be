@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\StoreImage;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Materi;
@@ -18,6 +19,19 @@ class MateriController extends Controller
         Category::create([
             'name' => $request->input('name')
         ]);
+
+        if ($request->base64_image) {
+            $categoryId = Category::orderBy('id', 'desc')->limit(1)->value('id');
+            $image = $request->input('base64_img');
+
+            StoreImage::handle(
+                $categoryId,
+                $image,
+                'public/category/',
+                $request->input('name'),
+                'App\Models\Category'
+            );
+        }
 
         return response()->json([
             'message' => 'category is added'

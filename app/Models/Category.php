@@ -24,6 +24,11 @@ class Category extends Model
         return $this->hasMany(Materi::class);
     }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 //    public function forums()
 //    {
 //        return $this->hasMany(Forum::class);
