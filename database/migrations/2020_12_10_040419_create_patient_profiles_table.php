@@ -17,9 +17,9 @@ class CreatePatientProfilesTable extends Migration
             $table->id();
             $table->string('baby_name');
             $table->date('baby_birthday');
-            $table->integer('born_weight');
-            $table->integer('born_length');
-            $table->integer('lingkar_kepala');
+            $table->float('born_weight');
+            $table->float('born_length');
+            $table->float('lingkar_kepala');
             $table->enum('baby_gender', ['male', 'female']);
             $table->integer('usia_gestas');
             $table->boolean('harapan_orangtua');
