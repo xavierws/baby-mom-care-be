@@ -78,11 +78,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
 
+    //category
+    //list category
+    Route::get('materi/category', [MateriController::class, 'listCategory']);
+    //add new category
+    Route::post('materi/category/store', [MateriController::class, 'addCategory']);
+    //delete existing category
+    Route::post('materi/category/delete', [MateriController::class, 'destroyCategory']);
+    //update category
+    Route::put('materi/category/update', [MateriController::class, 'updateCategory']);
+
     //materi
     //store materi
     Route::post('materi/store', [MateriController::class, 'store']);
-    //list category
-    Route::get('materi/category', [MateriController::class, 'listCategory']);
     //list materi
     Route::post('materi/index', [MateriController::class, 'index']);
     //show recommended materi for patient
@@ -94,12 +102,6 @@ Route::middleware('auth:sanctum')->group(function () {
     //delete materi
     Route::delete('materi/delete', [MateriController::class, 'delete']);
     //search materi
-
-    //category
-    //add new category
-    Route::post('materi/category/store', [MateriController::class, 'addCategory']);
-    //delete existing category
-    Route::post('materi/category/delete', [MateriController::class, 'destroyCategory']);
 
     //quiz
     //store quiz

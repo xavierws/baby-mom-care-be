@@ -52,6 +52,28 @@ class MateriController extends Controller
         ]);
     }
 
+    public function updateCategory(Request $request)
+    {
+        $category = Category::find($request->input('id'));
+
+        $category->name = $request->input('name');
+        $category->save();
+
+        $image = $category->image;
+        Storage::delete($image->filename);
+        $newImg = base64_decode($request->input('base64_img'));
+        $str = Str::random(10);
+        $filename = 'public/category/' . (string)$category->id . $request->input('name') . '$' . $str . '.jpg';
+        Storage::put($filename, $newImg);
+
+        $image->filename = $filename;
+        $image->save();
+
+        return response()->json([
+            'message' => 'category is updated'
+        ]);
+    }
+
     public function listCategory()
     {
         $categories = Category::all();
