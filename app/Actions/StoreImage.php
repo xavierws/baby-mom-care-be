@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class StoreImage
 {
-    public function handle($id, $imageBase64, $path, $name, $ImageableType)
+    public static function handle($id, $imageBase64, $path, $name, $ImageableType)
     {
         $image = base64_decode($imageBase64);
         $str = Str::random(10);
