@@ -59,7 +59,7 @@ class MateriController extends Controller
         $i = 0;
         $data = array();
         foreach ($categories as $category) {
-            if (!$category->image->filename) {
+            if (!$category->image) {
                 $image = null;
             } else {
                 $image = asset($category->image->filename);
