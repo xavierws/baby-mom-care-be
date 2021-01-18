@@ -72,7 +72,7 @@ class PatientProfile extends Model
 
     public function surveys()
     {
-        return $this->belongsToMany(Survey::class, 'patient_survey', 'patient_id', 'survey_id')
+        return $this->belongsToMany(SurveyQuestion::class, 'patient_survey', 'patient_id', 'question_id')
             ->withTimestamps()
             ->withPivot('answer');
     }

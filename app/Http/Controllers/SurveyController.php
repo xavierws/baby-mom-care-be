@@ -38,6 +38,7 @@ class SurveyController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'choice_type' => 'required',
             //'datas' => 'required|array',
         ]);
 
@@ -127,7 +128,7 @@ class SurveyController extends Controller
 */
         $i = 0;
         foreach ($request->answers as $answer) {
-            Survey::find($request->id[$i])->patients()->attach($user->userable_id, ['answer' => $answer]);
+            SurveyQuestion::find($request->id[$i])->patients()->attach($user->userable_id, ['answer' => $answer]);
             $i++;
         }
 
