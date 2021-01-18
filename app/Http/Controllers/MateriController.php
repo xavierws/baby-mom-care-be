@@ -22,7 +22,7 @@ class MateriController extends Controller
 
         if ($request->base64_image) {
             $categoryId = Category::orderBy('id', 'desc')->limit(1)->value('id');
-            $image = $request->input('base64_img');
+            $image = $request->input('base64_image');
 
             StoreImage::handle(
                 $categoryId,
