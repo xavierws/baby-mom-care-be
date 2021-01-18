@@ -20,12 +20,12 @@ class Survey extends Model
         'questions'
     ];
 
-    public function patients()
-    {
-        return $this->belongsToMany(PatientProfile::class, 'patient_survey', 'survey_id', 'patient_id')
-            ->withTimestamps()
-            ->withPivot('answer');
-    }
+//    public function patients()
+//    {
+//        return $this->belongsToMany(PatientProfile::class, 'patient_survey', 'survey_id', 'patient_id')
+//            ->withTimestamps()
+//            ->withPivot('answer');
+//    }
 
     public function questions()
     {

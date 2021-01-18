@@ -20,4 +20,11 @@ class SurveyQuestion extends Model
     {
         return $this->belongsTo(Survey::class);
     }
+
+    public function patients()
+    {
+        return $this->belongsToMany(PatientProfile::class, 'patient_survey', 'question_id', 'patient_id')
+            ->withTimestamps()
+            ->withPivot('answer');
+    }
 }
