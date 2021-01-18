@@ -40,7 +40,12 @@ class MateriController extends Controller
 
     public function destroyCategory(Request $request)
     {
-        Category::find($request->input('id'))->delete();
+        $category = Category::find($request->input('id'));
+        $image = $category->image;
+
+        Storage::delete($image->filename);
+        $image->delete();
+        $category->delete();
 
         return response()->json([
             'message' => 'category is deleted'
@@ -49,7 +54,20 @@ class MateriController extends Controller
 
     public function listCategory()
     {
-        return response(Category::all()->toArray());
+        $categories = Category::all();
+
+        $i = 0;
+        $data = array();
+        foreach ($categories as $category) {
+            $data[$i] = [
+                'id' => $category->id,
+                'image' => asset($category->image->filename),
+                'name' => $category->name,
+            ];
+            $i++;
+        }
+
+        return response($data);
     }
 
     public function index(Request $request)
