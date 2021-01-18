@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CountFormula;
 use App\Models\Image;
 use App\Models\Kontrol;
 use App\Models\PatientProfile;
@@ -73,8 +74,15 @@ class KontrolController extends Controller
         $kontrol = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patientId);
         if (!$kontrol) {
             $order = 1;
+
+            $kontrol1 = Kontrol::where([
+                ['mode', 'resume'],
+                ['patient_profile_id', $patientId],
+            ])->first();
         } else {
             $order = $kontrol->count() + 1;
+
+            $kontrol1 = $kontrol->orderBy('order', 'desc')->first();
         }
 
         Kontrol::create([
@@ -90,6 +98,13 @@ class KontrolController extends Controller
             'nurse_note' => $request->input('nurse_note'),
             'mode' => $request->input('mode'),
         ]);
+
+        $kontrol2 = Kontrol::where('mode', 'kontrol')
+            ->where('patient_profile_id', $patientId)
+            ->orderBy('order', 'desc')
+            ->first();
+
+        $condition = CountFormula::handle($kontrol1, $kontrol2);
 
         if ($request->mode == 'resume') {
             $patient = PatientProfile::find($patientId);
@@ -135,7 +150,7 @@ class KontrolController extends Controller
     {
         $kontrol = Kontrol::find($request->id);
 
- 
+
         $kontrol->date = $request->input('date');
         $kontrol->tempat_kontrol = $request->input('tempat_kontrol');
         $kontrol->weight = $request->input('weight');
