@@ -22,7 +22,7 @@ class Kontrol extends Model
         'patient_profile_id',
         'note',
         'nurse_note',
-        'mode'
+        'mode',
     ];
 
     public function patient()

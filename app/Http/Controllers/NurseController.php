@@ -25,4 +25,13 @@ class NurseController extends Controller
 
         return new PatientRes($patient);
     }
+    public function destroyPatient(Request $request)
+    {
+        $patient = PatientProfile::find($request->id);
+        $patient->delete();
+
+        return response()->json([
+            'message' => 'patient is deleted'
+        ]);
+    }
 }

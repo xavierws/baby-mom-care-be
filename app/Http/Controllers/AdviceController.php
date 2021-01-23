@@ -46,7 +46,7 @@ class AdviceController extends Controller
         $advice->name = $request->input('name');
         $advice->frequency = $request->input('frequency');
         $advice->description = $request->input('description');
-
+        $advice->save();
         return response()->json([
             'message' => 'advice is updated',
         ]);

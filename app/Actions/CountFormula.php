@@ -14,7 +14,7 @@ class CountFormula
     {
         $date1 = Carbon::parse($kontrol1->created_at);
         $date2 = Carbon::parse($kontrol2->created_at);
-        $divisor = (float)$date2->diffInDays($date1);
+        $divisor = (float)$date2->diffInDays($date1)+1;
 
         $diffWeight = (float)$kontrol2->weight - (float)$kontrol1->weight;
 
