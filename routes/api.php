@@ -86,7 +86,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //add new category
     Route::post('materi/category/store', [MateriController::class, 'addCategory']);
     //delete existing category
-    Route::post('materi/category/delete', [MateriController::class, 'destroyCategory']);
+    Route::delete('materi/category/delete', [MateriController::class, 'destroyCategory']);
     //update category
     Route::put('materi/category/update', [MateriController::class, 'updateCategory']);
 
