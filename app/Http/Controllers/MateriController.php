@@ -195,7 +195,7 @@ class MateriController extends Controller
         $materi->doc_url = $request->input('doc_url');
 //        $materi->forum_id = $request->input('forum_id');
         $materi->save();
-
+        if ($request->input('image') != "") {
         $image = $materi->image;
         Storage::delete($image->filename);
         $newImg = base64_decode($request->input('base64_img'));
@@ -205,7 +205,7 @@ class MateriController extends Controller
 
         $image->filename = $filename;
         $image->save();
-
+        }
         return response()->json([
             'message' => 'materi is updated'
         ]);
