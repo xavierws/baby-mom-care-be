@@ -173,18 +173,18 @@ class KontrolController extends Controller
         $kontrol->temperature = $request->input('temperature');
         $kontrol->note = $request->input('note');
         $kontrol->save();
+        if ($request->input('base64_img') != "") {
+            $image = $kontrol->image;
 
-        $image = $kontrol->image;
+            Storage::delete($image->filename);
+            $newImg = base64_decode($request->input('base64_img'));
+            $str = Str::random(10);
+            $filename = 'public/kontrol/' . (string) $request->id . $request->input('title') . '$' . $str . '.jpg';
+            Storage::put($filename, $newImg);
 
-        Storage::delete($image->filename);
-        $newImg = base64_decode($request->input('base64_img'));
-        $str = Str::random(10);
-        $filename = 'public/kontrol/' . (string) $request->id . $request->input('title') . '$' . $str . '.jpg';
-        Storage::put($filename, $newImg);
-
-        $image->filename = $filename;
-        $image->save();
-
+            $image->filename = $filename;
+            $image->save();
+        }
         return response()->json([
             'message' => 'kontrol is updated'
         ]);
