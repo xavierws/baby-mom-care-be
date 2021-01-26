@@ -15,8 +15,14 @@ class CreatePatientSurveyTable extends Migration
     {
         Schema::create('patient_survey', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patient_profiles');
-            $table->foreignId('question_id')->constrained('survey_questions');
+            $table->foreignId('patient_id')
+                ->constrained('patient_profiles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('question_id')
+                ->constrained('survey_questions')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->integer('answer');
             $table->timestamps();
         });

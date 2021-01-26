@@ -29,17 +29,18 @@ class CountFormula
             return 'belum';
         }
     }
+
     public static function panjang($kontrol1, $kontrol2)
     {
         $date1 = Carbon::parse($kontrol1->created_at);
         $date2 = Carbon::parse($kontrol2->created_at);
         $divisor = (float) $date2->diffInWeeks($date1);
         if ($divisor != 0) {
-            $diffWeight = (float) $kontrol2->weight - (float) $kontrol1->weight;
+            $diffLength = (float) $kontrol2->length - (float) $kontrol1->length;
 
-            if ($diffWeight / $divisor >= 0.8 && $diffWeight / $divisor <= 1) {
+            if ($diffLength / $divisor >= 0.8 && $diffLength / $divisor <= 1) {
                 return 'normal';
-            } elseif ($diffWeight / $divisor >= 0.72 && $diffWeight / $divisor <= 1.1) {
+            } elseif ($diffLength / $divisor >= 0.72 && $diffLength / $divisor <= 1.1) {
                 return 'warning';
             } else {
                 return 'danger';
@@ -48,17 +49,18 @@ class CountFormula
             return 'belum';
         }
     }
+
     public static function lingkar($kontrol1, $kontrol2)
     {
         $date1 = Carbon::parse($kontrol1->created_at);
         $date2 = Carbon::parse($kontrol2->created_at);
         $divisor = (float) $date2->diffInWeeks($date1);
         if ($divisor != 0) {
-            $diffWeight = (float) $kontrol2->weight - (float) $kontrol1->weight;
+            $diffLingkar = (float) $kontrol2->lingkar_kepala - (float) $kontrol1->lingkar_kepala;
 
-            if ($diffWeight / $divisor >= 0.5 && $diffWeight / $divisor <= 0.8) {
+            if ($diffLingkar / $divisor >= 0.5 && $diffLingkar / $divisor <= 0.8) {
                 return 'normal';
-            } elseif ($diffWeight / $divisor >= 0.45 && $diffWeight / $divisor <= 0.88) {
+            } elseif ($diffLingkar / $divisor >= 0.45 && $diffLingkar / $divisor <= 0.88) {
                 return 'warning';
             } else {
                 return 'danger';
