@@ -111,6 +111,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //show specific quiz
     Route::post('quiz/show', [QuizController::class, 'show']);
     //update quiz
+    Route::put('quiz/update', [QuizController::class, 'update']);
     //delete quiz
     //send the patient's answer
     Route::post('quiz/answer/store', [QuizController::class, 'storeAnswer']);
