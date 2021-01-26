@@ -116,8 +116,10 @@ class KontrolController extends Controller
             ->orderBy('order', 'desc')
             ->first();
 
-        if ($ambil == 10) {
-            $condition = CountFormula::handle($kontrol1, $kontrol2);
+        if ($ambil == 1) {
+            $berat = CountFormula::handle($kontrol1, $kontrol2);
+            $panjang = CountFormula::panjang($kontrol1, $kontrol2);
+            $lingkar = CountFormula::lingkar($kontrol1, $kontrol2);
         }
 
         if ($request->mode == 'resume') {
