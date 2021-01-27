@@ -209,4 +209,27 @@ class AuthController extends Controller
 
         return redirect('register')->with('status', 'Perawat berhasil register');
     }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'new_password' => 'required',
+        ]);
+
+        $user = $request->user();
+
+        if (!Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'username' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+
+        $user->password = $request->input('new_password');
+        $user->save();
+
+        return response()->json([
+            'message' => 'password is updated',
+        ]);
+    }
 }
