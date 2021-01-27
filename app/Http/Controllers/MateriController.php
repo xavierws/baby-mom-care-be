@@ -42,9 +42,10 @@ class MateriController extends Controller
     {
         $category = Category::find($request->input('id'));
         $image = $category->image;
-
-        Storage::delete($image->filename);
-        $image->delete();
+        if ($image) {
+            Storage::delete($image->filename);
+            $image->delete();
+        }
         $category->delete();
 
         return response()->json([
@@ -63,7 +64,7 @@ class MateriController extends Controller
         Storage::delete($image->filename);
         $newImg = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/category/' . (string)$category->id . $request->input('name') . '$' . $str . '.jpg';
+        $filename = 'public/category/' . (string) $category->id . $request->input('name') . '$' . $str . '.jpg';
         Storage::put($filename, $newImg);
 
         $image->filename = $filename;
@@ -161,7 +162,7 @@ class MateriController extends Controller
 
         $image = base64_decode($request->input('base64_img'));
         $str = Str::random(10);
-        $filename = 'public/materi/' . (string)$materiId . $request->input('title') . '$' . $str . '.jpg';
+        $filename = 'public/materi/' . (string) $materiId . $request->input('title') . '$' . $str . '.jpg';
         Storage::put($filename, $image);
 
         Image::create([
@@ -176,9 +177,7 @@ class MateriController extends Controller
     }
 
     public function edit()
-    {
-
-    }
+    { }
 
     public function update(Request $request)
     {
@@ -193,18 +192,18 @@ class MateriController extends Controller
         $materi->content_url = $request->input('content_url');
         $materi->video_url = $request->input('video_url');
         $materi->doc_url = $request->input('doc_url');
-//        $materi->forum_id = $request->input('forum_id');
+        //        $materi->forum_id = $request->input('forum_id');
         $materi->save();
         if ($request->input('image') != "") {
-        $image = $materi->image;
-        Storage::delete($image->filename);
-        $newImg = base64_decode($request->input('base64_img'));
-        $str = Str::random(10);
-        $filename = 'public/materi/' . (string)$materi->id . $request->input('title') . '$' . $str . '.jpg';
-        Storage::put($filename, $newImg);
+            $image = $materi->image;
+            Storage::delete($image->filename);
+            $newImg = base64_decode($request->input('base64_img'));
+            $str = Str::random(10);
+            $filename = 'public/materi/' . (string) $materi->id . $request->input('title') . '$' . $str . '.jpg';
+            Storage::put($filename, $newImg);
 
-        $image->filename = $filename;
-        $image->save();
+            $image->filename = $filename;
+            $image->save();
         }
         return response()->json([
             'message' => 'materi is updated'
@@ -230,7 +229,7 @@ class MateriController extends Controller
         $materi = Materi::all();
 
         $data = array();
-        for($i=0;$i<count($materi);$i++) {
+        for ($i = 0; $i < count($materi); $i++) {
             $data[$i] = [
                 'id'  => $materi[$i]->id,
                 'name' => $materi[$i]->title
