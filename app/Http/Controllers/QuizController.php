@@ -69,19 +69,36 @@ class QuizController extends Controller
     public function edit()
     { }
 
-    public function delete()
-    { }
+    public function delete(Request $request)
+    {
+        $quiz = Quiz::find($request->input('id'));
+
+        foreach ($quiz->choices as $choice) {
+            $choice->delete();
+        }
+
+        foreach ($quiz->questions as $question) {
+            $question->delete();
+        }
+
+        $quiz->delete();
+
+        return response()->json([
+            'message' => 'quiz is deleted'
+        ]);
+    }
+
     public function update(Request $request)
     {
         $request->validate([
-  
+
             'title' => 'required',
             //'data.*.question' => 'required',
             //'data.*.choice1' => 'required',
             //'data.*.choice2' => 'required',
             //'data.*.choice3' => 'required',
         ]);
-        
+
         $quizId = Quiz::find($request->quizId);
         $quizId->title = $request->title;
         $quizId->save();

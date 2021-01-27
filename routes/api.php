@@ -63,6 +63,8 @@ Route::middleware('auth:sanctum')->group(function () {
     //logout the user
     Route::post('logout', [AuthController::class, 'logout']);
 
+    //update password
+
     //kontrol
     //store kontrol
     Route::post('kontrol/store', [KontrolController::class, 'store']);
@@ -113,6 +115,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //update quiz
     Route::put('quiz/update', [QuizController::class, 'update']);
     //delete quiz
+    Route::delete('quiz/delete', [QuizController::class, 'delete']);
     //send the patient's answer
     Route::post('quiz/answer/store', [QuizController::class, 'storeAnswer']);
     //show patient's answer
