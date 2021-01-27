@@ -80,21 +80,18 @@ class KontrolController extends Controller
                 ]);
             }
         }
-        $kontrol = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patientId);
-        if (!$kontrol) {
+        $kontrol1 = Kontrol::where('mode', 'kontrol')->where('patient_profile_id', $patientId)->orderBy('order', 'desc')->first();
+        if (!$kontrol1) {
             $order = 1;
-
             $kontrol1 = Kontrol::where('mode', 'resume')->where('patient_profile_id', $patientId)->first();
-
             if (!$kontrol1) {
                 $ambil = 0;
             } else {
                 $ambil = 1;
             }
         } else {
-            $order = $kontrol->count() + 1;
+            $order = $kontrol1->count() + 1;
             $ambil = 1;
-            $kontrol1 = $kontrol->orderBy('order', 'desc')->first();
         }
 
         Kontrol::create([
@@ -205,12 +202,19 @@ class KontrolController extends Controller
 
     public function delete(Request $request)
     {
-        $kontrol = Kontrol::find($request->id);
-        $image = $kontrol->image;
+        if ($request->mode == 'resume') {
+            $patient = PatientProfile::find($request->id);
+            $patient->status = 'hospital';
+            $patient->save();
 
-        Storage::delete($image->filename);
-        $image->delete();
-        $kontrol->delete();
+            $kontrol = Kontrol::where('patient_profile_id',$request->id)->where('mode','resume');
+            $image = $kontrol->image;
+    
+            Storage::delete($image->filename);
+            $image->delete();
+            $kontrol->delete();
+        }
+   
 
         return response()->json([
             'message' => 'kontrol is deleted'
