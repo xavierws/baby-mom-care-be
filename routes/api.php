@@ -186,6 +186,8 @@ Route::middleware('auth:sanctum')->group(function () {
     //list all nurses that related to patient
     Route::get('patient/related-nurse', [PatientController::class, 'listNurse']);
     Route::post('patient/show', [PatientController::class, 'showNurse']);
+    //update patient's data
+    Route::put('patient/data/update', [PatientController::class, 'update']);
 
     //survey
     //store survey
