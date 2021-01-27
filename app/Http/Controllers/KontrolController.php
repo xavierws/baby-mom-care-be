@@ -207,14 +207,21 @@ class KontrolController extends Controller
             $patient->status = 'hospital';
             $patient->save();
 
-            $kontrol = Kontrol::where('patient_profile_id',$request->id)->where('mode','resume');
+            $kontrol = Kontrol::where('patient_profile_id', $request->id)->where('mode', 'resume');
             $image = $kontrol->image;
-    
+
+            Storage::delete($image->filename);
+            $image->delete();
+            $kontrol->delete();
+        } else {
+            $kontrol = Kontrol::where('patient_profile_id', $request->id);
+            $image = $kontrol->image;
+
             Storage::delete($image->filename);
             $image->delete();
             $kontrol->delete();
         }
-   
+
 
         return response()->json([
             'message' => 'kontrol is deleted'
