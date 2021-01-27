@@ -64,6 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
     //update password
+    Route::put('password/update', [AuthController::class, 'updatePassword']);
 
     //kontrol
     //store kontrol
