@@ -7,8 +7,10 @@ use App\Http\Resources\NurseProfile as NurseRes;
 use App\Models\PatientProfile;
 use App\Http\Resources\PatientProfile as PatientRes;
 use App\Models\Survey;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
@@ -66,13 +68,13 @@ class AdminController extends Controller
         $data = array();
         $i = 0;
         foreach ($patients as $patient) {
-          
+
                 $data[$i] = [
                     'id' => $patient->id,
                     'name' => $patient->mother_name,
                 ];
                 $i++;
-        
+
         }
 
         return response()->json([
@@ -94,9 +96,7 @@ class AdminController extends Controller
     }
 
     public function showPatient()
-    {
-
-    }
+    { }
 
     public function showNurse(Request $request)
     {
@@ -110,6 +110,30 @@ class AdminController extends Controller
         if (!$nurse->patients) return null;
 
         return response(PatientRes::collection($nurse->patients));
+    }
+
+    public function promoteAdmin(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if ($user->role_id == 10) {
+            throw ValidationException::withMessages([
+                'message' => 'user is not a nurse'
+            ]);
+        }
+
+        if ($user->role_id == 21) {
+            return response()->json([
+                'message' => 'user is already an admin'
+            ]);
+        }
+
+        $user->role_id = 21;
+        $user->save();
+
+        return response()->json([
+            'message' => 'user is promoted to admin',
+        ]);
     }
 
     public function showDataSurvey()
