@@ -120,11 +120,17 @@ Route::middleware('auth:sanctum')->group(function () {
     //show quiz status to specific user
     Route::post('quiz/status', [QuizController::class, 'showStatus']);
 
+    //topic
+    //list topic
+    Route::get('forum/topic', [ForumController::class, 'listTopic']);
+    //add new topic
+    Route::post('forum/topic/store', [ForumController::class, 'addTopic']);
+    //delete topic
+    Route::delete('forum/topic/delete', [ForumController::class, 'destroyTopic']);
+
     //forum
     //store forum
     Route::post('forum/store', [ForumController::class, 'store']);
-    //list topic
-    Route::get('forum/topic', [ForumController::class, 'listTopic']);
     //list forum
     Route::post('forum/index', [ForumController::class, 'index']);
     //show specific forum

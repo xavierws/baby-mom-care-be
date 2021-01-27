@@ -16,6 +16,26 @@ class ForumController extends Controller
         return response(Topic::all()->toArray());
     }
 
+    public function addTopic(Request $request)
+    {
+        Topic::create([
+            'name' =>  $request->input('name'),
+        ]);
+
+        return response()->json([
+            'message' => 'topic is created'
+        ]);
+    }
+
+    public function destroyTopic(Request $request)
+    {
+        Topic::find($request->id)->delete();
+
+        return response()->json([
+            'message' => 'topic is deleted'
+        ]);
+    }
+
     public function index(Request $request)
     {
         $request->validate([
