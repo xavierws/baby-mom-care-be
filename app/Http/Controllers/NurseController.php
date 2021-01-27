@@ -37,4 +37,19 @@ class NurseController extends Controller
             'message' => 'patient is deleted'
         ]);
     }
+
+    public function update(Request $request)
+    {
+        $nurse = NurseProfile::find($request->id);
+        $nurse->name = $request->name;
+        $nurse->working_exp = $request->working_exp;
+        $nurse->education = $request->education;
+        $nurse->phone = $request->phone;
+        $nurse->hospital_id = $request->hospital_id;
+        $nurse->save();
+
+        return response()->json([
+            'message' =>  'nurse\'s data is updated'
+        ]);
+    }
 }

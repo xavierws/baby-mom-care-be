@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\NurseProfile as NurseRes;
 use App\Models\NurseProfile;
+use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -21,9 +22,9 @@ class PatientController extends Controller
 
     public function update(Request $request)
     {
-        $user = $request->user();
+//        $user = $request->user();
 
-        $patient = $user->userable;
+        $patient = PatientProfile::find($request->id);
         $patient->baby_name = $request->baby_name;
         $patient->baby_birthday = $request->baby_birthday;
         $patient->born_weight = $request->born_weight;
