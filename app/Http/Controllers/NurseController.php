@@ -12,9 +12,12 @@ class NurseController extends Controller
 {
     public function listPatient(Request $request)
     {
-        $user = $request->user();
-
-        $patients = NurseProfile::find($user->userable_id)->patients;
+        if ($request->id) {
+            $user = $request->id;
+        } else {
+            $user = $request->user()->userable_id;
+        }
+        $patients = NurseProfile::find($user)->patients;
         return PatientRes::collection($patients);
     }
 
