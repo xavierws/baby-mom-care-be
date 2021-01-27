@@ -39,7 +39,9 @@ class Kernel extends ConsoleKernel
 
                 if ($dayOfYear % $freq == 0) {
                     NotificationLog::create([
-                        'advice_id' => $advice->id,
+                        'notification' => $advice->name,
+                        'nurse_id' => null,
+                        'type' => 'advice',
                     ]);
                 }
             }

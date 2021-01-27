@@ -12,11 +12,13 @@ class NotificationLog extends Model
     protected $table = 'notification_logs';
 
     protected $fillable = [
-        'advice_id',
+        'notification',
+        'nurse_id',
+        'type',
     ];
 
-    public function advice()
-    {
-        return $this->belongsTo(Advice::class);
-    }
+//    public function advice()
+//    {
+//        return $this->belongsTo(Advice::class);
+//    }
 }

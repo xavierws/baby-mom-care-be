@@ -19,7 +19,7 @@ class CreateForumsTable extends Migration
             $table->string('question');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('topic_id')->constrained('topics');
-            $table->foreignId('category_id')->nullable()->constrained('categories');
+//            $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->timestamps();
         });
     }

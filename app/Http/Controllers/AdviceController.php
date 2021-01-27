@@ -70,17 +70,29 @@ class AdviceController extends Controller
             'fcm_token' => $user->fcm_token,
         ]);
     }
-    public function showNotification()
+    public function showNotification(Request $request)
     {
         $now = now();
         $data = array();
         $i = 0;
-        foreach (NotificationLog::all() as $log) {
-            $date = Carbon::parse($log->created_at);
 
-            if ($now->diffInDays($date) == 0) {
-                $data[$i] = $log->advice;
-                $i++;
+        if ($request->user_type == 'patient') {
+            $notification = NotificationLog::where('type', 'advice')->orderBy('created_at', 'desc')->get();
+            foreach ($notification as $log) {
+                $date = Carbon::parse($log->created_at);
+
+                if ($now->diffInDays($date) == 0) {
+                    $data[$i] = $log;
+                    $i++;
+                }
+            }
+        } else {
+            $notification = NotificationLog::where('type', 'kontrol')->orderBy('created_at', 'desc')->get();
+            foreach ($notification as $log) {
+                if ($log->nurse_id == $request->nurse_id) {
+                    $data[$i] = $log;
+                    $i++;
+                }
             }
         }
 

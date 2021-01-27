@@ -17,8 +17,8 @@ class Advice extends Model
         'description',
     ];
 
-    public function notifications()
-    {
-        return $this->hasMany(NotificationLog::class);
-    }
+//    public function notifications()
+//    {
+//        return $this->hasMany(NotificationLog::class);
+//    }
 }

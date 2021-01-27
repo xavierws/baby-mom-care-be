@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\CountFormula;
 use App\Models\Image;
 use App\Models\Kontrol;
+use App\Models\NotificationLog;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -113,14 +114,31 @@ class KontrolController extends Controller
             ->orderBy('order', 'desc')
             ->first();
 
+        $patient = PatientProfile::find($patientId);
         if ($ambil == 1) {
             $berat = CountFormula::handle($kontrol1, $kontrol2);
             $panjang = CountFormula::panjang($kontrol1, $kontrol2);
             $lingkar = CountFormula::lingkar($kontrol1, $kontrol2);
+
+
+            foreach ($patient->nurses as $nurse) {
+                if ($berat == 'danger' || $panjang == 'danger' || $lingkar == 'danger') {
+                    NotificationLog::create([
+                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Pertumbuhan bayi kurang dari standar.',
+                        'nurse_id' => $nurse->id,
+                        'type' => 'kontrol',
+                    ]);
+                } elseif ($berat == 'warning' || $panjang == 'warning' || $lingkar == 'warning') {
+                    NotificationLog::create([
+                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Pertumbuhan bayi kurang dari standar.',
+                        'nurse_id' => $nurse->id,
+                        'type' => 'kontrol',
+                    ]);
+                }
+            }
         }
 
         if ($request->mode == 'resume') {
-            $patient = PatientProfile::find($patientId);
             $patient->status = 'home';
             $patient->return_date = now();
             $patient->marked_date = now();
