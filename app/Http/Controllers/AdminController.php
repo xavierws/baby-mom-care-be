@@ -72,7 +72,8 @@ class AdminController extends Controller
 
                 $data[$i] = [
                     'id' => $patient->id,
-                    'name' => $patient->mother_name,
+                    'baby_name' => $patient->baby_name,
+                    'mother_name' => $patient->mother_name,
                 ];
                 $i++;
 
