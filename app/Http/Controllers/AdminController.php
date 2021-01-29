@@ -6,6 +6,7 @@ use App\Models\NurseProfile;
 use App\Http\Resources\NurseProfile as NurseRes;
 use App\Models\PatientProfile;
 use App\Http\Resources\PatientProfile as PatientRes;
+use App\Models\Quiz;
 use App\Models\Survey;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -158,6 +159,34 @@ class AdminController extends Controller
                     'legendFontSize'=> 15
                 ];
             }
+        }
+
+        return response($data);
+    }
+
+    public function listQuiz(Request $request)
+    {
+        $quizzes = Quiz::all();
+//        $patient = PatientProfile::find('id', $request->patient_id);
+
+        $point = 0;
+        $data = array();
+        $i = 0;
+        foreach ($quizzes as $quiz) {
+            $answers = DB::table('user_answer')->where([
+                ['patient_id', $request->patient_id],
+                ['quiz_id', $quiz->id],
+            ])->get();
+
+            foreach ($answers as $answer) {
+                $point = $point + $answer->point;
+            }
+            $data[$i] = [
+                'quiz' => $quiz->title,
+                'point' => $point,
+            ];
+            $i++;
+            $point = 0;
         }
 
         return response($data);

@@ -12,13 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Advice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NotificationLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NotificationLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042205_create_forums_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042205_create_forums_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +227,9 @@
       <workItem from="1611074938407" duration="3398000" />
       <workItem from="1611640435533" duration="5616000" />
       <workItem from="1611721367925" duration="5932000" />
-      <workItem from="1611728168971" duration="18012000" />
+      <workItem from="1611728168971" duration="20476000" />
+      <workItem from="1611813715125" duration="743000" />
+      <workItem from="1611887585814" duration="7959000" />
     </task>
     <servers />
   </component>
