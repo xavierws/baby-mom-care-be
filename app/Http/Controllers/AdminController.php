@@ -217,6 +217,7 @@ class AdminController extends Controller
                     $point = $point + $answer->point;
                 }
                 $data[$i] = [
+                    'quiz_id' => $quiz->id,
                     'quiz' => $quiz->title,
                     'point' => $point,
                 ];
