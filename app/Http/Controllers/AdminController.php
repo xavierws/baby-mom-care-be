@@ -178,17 +178,28 @@ class AdminController extends Controller
                 ['quiz_id', $quiz->id],
             ])->get();
 
-            foreach ($answers as $answer) {
-                $point = $point + $answer->point;
+            if ($answers) {
+                foreach ($answers as $answer) {
+                    $point = $point + $answer->point;
+                }
+                $data[$i] = [
+                    'quiz' => $quiz->title,
+                    'point' => $point,
+                ];
+                $i++;
+                $point = 0;
             }
-            $data[$i] = [
-                'quiz' => $quiz->title,
-                'point' => $point,
-            ];
-            $i++;
-            $point = 0;
         }
 
         return response($data);
+    }
+
+    public function listSurvey()
+    {
+        $surveys = Survey::all();
+
+        foreach ($surveys as $survey) {
+
+        }
     }
 }
