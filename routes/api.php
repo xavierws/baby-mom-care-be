@@ -176,6 +176,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //list all patient that not in relation with the specific nurse
     Route::post('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     Route::post('admin/list/patient-nurse2', [AdminController::class, 'listPatient2']);
+    Route::post('admin/list/patient-nurse3', [AdminController::class, 'listPatient3']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
     //show specific nurse
