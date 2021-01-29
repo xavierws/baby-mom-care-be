@@ -15,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Resources/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Chat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +232,7 @@
       <workItem from="1611721367925" duration="5932000" />
       <workItem from="1611728168971" duration="20476000" />
       <workItem from="1611813715125" duration="743000" />
-      <workItem from="1611887585814" duration="10465000" />
+      <workItem from="1611887585814" duration="12235000" />
     </task>
     <servers />
   </component>

@@ -96,6 +96,19 @@ class AdminController extends Controller
         ]);
     }
 
+    public function removeRelation(Request $request)
+    {
+        $nurse = NurseProfile::find($request->nurse_id);
+
+        foreach ($request->patients as $patient) {
+            $nurse->patients()->detach($patient);
+        }
+
+        return response()->json([
+            'message' => 'relation is removed',
+        ]);
+    }
+
     public function showPatient()
     { }
 
@@ -176,10 +189,10 @@ class AdminController extends Controller
             $answers = DB::table('user_answer')->where([
                 ['patient_id', $request->patient_id],
                 ['quiz_id', $quiz->id],
-            ])->get();
+            ]);
 
-            if ($answers) {
-                foreach ($answers as $answer) {
+            if ($answers->exists()) {
+                foreach ($answers->get() as $answer) {
                     $point = $point + $answer->point;
                 }
                 $data[$i] = [

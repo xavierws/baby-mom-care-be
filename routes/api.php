@@ -178,6 +178,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/list/patient-nurse2', [AdminController::class, 'listPatient2']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
+    //remove relation between nurse and patient
+    Route::post('admin/remove-relation', [AdminController::class, 'removeRelation']);
     //show specific nurse
     Route::post('admin/nurse/show', [AdminController::class, 'showNurse']);
     //show all patient that belongs to the nurse
