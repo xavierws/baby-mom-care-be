@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SurveyController extends Controller
 {
@@ -119,16 +120,30 @@ class SurveyController extends Controller
             'data.*.id' => 'required',
             'data.*.answer' => 'required|integer',
         ]);
-*/
+        */
+
         $user = $request->user();
+
         /*
         foreach ($request->data as $data) {
             Survey::find($data['id'])->patients()->attach($user->userable_id, ['answer' => $data['answer']]);
         }
-*/
+        */
+
         $i = 0;
+        $a = DB::table('patient_survey')->where('question_id', $request->id[$i]);
+        if ($a->exists()) {
+            $order = $a->orderBy('order', 'desc')->first()->value('order') + 1;
+        } else {
+            $order = 1;
+        }
         foreach ($request->answers as $answer) {
-            SurveyQuestion::find($request->id[$i])->patients()->attach($user->userable_id, ['answer' => $answer]);
+            $question = SurveyQuestion::find($request->id[$i]);
+            $question->patients()->attach($user->userable_id, [
+                'answer' => $answer,
+                'order' => $order,
+                'survey_id' => $question->survey_id,
+            ]);
             $i++;
         }
 

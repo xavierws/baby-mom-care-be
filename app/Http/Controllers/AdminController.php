@@ -8,6 +8,7 @@ use App\Models\PatientProfile;
 use App\Http\Resources\PatientProfile as PatientRes;
 use App\Models\Quiz;
 use App\Models\Survey;
+use App\Models\SurveyQuestion;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -229,12 +230,54 @@ class AdminController extends Controller
         return response($data);
     }
 
-    public function listSurvey()
+    public function listSurvey(Request $request)
     {
         $surveys = Survey::all();
 
+        $data = array();
+        $n = 0;
         foreach ($surveys as $survey) {
+            for ($i = 1; $i<=3; $i++) {
+                $answers = DB::table('patient_survey')->where([
+                    ['patient_id', $request->patient_id],
+                    ['survey_id', $survey->id],
+                    ['order', $i],
+                ]);
 
+                if ($answers->exists()) {
+                    $data[$n] = [
+                        'survey_id' => $survey->id,
+                        'survey' => $survey->title,
+                        'order' => $i,
+                        'patient_id' => $request->patient_id,
+                    ];
+                } else {
+                    break;
+                }
+            }
+            $n++;
         }
+
+        return response($data);
+    }
+
+    public function showSurvey(Request $request)
+    {
+        $patient = PatientProfile::find($request);
+        $surveys = $patient->surveys;
+
+        $data = array();
+        $i = 0;
+        foreach ($surveys as $survey) {
+            if ($survey->pivot->survey_id == $request->survey_id && $survey->pivot->order == $request->order) {
+                $data[$i] = [
+                    'question' => SurveyQuestion::find($survey->question_id)->value('question'),
+                    'answer' => $survey->pivot->answer,
+                ];
+            }
+            $i++;
+        }
+
+        return response($data);
     }
 }

@@ -24,6 +24,8 @@ class CreatePatientSurveyTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->integer('answer');
+            $table->foreignId('survey_id')->constrained('surveys');
+            $table->integer('order');
             $table->timestamps();
         });
     }

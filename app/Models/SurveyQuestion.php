@@ -25,6 +25,6 @@ class SurveyQuestion extends Model
     {
         return $this->belongsToMany(PatientProfile::class, 'patient_survey', 'question_id', 'patient_id')
             ->withTimestamps()
-            ->withPivot('answer');
+            ->withPivot('answer', 'survey_id', 'order');
     }
 }
