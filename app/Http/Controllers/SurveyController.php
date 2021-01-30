@@ -133,7 +133,7 @@ class SurveyController extends Controller
         $i = 0;
         $a = DB::table('patient_survey')->where('question_id', $request->id[$i]);
         if ($a->exists()) {
-            $order = $a->orderBy('order', 'desc')->first()->value('order') + 1;
+            $order = $a->orderBy('order', 'desc')->first()->order+1;
         } else {
             $order = 1;
         }
