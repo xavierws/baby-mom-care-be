@@ -271,11 +271,12 @@ class AdminController extends Controller
         foreach ($surveys as $survey) {
             if ($survey->pivot->survey_id == $request->survey_id && $survey->pivot->order == $request->order) {
                 $data[$i] = [
-                    'question' => SurveyQuestion::find($survey->question_id)->question,
+                    'question' => SurveyQuestion::find($survey->question_id)->value('question'),
                     'answer' => $survey->pivot->answer,
                 ];
+                $i++;
             }
-            $i++;
+
         }
 
         return response($data);
