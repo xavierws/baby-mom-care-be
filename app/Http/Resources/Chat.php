@@ -23,6 +23,7 @@ class Chat extends JsonResource
             'receiver_name' => User::find($this->receiver_id)->profile_name,
             'receiver_username' => User::find($this->receiver_id)->username,
             'text' => $this->text,
+            'is_read' => $this->is_read,
         ];
     }
 }

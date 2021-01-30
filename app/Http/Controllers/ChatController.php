@@ -13,7 +13,7 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        
+
             'receiver_id' => 'required',
             'text' => 'required',
         ]);
@@ -44,4 +44,24 @@ class ChatController extends Controller
 
     public function index()
     { }
+
+    public function setToRead(Request $request)
+    {
+        $receiverId = $request->user()->id;
+        $chats = Chat::where([
+            ['sender_id', $request->sender_id],
+            ['receiver_id', $receiverId]
+        ])->get();
+
+        if ($chats) {
+            foreach ($chats as $chat) {
+                $chat->is_read = true;
+                $chat->save();
+            }
+        }
+
+        $data = request('receiver_id', $receiverId);
+
+        return $this->show($data);
+    }
 }
