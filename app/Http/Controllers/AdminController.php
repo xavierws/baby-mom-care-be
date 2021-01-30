@@ -250,20 +250,20 @@ class AdminController extends Controller
                         'survey' => $survey->title,
                         'order' => $i,
                         'patient_id' => $request->patient_id,
+                        'choice_type' => $survey->choice_type
                     ];
-                } else {
-                    break;
+                    $n++;
                 }
             }
-            $n++;
         }
-
-        return response($data);
+        return response()->json([
+            'data' => $data,
+        ]);
     }
 
     public function showSurvey(Request $request)
     {
-        $patient = PatientProfile::find($request);
+        $patient = PatientProfile::find($request->patient_id);
         $surveys = $patient->surveys;
 
         $data = array();
