@@ -220,6 +220,7 @@ class AdminController extends Controller
                 $data[$i] = [
                     'quiz_id' => $quiz->id,
                     'quiz' => $quiz->title,
+                    'total' => count($answers->get()),
                     'point' => $point,
                 ];
                 $i++;
