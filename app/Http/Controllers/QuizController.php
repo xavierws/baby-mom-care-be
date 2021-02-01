@@ -20,7 +20,7 @@ class QuizController extends Controller
     {
         $request->validate([
             'materi_id' => 'required',
-            'title' => 'required',
+//            'title' => 'required',
             //'data.*.question' => 'required',
             //'data.*.choice1' => 'required',
             //'data.*.choice2' => 'required',
@@ -28,7 +28,7 @@ class QuizController extends Controller
         ]);
 
         Quiz::create([
-            'title' => $request->input('title'),
+            'title' => Materi::find($request->input('materi_id'))->value('title'),
             'materi_id' => $request->input('materi_id'),
         ]);
 
