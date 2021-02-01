@@ -229,12 +229,20 @@ class AdminController extends Controller
                         'legendFontColor'=> "#7F7F7F",
                         'legendFontSize'=> 15
                     ];
+                   
                 }
+                $data2[] = [
+                    'question'=>"nama question",
+                    'jawaban' => $data
+                ];
             }
-
+            $data3[] = [
+                'survey'=>"nama survey",
+                'pertanyaan' => $data2
+            ];
         }
 
-        return response($data);
+        return response($data3);
     }
 
     public function listQuiz(Request $request)
