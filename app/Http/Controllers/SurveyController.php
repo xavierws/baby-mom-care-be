@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ReversePoint;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
@@ -139,10 +140,28 @@ class SurveyController extends Controller
         } else {
             $order = 1;
         }
+
         foreach ($request->answers as $answer) {
             $question = SurveyQuestion::find($request->id[$i]);
+            if ($question->survey_id == 1) {
+                if ($question->number == 2 || $question->number == 4 || $question->number == 5 || $question->number == 10) {
+                    $point = ReversePoint::PSS($answer);
+                } else {
+                    $point = $answer;
+                }
+            } elseif ($question->survey_id == 2) {
+                if ($question->number == 10 || $question->number == 12) {
+                    $point = ReversePoint::MCS($answer);
+                } else {
+                    $point = $answer;
+                }
+            } else {
+                $point = $answer;
+            }
+
             $question->patients()->attach($user->userable_id, [
                 'answer' => $answer,
+                'point' => $point,
                 'order' => $order,
                 'survey_id' => $question->survey_id,
             ]);
