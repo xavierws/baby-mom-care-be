@@ -218,6 +218,18 @@ class KontrolController extends Controller
         ]);
     }
 
+    public function patient_note(Request $request)
+    {
+        $kontrol = Kontrol::find($request->id);
+        $kontrol->note = $request->input('note');
+        $kontrol->save();
+
+        return response()->json([
+            'message' => 'kontrol is updated'
+        ]);
+    }
+    
+
     public function delete(Request $request)
     {
         if ($request->mode == 'resume') {

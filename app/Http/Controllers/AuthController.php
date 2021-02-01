@@ -220,11 +220,13 @@ class AuthController extends Controller
         $user = $request->user();
 
         if (!Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'username' => ['The provided credentials are incorrect.'],
+            return response()->json([
+                'errors' => 'asdaasd',
+                'message' => 'password lama salah'
             ]);
         }
 
+        //kasih enkripsi
         $user->password = $request->input('new_password');
         $user->save();
 
