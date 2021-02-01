@@ -134,7 +134,7 @@ class QuizController extends Controller
 
     public function search(Request $request)
     {
-        return QuizRes::collection(Quiz::where('title', 'LIKE', '%' . $request->keyword . '%')->get());
+        return Quiz::where('title', 'LIKE', '%' . $request->keyword . '%')->get();
     }
 
     public function storeAnswer(Request $request)
