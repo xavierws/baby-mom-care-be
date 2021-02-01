@@ -229,15 +229,15 @@ class AdminController extends Controller
                         'legendFontColor'=> "#7F7F7F",
                         'legendFontSize'=> 15
                     ];
-                   
+
                 }
                 $data2[] = [
-                    'question'=>"nama question",
+                    'question' => $question->question,
                     'jawaban' => $data
                 ];
             }
             $data3[] = [
-                'survey'=>"nama survey",
+                'survey' => $survey->title,
                 'pertanyaan' => $data2
             ];
         }
