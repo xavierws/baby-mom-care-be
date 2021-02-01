@@ -52,4 +52,5 @@ class NurseController extends Controller
             'message' =>  'nurse\'s data is updated'
         ]);
     }
+   
 }

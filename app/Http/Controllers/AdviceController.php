@@ -75,8 +75,8 @@ class AdviceController extends Controller
         $now = now();
         $data = array();
         $i = 0;
-
-        if ($request->user_type == 'patient') {
+        $user = $request->user();
+        if ($user->user_type == 'patient') {
             $notification = NotificationLog::where('type', 'advice')->orderBy('created_at', 'desc')->get();
             foreach ($notification as $log) {
                 $date = Carbon::parse($log->created_at);
@@ -89,7 +89,7 @@ class AdviceController extends Controller
         } else {
             $notification = NotificationLog::where('type', 'kontrol')->orderBy('created_at', 'desc')->get();
             foreach ($notification as $log) {
-                if ($log->nurse_id == $request->nurse_id) {
+                if ($log->nurse_id == $user->id) {
                     $data[$i] = $log;
                     $i++;
                 }

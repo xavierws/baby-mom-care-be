@@ -225,7 +225,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $user->password = Hash::make($request->input('new_password'));
+        $user->password = $request->input('new_password');
         $user->save();
 
         return response()->json([

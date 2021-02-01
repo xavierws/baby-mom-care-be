@@ -79,6 +79,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('kontrol/update', [KontrolController::class, 'update']);
     //add nurse note
     Route::put('kontrol/nurse_note', [KontrolController::class, 'nurse_note']);
+    Route::put('kontrol/patient_note', [KontrolController::class, 'patient_note']);
     //delete kontrol
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
@@ -183,6 +184,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/remove-relation', [AdminController::class, 'removeRelation']);
     //show specific nurse
     Route::post('admin/nurse/show', [AdminController::class, 'showNurse']);
+    Route::delete('admin/nurse/delete', [AdminController::class, 'destroyNurse']);
     //show all patient that belongs to the nurse
     Route::post('admin/nurse/relation', [AdminController::class, 'showNurseRelation']);
     //show pie chart data
@@ -224,5 +226,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('chat/show-message', [ChatController::class, 'show']);
     //set chat to read
     Route::post('chat/read-message', [ChatController::class, 'setToRead']);
-
+    Route::get('chat/getunread', [ChatController::class, 'getunread']);
 });

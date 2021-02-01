@@ -55,13 +55,26 @@ class ChatController extends Controller
 
         if ($chats) {
             foreach ($chats as $chat) {
-                $chat->is_read = true;
+                $chat->is_read = 1;
                 $chat->save();
             }
         }
+        return response()->json([
+            'message' => 'ok'
+        ]);
+       
+    }
 
-        $data = request('receiver_id', $receiverId);
+    public function getunread(Request $request)
+    {
+        $receiverId = $request->user()->id;
+        $chats = Chat::where([
+            ['receiver_id', $receiverId],
+            ['is_read', 0]
+        ])->get();
 
-        return $this->show($data);
+        return response()->json([
+            'data' => count($chats)
+        ]);
     }
 }
