@@ -14,7 +14,7 @@ class CreateNursePatientTable extends Migration
     public function up()
     {
         Schema::create('nurse_patient', function (Blueprint $table) {
-//            $table->id();
+            $table->id();
             $table->foreignId('nurse_id')->constrained('nurse_profiles');
             $table->foreignId('patient_id')->constrained('patient_profiles');
             $table->timestamps();

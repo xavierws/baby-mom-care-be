@@ -224,5 +224,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('chat/show-message', [ChatController::class, 'show']);
     //set chat to read
     Route::post('chat/read-message', [ChatController::class, 'setToRead']);
-
+    Route::get('chat/getunread', [ChatController::class, 'getunread']);
 });
