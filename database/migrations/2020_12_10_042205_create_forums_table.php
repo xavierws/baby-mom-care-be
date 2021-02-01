@@ -17,7 +17,7 @@ class CreateForumsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('question');
-            $table->foreignId('user_id')
+            $table->foreignId('user_id')->nullable()
                 ->constrained('users')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
