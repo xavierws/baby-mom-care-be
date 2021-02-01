@@ -11,6 +11,11 @@ use App\Http\Resources\Quiz as QuizRes;
 
 class QuizController extends Controller
 {
+    public function index()
+    {
+        return Quiz::all();
+    }
+
     public function show(Request $request)
     {
         return new QuizRes(Quiz::find($request->id));
@@ -20,7 +25,7 @@ class QuizController extends Controller
     {
         $request->validate([
             'materi_id' => 'required',
-//            'title' => 'required',
+            'title' => 'required',
             //'data.*.question' => 'required',
             //'data.*.choice1' => 'required',
             //'data.*.choice2' => 'required',
@@ -28,7 +33,7 @@ class QuizController extends Controller
         ]);
 
         Quiz::create([
-            'title' => Materi::find($request->input('materi_id'))->value('title'),
+            'title' => $request->input('title'),
             'materi_id' => $request->input('materi_id'),
         ]);
 
@@ -125,6 +130,11 @@ class QuizController extends Controller
         return response()->json([
             'message' => 'quiz is updated',
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        return QuizRes::collection(Quiz::where('title', 'LIKE', '%' . $request->keyword . '%')->get());
     }
 
     public function storeAnswer(Request $request)

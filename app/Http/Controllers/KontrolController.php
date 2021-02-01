@@ -44,8 +44,15 @@ class KontrolController extends Controller
         ]);
     }
 
-    public function search()
-    { }
+    public function search(Request $request)
+    {
+        return KontrolRes::collection(
+            Kontrol::where('order', $request->keyword)
+            ->orWhere('note', 'LIKE', '%' . $request->keyword . '%')
+            ->orWhere('nurse_note', 'LIKE', '%' . $request->keyword . '%')
+            ->get()
+        );
+    }
 
     public function show(Request $request)
     {
@@ -228,7 +235,7 @@ class KontrolController extends Controller
             'message' => 'kontrol is updated'
         ]);
     }
-    
+
 
     public function delete(Request $request)
     {

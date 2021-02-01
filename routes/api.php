@@ -83,6 +83,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //delete kontrol
     Route::delete('kontrol/delete', [KontrolController::class, 'delete']);
     //search kontrol
+    Route::post('kontrol/search', [KontrolController::class, 'search']);
 
     //category
     //list category
@@ -108,6 +109,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //delete materi
     Route::delete('materi/delete', [MateriController::class, 'delete']);
     //search materi
+    Route::post('materi/search', [MateriController::class, 'search']);
 
     //quiz
     //store quiz
@@ -124,6 +126,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('quiz/answer/show', [QuizController::class, 'showAnswer']);
     //show quiz status to specific user
     Route::post('quiz/status', [QuizController::class, 'showStatus']);
+    //search quiz
+    Route::post('quiz/search', [QuizController::class, 'search']);
+    //list all quiz
+    Route::post('quiz/index', [QuizController::class, 'index']);
 
     //topic
     //list topic

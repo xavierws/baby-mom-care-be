@@ -224,6 +224,15 @@ class MateriController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        return MateriRes::collection(
+            Materi::where('title', 'LIKE', '%' . $request->keyword . '%')
+            ->orWhere('content', 'LIKE', '%' . $request->keyword . '%')
+            ->get()
+        );
+    }
+
     public function listMateri()
     {
         $materi = Materi::all();
