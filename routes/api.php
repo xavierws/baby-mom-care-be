@@ -183,6 +183,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/remove-relation', [AdminController::class, 'removeRelation']);
     //show specific nurse
     Route::post('admin/nurse/show', [AdminController::class, 'showNurse']);
+    Route::delete('admin/nurse/delete', [AdminController::class, 'destroyNurse']);
     //show all patient that belongs to the nurse
     Route::post('admin/nurse/relation', [AdminController::class, 'showNurseRelation']);
     //show pie chart data

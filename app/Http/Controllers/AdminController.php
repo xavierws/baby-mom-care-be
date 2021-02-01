@@ -133,7 +133,15 @@ class AdminController extends Controller
 
     public function showPatient()
     { }
+    public function destroyNurse(Request $request)
+    {
+        $nurse = NurseProfile::find($request->id);
+        $nurse->delete();
 
+        return response()->json([
+            'message' =>  'nurse\'s data is deleted'
+        ]);
+    }
     public function showNurse(Request $request)
     {
         return new NurseRes(NurseProfile::find($request->id));
