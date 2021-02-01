@@ -27,7 +27,6 @@ class NurseProfile extends JsonResource
             'username' => $this->user->username,
             'hospital_id' => $this->hospital_id,
             'role' => $this->user->user_role,
-            'user_id' => $this->user->id
         ];
     }
 }
