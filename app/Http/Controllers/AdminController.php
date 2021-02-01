@@ -216,7 +216,7 @@ class AdminController extends Controller
             foreach ($survey->questions as $question) {
                 for ($i = 0; $i<=4; $i++) {
                     $count = DB::table('patient_survey')->where([
-                        ['survey_id', $survey->id],
+//                        ['survey_id', $survey->id],
                         ['question_id', $question->id],
                         ['answer', $i+1]
                     ])->count();
