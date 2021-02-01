@@ -129,7 +129,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //search quiz
     Route::post('quiz/search', [QuizController::class, 'search']);
     //list all quiz
-    Route::post('quiz/index', [QuizController::class, 'index']);
+    Route::get('quiz/index', [QuizController::class, 'index']);
 
     //topic
     //list topic
