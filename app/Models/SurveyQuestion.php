@@ -14,6 +14,7 @@ class SurveyQuestion extends Model
     protected $fillable = [
         'question',
         'survey_id',
+        'number',
     ];
 
     public function survey()
@@ -25,6 +26,6 @@ class SurveyQuestion extends Model
     {
         return $this->belongsToMany(PatientProfile::class, 'patient_survey', 'question_id', 'patient_id')
             ->withTimestamps()
-            ->withPivot('answer', 'survey_id', 'order');
+            ->withPivot('answer', 'point', 'survey_id', 'order');
     }
 }
