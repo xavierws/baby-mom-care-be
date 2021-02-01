@@ -122,9 +122,9 @@ class AdminController extends Controller
     {
         $nurse = NurseProfile::find($request->nurse_id);
 
-        foreach ($request->patients as $patient) {
-            $nurse->patients()->detach($patient);
-        }
+      
+            $nurse->patients()->detach($request->patient_id);
+       
 
         return response()->json([
             'message' => 'relation is removed',
