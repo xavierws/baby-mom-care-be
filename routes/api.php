@@ -191,6 +191,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('admin/survey/chart', [AdminController::class, 'showDataSurvey']);
     //promote nurse to admin
     Route::put('admin/promote', [AdminController::class, 'promoteAdmin']);
+    Route::put('admin/demote', [AdminController::class, 'demoteAdmin']);
     //list point for specific patient
     Route::post('admin/quiz/list', [AdminController::class, 'listQuiz']);
     //list survey that has been done by patient

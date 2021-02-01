@@ -180,6 +180,30 @@ class AdminController extends Controller
         ]);
     }
 
+    public function demoteAdmin(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if ($user->role_id == 10) {
+            throw ValidationException::withMessages([
+                'message' => 'user is not a nurse'
+            ]);
+        }
+
+        if ($user->role_id == 20) {
+            return response()->json([
+                'message' => 'user is already an nurse'
+            ]);
+        }
+
+        $user->role_id = 20;
+        $user->save();
+
+        return response()->json([
+            'message' => 'user is demoted to nurse',
+        ]);
+    }
+
     public function showDataSurvey()
     {
         $surveys = Survey::all();
