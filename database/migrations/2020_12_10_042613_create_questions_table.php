@@ -16,7 +16,10 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->foreignId('quiz_id')->constrained('quizzes');
+            $table->foreignId('quiz_id')
+                ->constrained('quizzes')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

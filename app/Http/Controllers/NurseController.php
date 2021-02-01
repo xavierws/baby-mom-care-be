@@ -31,6 +31,8 @@ class NurseController extends Controller
     public function destroyPatient(Request $request)
     {
         $patient = PatientProfile::find($request->id);
+        $user = $patient->user;
+        $user->delete();
         $patient->delete();
 
         return response()->json([
@@ -52,5 +54,5 @@ class NurseController extends Controller
             'message' =>  'nurse\'s data is updated'
         ]);
     }
-   
+
 }

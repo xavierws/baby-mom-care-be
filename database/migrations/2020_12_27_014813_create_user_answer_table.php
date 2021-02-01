@@ -15,11 +15,23 @@ class CreateUserAnswerTable extends Migration
     {
         Schema::create('user_answer', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patient_profiles');
-            $table->foreignId('answer_id')->constrained('question_choices');
+            $table->foreignId('patient_id')
+                ->constrained('patient_profiles')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('answer_id')
+                ->constrained('question_choices')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->integer('point');
-            $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('quiz_id')->constrained('quizzes');
+            $table->foreignId('question_id')
+                ->constrained('questions')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('quiz_id')
+                ->constrained('quizzes')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }

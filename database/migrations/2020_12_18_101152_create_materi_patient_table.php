@@ -15,8 +15,14 @@ class CreateMateriPatientTable extends Migration
     {
         Schema::create('materi_patient', function (Blueprint $table) {
 //            $table->id();
-            $table->foreignId('materi_id')->constrained('materis');
-            $table->foreignId('patient_id')->constrained('patient_profiles');
+            $table->foreignId('materi_id')
+                ->constrained('materis')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId('patient_id')
+                ->constrained('patient_profiles')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

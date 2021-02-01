@@ -12,12 +12,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MateriController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NurseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NurseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042205_create_forums_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042205_create_forums_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042207_create_materis_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042229_create_quizzes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042229_create_quizzes_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042350_create_survey_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042350_create_survey_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042436_create_kontrols_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042613_create_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042613_create_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042654_create_question_choices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042654_create_question_choices_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042812_create_notification_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_101152_create_materi_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_105510_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_105510_create_comments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_014813_create_user_answer_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_014813_create_user_answer_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_024303_create_patient_survey_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_024303_create_patient_survey_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

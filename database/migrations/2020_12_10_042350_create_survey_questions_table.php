@@ -16,7 +16,11 @@ class CreateSurveyQuestionsTable extends Migration
         Schema::create('survey_questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->foreignId('survey_id')->constrained('surveys');
+            $table->foreignId('survey_id')
+                ->constrained('surveys')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->integer('number');
             $table->timestamps();
         });
     }

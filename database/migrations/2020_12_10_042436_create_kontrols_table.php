@@ -22,13 +22,14 @@ class CreateKontrolsTable extends Migration
             $table->float('length')->nullable();
             $table->float('lingkar_kepala')->nullable();
             $table->float('temperature');
-            $table->foreignId('patient_profile_id');
+            $table->foreignId('patient_profile_id')
+                ->constrained('patient_profiles')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->string('note', 500)->nullable();
             $table->string('nurse_note', 500)->nullable();
             $table->string('mode');
             $table->timestamps();
-
-            $table->foreign('patient_profile_id')->references('id')->on('patient_profiles');
         });
     }
 

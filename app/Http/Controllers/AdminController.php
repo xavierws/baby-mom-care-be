@@ -122,9 +122,9 @@ class AdminController extends Controller
     {
         $nurse = NurseProfile::find($request->nurse_id);
 
-      
+
             $nurse->patients()->detach($request->patient_id);
-       
+
 
         return response()->json([
             'message' => 'relation is removed',
@@ -136,6 +136,8 @@ class AdminController extends Controller
     public function destroyNurse(Request $request)
     {
         $nurse = NurseProfile::find($request->id);
+        $user = $nurse->user;
+        $user->delete();
         $nurse->delete();
 
         return response()->json([
