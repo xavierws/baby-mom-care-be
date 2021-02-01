@@ -28,6 +28,7 @@ class SurveyController extends Controller
             $data[$i] = [
                 'id' => $question->id,
                 'question' => $question->question,
+                'number' => $question->number,
             ];
             $i++;
         }
@@ -55,6 +56,7 @@ class SurveyController extends Controller
             SurveyQuestion::create([
                 'question' => $question,
                 'survey_id' => $survey_id,
+                'number' => $i+1,
             ]);
             $i++;
         }
