@@ -49,36 +49,38 @@ class NurseController extends Controller
     {
         $nurseId = $request->user()->userable_id;
         $patients = NurseProfile::find($nurseId)->patients;
-//            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->get();
+        //            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->get();
 
-//        $patient = DB::table('nurse_profiles')
-//            ->join('nurse_patient', 'nurse_patient.nurse_id', '=', 'nurse_profiles.id')
-//            ->join('patient_profiles', 'nurse_patient.patient_id', '=', 'patient_profiles.id')
-//            ->where('nurse_profiles.id', '=', $nurseId)
-//            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
-//            ->get();
+        //        $patient = DB::table('nurse_profiles')
+        //            ->join('nurse_patient', 'nurse_patient.nurse_id', '=', 'nurse_profiles.id')
+        //            ->join('patient_profiles', 'nurse_patient.patient_id', '=', 'patient_profiles.id')
+        //            ->where('nurse_profiles.id', '=', $nurseId)
+        //            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+        //            ->get();
 
         $data = array();
         $i = 0;
         foreach ($patients as $patient) {
-            if (
-                stripos($patient->mother_name, $request->keyword) !== false ||
-                stripos($patient->baby_name, $request->keyword) !== false ||
-                stripos($patient->father_name, $request->keyword) !== false
-            ) {
-                $data[$i] = [
-                    'id' => $patient->id,
-                    'mother_name' => $patient->mother_name,
-                    'baby_name' => $patient->baby_name,
-                    'born_weight' => $patient->born_weight,
-                    'user_id' => $patient->user->id,
-                ];
-                $i++;
+            if ($request->keyword) {
+                if (
+                    stripos($patient->mother_name, $request->keyword) !== false ||
+                    stripos($patient->baby_name, $request->keyword) !== false ||
+                    stripos($patient->father_name, $request->keyword) !== false
+                ) {
+                    $data[$i] = [
+                        'id' => $patient->id,
+                        'mother_name' => $patient->mother_name,
+                        'baby_name' => $patient->baby_name,
+                        'born_weight' => $patient->born_weight,
+                        'user_id' => $patient->user->id,
+                    ];
+                    $i++;
+                }
             }
         }
 
@@ -99,5 +101,4 @@ class NurseController extends Controller
             'message' =>  'nurse\'s data is updated'
         ]);
     }
-
 }
