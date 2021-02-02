@@ -43,6 +43,18 @@ class NurseController extends Controller
         ]);
     }
 
+    public function searchPatient(Request $request)
+    {
+        $nurseId = $request->user()->userable_id;
+        $patient = NurseProfile::find($nurseId)->patients()
+            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+            ->get();
+
+        return PatientRes::collection($patient);
+    }
+
     public function update(Request $request)
     {
         $nurse = NurseProfile::find($request->id);

@@ -170,10 +170,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
 
     //nurse - dashboard
+    //list patient that related to the nurse
     Route::post('nurse/index', [NurseController::class, 'listPatient']);
+    //show specific patient
     Route::post('nurse/show', [NurseController::class, 'showPatient']);
+    //delete patient
     Route::delete('nurse/delete', [NurseController::class, 'destroyPatient']);
+    //update nurse's data
     Route::put('nurse/data/update', [NurseController::class, 'update']);
+    //search patient that related to the nurse
+    Route::post('nurse/search-patient', [NurseController::class, 'searchPatient']);
 
     //admin - dashboard
     //list all nurse that has not been approved
@@ -186,6 +192,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     Route::post('admin/list/patient-nurse2', [AdminController::class, 'listPatient2']);
     Route::post('admin/list/patient-nurse3', [AdminController::class, 'listPatient3']);
+    //search Patient
+    Route::post('admin/search-patient', [AdminController::class, 'searchPatient']);
     //add relation between nurse and patient
     Route::post('admin/add-relation', [AdminController::class, 'addRelation']);
     //remove relation between nurse and patient

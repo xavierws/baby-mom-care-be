@@ -107,6 +107,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function searchPatient(Request $request)
+    {
+        PatientRes::collection(
+            PatientProfile::where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+                ->get()
+        );
+    }
+
     public function addRelation(Request $request)
     {
         $nurse = NurseProfile::find($request->nurse_id);
