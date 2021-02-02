@@ -48,9 +48,9 @@ class KontrolController extends Controller
     {
         return KontrolRes::collection(
             Kontrol::where('order', $request->keyword)
-            ->orWhere('note', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('nurse_note', 'LIKE', '%' . $request->keyword . '%')
-            ->get()
+                ->orWhere('note', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('nurse_note', 'LIKE', '%' . $request->keyword . '%')
+                ->get()
         );
     }
 
@@ -251,7 +251,7 @@ class KontrolController extends Controller
             $image->delete();
             $kontrol->delete();
         } else {
-            $kontrol = Kontrol::where('patient_profile_id', $request->id)->first();
+            $kontrol = Kontrol::where('patient_profile_id', $request->id)->where('mode', 'kontrol')->first();
             $image = $kontrol->image;
 
             Storage::delete($image->filename);
