@@ -123,7 +123,7 @@ class AdminController extends Controller
         $nurse = NurseProfile::find($request->nurse_id);
 
 
-            $nurse->patients()->detach($request->patient_id);
+        $nurse->patients()->detach($request->patient_id);
 
 
         return response()->json([
@@ -133,10 +133,14 @@ class AdminController extends Controller
 
     public function showPatient()
     { }
+
     public function destroyNurse(Request $request)
     {
         $nurse = NurseProfile::find($request->id);
         $user = $nurse->user;
+
+        $nurse->patients()->detach();
+
         $user->delete();
         $nurse->delete();
 

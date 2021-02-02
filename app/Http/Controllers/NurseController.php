@@ -32,6 +32,9 @@ class NurseController extends Controller
     {
         $patient = PatientProfile::find($request->id);
         $user = $patient->user;
+
+        $patient->nurses()->detach();
+
         $user->delete();
         $patient->delete();
 
