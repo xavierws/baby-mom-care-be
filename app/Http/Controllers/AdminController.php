@@ -123,7 +123,7 @@ class AdminController extends Controller
         $nurse = NurseProfile::find($request->nurse_id);
 
 
-            $nurse->patients()->detach($request->patient_id);
+        $nurse->patients()->detach($request->patient_id);
 
 
         return response()->json([
@@ -133,10 +133,14 @@ class AdminController extends Controller
 
     public function showPatient()
     { }
+
     public function destroyNurse(Request $request)
     {
         $nurse = NurseProfile::find($request->id);
         $user = $nurse->user;
+
+        $nurse->patients()->detach();
+
         $user->delete();
         $nurse->delete();
 
@@ -281,6 +285,7 @@ class AdminController extends Controller
     {
         $surveys = Survey::all();
 
+        $point = 0;
         $data = array();
         $n = 0;
         foreach ($surveys as $survey) {
@@ -292,14 +297,19 @@ class AdminController extends Controller
                 ]);
 
                 if ($answers->exists()) {
+                    foreach ($answers->get() as $answer) {
+                        $point = $point + $answer->point;
+                    }
                     $data[$n] = [
                         'survey_id' => $survey->id,
                         'survey' => $survey->title,
                         'order' => $i,
                         'patient_id' => $request->patient_id,
-                        'choice_type' => $survey->choice_type
+                        'choice_type' => $survey->choice_type,
+                        'point' => $point,
                     ];
                     $n++;
+                    $point = 0;
                 }
             }
         }
