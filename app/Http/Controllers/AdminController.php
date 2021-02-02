@@ -343,7 +343,7 @@ class AdminController extends Controller
 
     public function showUserLog()
     {
-        $userLog = UserLog::all()->orderBy('created_at', 'desc');
+        $userLog = UserLog::orderBy('created_at', 'desc')->get();
 
         return UserLogRes::collection($userLog);
     }
