@@ -152,6 +152,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('forum/delete', [ForumController::class, 'delete']);
     //add comment
     Route::post('forum/comment/store', [ForumController::class, 'storeComment']);
+    //search
+    Route::post('forum/search', [ForumController::class, 'search']);
 
     //advice
     //store advice

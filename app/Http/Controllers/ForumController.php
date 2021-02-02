@@ -125,6 +125,15 @@ class ForumController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        return ForumRes::collection(
+            Forum::where('title', 'LIKE', '%' . $request->keyword . '%')
+            ->orWhere('question', 'LIKE', '%' . $request->keyword . '%')
+            ->get()
+        );
+    }
+
     public function storeComment(Request $request)
     {
         $request->validate([
