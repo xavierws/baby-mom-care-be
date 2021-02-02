@@ -16,9 +16,10 @@ class UserLog extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=>$this->id,
             'log' => $this->log,
             'name' => $this->user->profile_name,
-            'time' => Carbon::parse($this->created_at)->format('Y-m-d'),
+            'created_at' => $this->created_at,
             'role' => $this->user->user_role,
             'hospital' => $this->user->userable->hospital->name,
         ];
