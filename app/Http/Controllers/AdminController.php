@@ -25,11 +25,11 @@ class AdminController extends Controller
 
     public function approveNurse(Request $request)
     {
-        foreach ($request->id as $id) {
-            $nurse = NurseProfile::find($id);
+      
+            $nurse = NurseProfile::find($request->id);
             $nurse->is_approved = true;
             $nurse->save();
-        }
+      
 
         return response()->json([
             'message' => 'nurse is approved',
