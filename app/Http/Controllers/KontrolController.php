@@ -251,7 +251,7 @@ class KontrolController extends Controller
             $image->delete();
             $kontrol->delete();
         } else {
-            $kontrol = Kontrol::where('patient_profile_id', $request->id)->first();
+            $kontrol = Kontrol::find($request->id);
             $image = $kontrol->image;
 
             Storage::delete($image->filename);
