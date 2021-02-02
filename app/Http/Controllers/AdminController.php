@@ -344,8 +344,7 @@ class AdminController extends Controller
     public function showUserLog(Request $request)
     {
         $userLog = UserLog::orderBy('created_at', 'desc')
-            ->offset($request->offset)
-            ->limit(10)
+            ->limit($request->limit)
             ->get();
 
         return UserLogRes::collection($userLog);
