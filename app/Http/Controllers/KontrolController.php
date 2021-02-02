@@ -236,7 +236,6 @@ class KontrolController extends Controller
         ]);
     }
 
-
     public function delete(Request $request)
     {
         if ($request->mode == 'resume') {
