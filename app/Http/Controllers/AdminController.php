@@ -109,7 +109,7 @@ class AdminController extends Controller
 
     public function searchPatient(Request $request)
     {
-        PatientRes::collection(
+        return PatientRes::collection(
             PatientProfile::where('mother_name', 'LIKE', '%' . $request->keyword . '%')
                 ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
                 ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
