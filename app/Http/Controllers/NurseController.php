@@ -63,19 +63,26 @@ class NurseController extends Controller
 //            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
 //            ->get();
 
+        $data = array();
+        $i = 0;
         foreach ($patients as $patient) {
             if (
                 stripos($patient->mother_name, $request->keyword) !== false ||
                 stripos($patient->baby_name, $request->keyword) !== false ||
                 stripos($patient->father_name, $request->keyword) !== false
             ) {
-                return PatientRes::collection($patient);
+                $data[$i] = [
+                    'id' => $patient->id,
+                    'mother_name' => $patient->mother_name,
+                    'baby_name' => $patient->baby_name,
+                    'born_weight' => $patient->born_weight,
+                    'user_id' => $patient->user->id,
+                ];
+                $i++;
             }
         }
 
-        return response()->json([
-            'message' => 'no patient'
-        ]);
+        return response($data);
     }
 
     public function update(Request $request)
