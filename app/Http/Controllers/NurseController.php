@@ -7,6 +7,7 @@ use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 use App\Http\Resources\PatientProfile as PatientRes;
+use Illuminate\Support\Facades\DB;
 
 class NurseController extends Controller
 {
@@ -28,6 +29,7 @@ class NurseController extends Controller
 
         return new PatientRes($patient);
     }
+
     public function destroyPatient(Request $request)
     {
         $patient = PatientProfile::find($request->id);
@@ -46,7 +48,16 @@ class NurseController extends Controller
     public function searchPatient(Request $request)
     {
         $nurseId = $request->user()->userable_id;
-        $patient = NurseProfile::find($nurseId)->patients()
+//        $patient = NurseProfile::find($nurseId)->patients()
+//            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->get();
+
+        $patient = DB::table('nurse_profiles')
+            ->join('nurse_patient', 'nurse_patient.nurse_id', '=', 'nurse_profiles.id')
+            ->join('patient_profiles', 'nurse_patient.patient_id', '=', 'patient_profiles.id')
+            ->where('nurse_profiles.id', '=', $nurseId)
             ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
