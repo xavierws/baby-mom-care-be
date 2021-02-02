@@ -72,7 +72,7 @@ class MateriController extends Controller
             $image->save();
         }
 
-     
+
         return response()->json([
             'message' => 'category is updated'
         ]);
@@ -197,10 +197,11 @@ class MateriController extends Controller
         $materi->doc_url = $request->input('doc_url');
         //        $materi->forum_id = $request->input('forum_id');
         $materi->save();
-        if ($request->base64_img) {
+
+        if ($request->input('base64_image') != "") {
             $image = $materi->image;
             Storage::delete($image->filename);
-            $newImg = base64_decode($request->input('base64_img'));
+            $newImg = base64_decode($request->input('base64_image'));
             $str = Str::random(10);
             $filename = 'public/materi/' . (string) $materi->id . $request->input('title') . '$' . $str . '.jpg';
             Storage::put($filename, $newImg);
