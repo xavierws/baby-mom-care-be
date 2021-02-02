@@ -98,7 +98,7 @@ class KontrolController extends Controller
                 $ambil = 1;
             }
         } else {
-            $order = $kontrol1->count() + 1;
+            $order = $kontrol1->order + 1;
             $ambil = 1;
         }
 
