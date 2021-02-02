@@ -69,7 +69,7 @@ class NurseController extends Controller
                 stripos($patient->baby_name, $request->keyword) !== false ||
                 stripos($patient->father_name, $request->keyword) !== false
             ) {
-                return new PatientRes($patient);
+                return PatientRes::collection($patient);
             }
         }
 
