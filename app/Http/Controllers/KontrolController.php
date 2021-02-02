@@ -236,6 +236,7 @@ class KontrolController extends Controller
         ]);
     }
 
+
     public function delete(Request $request)
     {
         if ($request->mode == 'resume') {
@@ -250,13 +251,14 @@ class KontrolController extends Controller
             $image->delete();
             $kontrol->delete();
         } else {
-            $kontrol = Kontrol::find($request->id);
+            $kontrol = Kontrol::where('patient_profile_id', $request->id)->first();
             $image = $kontrol->image;
 
             Storage::delete($image->filename);
             $image->delete();
             $kontrol->delete();
         }
+
 
         return response()->json([
             'message' => 'kontrol is deleted'
