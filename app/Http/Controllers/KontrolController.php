@@ -197,7 +197,7 @@ class KontrolController extends Controller
         $kontrol->temperature = $request->input('temperature');
         $kontrol->note = $request->input('note');
         $kontrol->save();
-        if ($request->input('base64_img') != "") {
+        if ($request->has('base64_img')) {
             $image = $kontrol->image;
 
             Storage::delete($image->filename);
