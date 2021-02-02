@@ -204,6 +204,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/survey/list', [AdminController::class, 'listSurvey']);
     //show survey answer
     Route::post('admin/survey/show', [AdminController::class, 'showSurvey']);
+    //show user log
+    Route::get('admin/user/log', [AdminController::class, 'showUserLog']);
 
     //patient
     //list all nurses that related to patient

@@ -10,6 +10,8 @@ use App\Models\Quiz;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use App\Models\User;
+use App\Models\UserLog;
+use App\Http\Resources\UserLog as UserLogRes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -337,5 +339,12 @@ class AdminController extends Controller
         }
 
         return response($data);
+    }
+
+    public function showUserLog()
+    {
+        $userLog = UserLog::all()->orderBy('created_at', 'desc');
+
+        return UserLogRes::collection($userLog);
     }
 }

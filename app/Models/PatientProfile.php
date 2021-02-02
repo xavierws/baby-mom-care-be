@@ -53,6 +53,11 @@ class PatientProfile extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
+    public function hospital()
+    {
+        return $this->belongsTo(Hospital::class);
+    }
+
     public function kontrols()
     {
         return $this->hasMany(Kontrol::class, 'patient_profile_id');
