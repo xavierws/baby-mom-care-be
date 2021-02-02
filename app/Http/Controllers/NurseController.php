@@ -65,9 +65,9 @@ class NurseController extends Controller
 
         foreach ($patients as $patient) {
             if (
-                stripos($patient->mother_name, $request->keyword) ||
-                stripos($patient->baby_name, $request->keyword) ||
-                stripos($patient->father_name, $request->keyword)
+                stripos($patient->mother_name, $request->keyword) !== false ||
+                stripos($patient->baby_name, $request->keyword) !== false ||
+                stripos($patient->father_name, $request->keyword) !== false
             ) {
                 return new PatientRes($patient);
             }
