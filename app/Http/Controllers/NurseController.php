@@ -48,22 +48,34 @@ class NurseController extends Controller
     public function searchPatient(Request $request)
     {
         $nurseId = $request->user()->userable_id;
-//        $patient = NurseProfile::find($nurseId)->patients()
+        $patients = NurseProfile::find($nurseId)->patients;
 //            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
 //            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
 //            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
 //            ->get();
 
-        $patient = DB::table('nurse_profiles')
-            ->join('nurse_patient', 'nurse_patient.nurse_id', '=', 'nurse_profiles.id')
-            ->join('patient_profiles', 'nurse_patient.patient_id', '=', 'patient_profiles.id')
-            ->where('nurse_profiles.id', '=', $nurseId)
-            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
-            ->get();
+//        $patient = DB::table('nurse_profiles')
+//            ->join('nurse_patient', 'nurse_patient.nurse_id', '=', 'nurse_profiles.id')
+//            ->join('patient_profiles', 'nurse_patient.patient_id', '=', 'patient_profiles.id')
+//            ->where('nurse_profiles.id', '=', $nurseId)
+//            ->where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+//            ->get();
 
-        return $patient;
+        foreach ($patients as $patient) {
+            if (
+                stripos($patient->mother_name, $request->keyword) ||
+                stripos($patient->baby_name, $request->keyword) ||
+                stripos($patient->father_name, $request->keyword)
+            ) {
+                return new PatientRes($patient);
+            }
+        }
+
+        return response()->json([
+            'message' => 'no patient'
+        ]);
     }
 
     public function update(Request $request)
