@@ -27,11 +27,11 @@ class AdminController extends Controller
 
     public function approveNurse(Request $request)
     {
-      
+
             $nurse = NurseProfile::find($request->id);
             $nurse->is_approved = true;
             $nurse->save();
-      
+
 
         return response()->json([
             'message' => 'nurse is approved',
@@ -341,9 +341,12 @@ class AdminController extends Controller
         return response($data);
     }
 
-    public function showUserLog()
+    public function showUserLog(Request $request)
     {
-        $userLog = UserLog::orderBy('created_at', 'desc')->get();
+        $userLog = UserLog::orderBy('created_at', 'desc')
+            ->offset($request->offset)
+            ->limit(10)
+            ->get();
 
         return UserLogRes::collection($userLog);
     }
