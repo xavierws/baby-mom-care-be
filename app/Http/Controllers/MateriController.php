@@ -59,20 +59,30 @@ class MateriController extends Controller
         $category->name = $request->input('name');
         $category->save();
 
-        if ($request->base64_image) {
+        if ($request->has('base64_image')) {
             $image = $category->image;
             if ($image) {
                 Storage::delete($image->filename);
+                $newImg = base64_decode($request->base64_image);
+                $str = Str::random(10);
+                $filename = 'public/category/' . (string) $category->id . $request->input('name') . '$' . $str . '.jpg';
+                Storage::put($filename, $newImg);
+                $image->filename = $filename;
+                $image->save();
+            } else {
+                $newImg = base64_decode($request->base64_image);
+                $str = Str::random(10);
+                $filename = 'public/category/' . (string) $category->id . $request->input('name') . '$' . $str . '.jpg';
+                Storage::put($filename, $newImg);
+                Image::create([
+                    'filename' => $filename,
+                    'imageable_id' => $request->id,
+                    'imageable_type' => 'App\Models\Category'
+                ]);
             }
-            $newImg = base64_decode($request->base64_image);
-            $str = Str::random(10);
-            $filename = 'public/category/' . (string) $category->id . $request->input('name') . '$' . $str . '.jpg';
-            Storage::put($filename, $newImg);
-            $image->filename = $filename;
-            $image->save();
         }
 
-     
+
         return response()->json([
             'message' => 'category is updated'
         ]);
