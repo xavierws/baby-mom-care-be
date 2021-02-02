@@ -58,7 +58,7 @@ class MateriController extends Controller
         $category = Category::find($request->input('id'));
         $category->name = $request->input('name');
         $category->save();
-        
+
         if ($request->base64_image) {
             $image = $category->image;
             if ($image) {
@@ -197,7 +197,7 @@ class MateriController extends Controller
         $materi->doc_url = $request->input('doc_url');
         //        $materi->forum_id = $request->input('forum_id');
         $materi->save();
-        if ($request->input('image') != "") {
+        if ($request->base64_img) {
             $image = $materi->image;
             Storage::delete($image->filename);
             $newImg = base64_decode($request->input('base64_img'));
