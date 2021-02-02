@@ -63,7 +63,7 @@ class NurseController extends Controller
             ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
             ->get();
 
-        return PatientRes::collection($patient);
+        return $patient;
     }
 
     public function update(Request $request)
