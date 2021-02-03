@@ -157,7 +157,7 @@ class MateriController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'base64_img' => 'required',
+            'base64_image' => 'required',
             'category_id' => 'required',
         ]);
 
@@ -173,7 +173,7 @@ class MateriController extends Controller
 
         $materiId = Materi::orderBy('id', 'desc')->pluck('id')->first();
 
-        $image = base64_decode($request->input('base64_img'));
+        $image = base64_decode($request->input('base64_image'));
         $str = Str::random(10);
         $filename = 'public/materi/' . (string) $materiId . $request->input('title') . '$' . $str . '.jpg';
         Storage::put($filename, $image);
