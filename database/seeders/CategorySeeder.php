@@ -15,12 +15,12 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['id' => 1, 'name' => 'Seputar BBLR', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 2, 'name' => 'Nutrisi', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 3, 'name' => 'Perawatan BBLR', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 4, 'name' => 'Kegawatan bayi', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 5, 'name' => 'Imunisasi', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 6, 'name' => 'Pertumbuhan dan perkembangan', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Seputar BBLR', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Nutrisi', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Perawatan BBLR', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Kegawatan bayi', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Imunisasi', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Pertumbuhan dan perkembangan', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
