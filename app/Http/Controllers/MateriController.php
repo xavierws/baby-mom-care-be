@@ -61,7 +61,7 @@ class MateriController extends Controller
 
         if ($request->has('base64_image')) {
             $image = $category->image;
-            if ($image) {
+            if ($image && $request->base64_image) {
                 Storage::delete($image->filename);
                 $newImg = base64_decode($request->base64_image);
                 $str = Str::random(10);
@@ -69,7 +69,7 @@ class MateriController extends Controller
                 Storage::put($filename, $newImg);
                 $image->filename = $filename;
                 $image->save();
-            } else {
+            } else if ($request->base64_image) {
                 $newImg = base64_decode($request->base64_image);
                 $str = Str::random(10);
                 $filename = 'public/category/' . (string) $category->id . $request->input('name') . '$' . $str . '.jpg';
