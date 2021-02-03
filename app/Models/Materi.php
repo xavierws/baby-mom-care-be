@@ -53,7 +53,7 @@ class Materi extends Model
 
         return [
             'title' => $this->forum->title,
-            'id' => $this->forum()->id,
+            'id' => $this->forum->id,
         ];
     }
 
