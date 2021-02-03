@@ -36,6 +36,21 @@ class ForumController extends Controller
         ]);
     }
 
+    public function listForum()
+    {
+        $data = array();
+        $i = 0;
+        foreach (Forum::all() as $forum) {
+            $data[$i] = [
+                'id' => $forum->id,
+                'name' => $forum->title,
+            ];
+            $i++;
+        }
+
+        return response($data);
+    }
+
     public function index(Request $request)
     {
         $request->validate([
@@ -62,6 +77,7 @@ class ForumController extends Controller
             'data' => $data,
         ]);
     }
+
     public function show(Request $request)
     {
         return new ForumRes(Forum::find($request->id));

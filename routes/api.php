@@ -144,6 +144,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('forum/store', [ForumController::class, 'store']);
     //list forum
     Route::post('forum/index', [ForumController::class, 'index']);
+    //list all forum
+    Route::get('forum/index/all', [ForumController::class, 'listForum']);
     //show specific forum
     Route::post('forum/show', [ForumController::class, 'show']);
     //update forum
