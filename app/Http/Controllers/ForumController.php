@@ -13,7 +13,18 @@ class ForumController extends Controller
 {
     public function listTopic()
     {
-        return response(Topic::all()->toArray());
+        $topics = Topic::all();
+        $n = 0;
+        foreach ($topics as $topic) {
+            $data[$n] = [
+                'id'  => $topic->id,
+                'name' => $topic->name,
+            ];
+            $n++;
+        }
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     public function addTopic(Request $request)
