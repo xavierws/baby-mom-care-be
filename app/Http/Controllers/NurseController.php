@@ -7,7 +7,9 @@ use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 use App\Http\Resources\PatientProfile as PatientRes;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class NurseController extends Controller
 {
@@ -91,6 +93,11 @@ class NurseController extends Controller
     {
         $nurse = NurseProfile::find($request->id);
         $nurse->name = $request->name;
+        if ($request->password) {
+            $nurse2 = User::find($nurse->user->id);
+            $nurse2->password = Hash::make($request->password);
+            $nurse2->save();
+        }
         $nurse->working_exp = $request->working_exp;
         $nurse->education = $request->education;
         $nurse->phone = $request->phone;

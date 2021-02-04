@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\NurseProfile as NurseRes;
+use App\Models\User;
 use App\Models\NurseProfile;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
@@ -55,6 +57,12 @@ class PatientController extends Controller
         }
         if ($request->phone) {
             $patient->phone = $request->phone;
+            $patient2 = User::find($patient->user->id);
+            $patient2->email = $request->email;
+            if ($request->password) {
+                $patient2->password = Hash::make($request->password);
+            }
+            $patient2->save();
         }
 
         $patient->save();
