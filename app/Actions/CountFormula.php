@@ -12,8 +12,8 @@ class CountFormula
 {
     public static function handle($kontrol1, $kontrol2)
     {
-        $date1 = Carbon::parse($kontrol1->created_at);
-        $date2 = Carbon::parse($kontrol2->created_at);
+        $date1 = Carbon::parse($kontrol1->date);
+        $date2 = Carbon::parse($kontrol2->date);
         $divisor = (float) $date2->diffInDays($date1);
         if ($divisor != 0) {
             $diffWeight = (float) $kontrol2->weight - (float) $kontrol1->weight;
@@ -32,8 +32,8 @@ class CountFormula
 
     public static function panjang($kontrol1, $kontrol2)
     {
-        $date1 = Carbon::parse($kontrol1->created_at);
-        $date2 = Carbon::parse($kontrol2->created_at);
+        $date1 = Carbon::parse($kontrol1->date);
+        $date2 = Carbon::parse($kontrol2->date);
         $divisor = (float) $date2->diffInWeeks($date1);
         if ($divisor != 0) {
             $diffLength = (float) $kontrol2->length - (float) $kontrol1->length;
@@ -52,8 +52,8 @@ class CountFormula
 
     public static function lingkar($kontrol1, $kontrol2)
     {
-        $date1 = Carbon::parse($kontrol1->created_at);
-        $date2 = Carbon::parse($kontrol2->created_at);
+        $date1 = Carbon::parse($kontrol1->date);
+        $date2 = Carbon::parse($kontrol2->date);
         $divisor = (float) $date2->diffInWeeks($date1);
         if ($divisor != 0) {
             $diffLingkar = (float) $kontrol2->lingkar_kepala - (float) $kontrol1->lingkar_kepala;
