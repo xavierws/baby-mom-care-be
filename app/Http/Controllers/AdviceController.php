@@ -89,7 +89,7 @@ class AdviceController extends Controller
         } else {
             $notification = NotificationLog::where('type', 'kontrol')->orderBy('created_at', 'desc')->get();
             foreach ($notification as $log) {
-                if ($log->nurse_id == $user->id) {
+                if ($log->nurse_id == $user->userable->id) {
                     $data[$i] = $log;
                     $i++;
                 }
