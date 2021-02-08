@@ -168,7 +168,7 @@ class QuizController extends Controller
         foreach ($quizzes as $quiz) {
             if ($quiz->pivot->quiz_id == $request->quiz_id) {
                 $data[$i] = [
-                    'question' => Question::find($quiz->question_id)->value('question'),
+                    'question' => Question::find($quiz->question_id)->question,
                     'point' => $quiz->pivot->point,
                 ];
                 $i++;
