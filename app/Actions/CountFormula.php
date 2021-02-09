@@ -20,10 +20,8 @@ class CountFormula
 
             if ($diffWeight / $divisor >= 15.0) {
                 return 'normal';
-            } elseif ($diffWeight / $divisor >= 13.5 && $diffWeight / $divisor < 15.0) {
+            } elseif ($diffWeight / $divisor < 15.0) {
                 return 'warning';
-            } else {
-                return 'danger';
             }
         } else {
             return 'belum';
@@ -40,10 +38,8 @@ class CountFormula
 
             if ($diffLength / $divisor >= 0.8 && $diffLength / $divisor <= 1) {
                 return 'normal';
-            } elseif ($diffLength / $divisor >= 0.72 && $diffLength / $divisor <= 1.1) {
-                return 'warning';
             } else {
-                return 'danger';
+                return 'warning';
             }
         } else {
             return 'belum';
@@ -60,10 +56,8 @@ class CountFormula
 
             if ($diffLingkar / $divisor >= 0.5 && $diffLingkar / $divisor <= 0.8) {
                 return 'normal';
-            } elseif ($diffLingkar / $divisor >= 0.45 && $diffLingkar / $divisor <= 0.88) {
-                return 'warning';
             } else {
-                return 'danger';
+                return 'warning';
             }
         } else {
             return 'belum';
