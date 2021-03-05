@@ -102,7 +102,7 @@ class KontrolController extends Controller
             $ambil = 1;
         }
 
-        Kontrol::create([
+        $kontrol = Kontrol::create([
             'order' => $order,
             'date' => $request->input('date'),
             'tempat_kontrol' => $request->input('tempat_kontrol'),
@@ -115,6 +115,10 @@ class KontrolController extends Controller
             'nurse_note' => $request->input('nurse_note'),
             'mode' => $request->input('mode'),
         ]);
+
+        if ($request->mode == 'resume') {
+            $kontrol->advices()->attach($request->advices);
+        }
 
         $kontrol2 = Kontrol::where('mode', 'kontrol')
             ->where('patient_profile_id', $patientId)
