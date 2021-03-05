@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Actions\showAdvices;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Kontrol extends JsonResource
@@ -26,6 +27,7 @@ class Kontrol extends JsonResource
             'image' => asset($this->image->filename),
             'note' => $this->note,
             'nurse_note' => $this->nurse_note,
+            'advices' => showAdvices::handle($this->advices),
         ];
     }
 }
