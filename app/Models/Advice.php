@@ -17,6 +17,11 @@ class Advice extends Model
         'description',
     ];
 
+    public function kontrols()
+    {
+        return $this->belongsToMany(Kontrol::class, 'advice_kontrol', 'advice_id', 'kontrol_id')
+            ->withTimestamps();
+    }
 //    public function notifications()
 //    {
 //        return $this->hasMany(NotificationLog::class);
