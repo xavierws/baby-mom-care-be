@@ -34,4 +34,10 @@ class Kontrol extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function advices()
+    {
+        return $this->belongsToMany(Advice::class, 'advice_kontrol', 'kontrol_id', 'advice_id')
+            ->withTimestamps();
+    }
 }
