@@ -11,11 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/seeders/dataset/MCS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/dataset/PSS.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/showAdvices.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_05_210817_create_advice_kontrol_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/SurveySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SurveySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Kontrol.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Kontrol.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Advice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Kontrol.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kontrol.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,6 +251,7 @@
       <workItem from="1613232987409" duration="1937000" />
       <workItem from="1613271664887" duration="641000" />
       <workItem from="1613273288074" duration="11000" />
+      <workItem from="1614952313066" duration="2393000" />
     </task>
     <servers />
   </component>
