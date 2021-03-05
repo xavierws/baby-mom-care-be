@@ -15,8 +15,8 @@ class CreateAdviceKontrolTable extends Migration
     {
         Schema::create('advice_kontrol', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('advice_id')->constrained();
-            $table->foreignId('kontrol_id')->constrained();
+            $table->foreignId('advice_id')->constrained('advices');
+            $table->foreignId('kontrol_id')->constrained('kontrols');
             $table->timestamps();
         });
     }
