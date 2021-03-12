@@ -60,7 +60,7 @@ class Kernel extends ConsoleKernel
                     $des = 'jangan lupa untuk mengisi kontrol';
                     PushNotification::handle($user->fcm_token, $title, $des);
 
-                    $user->marked_date = $now;
+                    $user->userable()->marked_date = $now;
                     $user->save();
                 }
             }
