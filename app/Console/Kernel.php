@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
                     PushNotification::handle($user->fcm_token, $title, $des);
 
                     $user->userable->marked_date = $now;
-                    $user->save();
+                    $user->userable->save();
                 }
             }
         })->everyMinute();
