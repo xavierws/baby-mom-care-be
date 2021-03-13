@@ -55,7 +55,7 @@ class Kernel extends ConsoleKernel
             foreach ($users as $user) {
                 $date = Carbon::parse($user->userable->marked_date);
 
-                if ($now->diffInDays($date) == 7 && $user->fcm_token) {
+                if ($now->diffInDays($date) == 1 && $user->fcm_token) {
                     $title = 'reminder kontrol';
                     $des = 'jangan lupa untuk mengisi kontrol';
                     PushNotification::handle($user->fcm_token, $title, $des);
