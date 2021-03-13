@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
             $now = now();
 
             foreach ($users as $user) {
-                $date = Carbon::parse($user->marked_date);
+                $date = Carbon::parse($user->userable->marked_date);
 
                 if ($now->diffInDays($date) == 7 && $user->fcm_token) {
                     $title = 'reminder kontrol';
