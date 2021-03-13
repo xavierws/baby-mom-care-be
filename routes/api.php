@@ -162,6 +162,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('advice/store', [AdviceController::class, 'store']);
     //list advice
     Route::get('advice/index', [AdviceController::class, 'index']);
+    Route::get('advice/list', [AdviceController::class, 'list']);
     //update advice
     Route::put('advice/update', [AdviceController::class, 'update']);
     //delete advice

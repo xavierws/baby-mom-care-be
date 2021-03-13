@@ -15,6 +15,23 @@ class AdviceController extends Controller
         return response(Advice::all()->toArray());
     }
 
+    public function list()
+    {
+        $materi = Advice::all();
+
+        $data = array();
+        for ($i = 0; $i < count($materi); $i++) {
+            $data[$i] = [
+                'id'  => $materi[$i]->id,
+                'name' => $materi[$i]->name
+            ];
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
+
     public function show()
     { }
 
