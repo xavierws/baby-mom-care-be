@@ -21,7 +21,7 @@ class Materi extends JsonResource
             'content_url' => $this->content_url,
             'video_url' => $this->video_url,
             'doc_url' => $this->doc_url,
-            'image' => asset($this->image->filename),
+            'image' => $this->image->filename? asset($this->image->filename):null,
             'quiz' => $this->related_quiz,
             'forum' => $this->related_forum,
             'date'=>$this->created_at
