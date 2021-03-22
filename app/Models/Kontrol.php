@@ -22,6 +22,8 @@ class Kontrol extends Model
         'patient_profile_id',
         'note',
         'nurse_note',
+        'hasil_penunjang',
+        'terapi_pulang',
         'mode',
     ];
 
