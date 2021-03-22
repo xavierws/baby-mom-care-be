@@ -287,7 +287,7 @@ class KontrolController extends Controller
 
             if ($kontrol->advices) {
                 foreach ($kontrol->advices as $advice) {
-                    $advice->kontrols()->detach($request->id);
+                    $advice->kontrols()->detach($kontrol->id);
                 }
             }
             $kontrol->delete();
@@ -300,7 +300,7 @@ class KontrolController extends Controller
 
             if ($kontrol->advices) {
                 foreach ($kontrol->advices as $advice) {
-                    $advice->kontrols()->detach($request->id);
+                    $advice->kontrols()->detach($kontrol->id);
                 }
             }
             $kontrol->delete();
