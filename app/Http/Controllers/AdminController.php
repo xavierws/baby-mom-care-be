@@ -28,9 +28,9 @@ class AdminController extends Controller
     public function approveNurse(Request $request)
     {
 
-            $nurse = NurseProfile::find($request->id);
-            $nurse->is_approved = true;
-            $nurse->save();
+        $nurse = NurseProfile::find($request->id);
+        $nurse->is_approved = true;
+        $nurse->save();
 
 
         return response()->json([
@@ -73,12 +73,12 @@ class AdminController extends Controller
         $i = 0;
         foreach ($patients as $patient) {
 
-                $data[$i] = [
-                    'id' => $patient->id,
-                    'baby_name' => $patient->baby_name,
-                    'mother_name' => $patient->mother_name,
-                ];
-                $i++;
+            $data[$i] = [
+                'id' => $patient->id,
+                'baby_name' => $patient->baby_name,
+                'mother_name' => $patient->mother_name,
+            ];
+            $i++;
 
         }
 
@@ -94,11 +94,11 @@ class AdminController extends Controller
         $i = 0;
         foreach ($patients as $patient) {
 
-                $data[$i] = [
-                    'id' => $patient->id,
-                    'name' => $patient->baby_name,
-                ];
-                $i++;
+            $data[$i] = [
+                'id' => $patient->id,
+                'name' => $patient->baby_name,
+            ];
+            $i++;
 
         }
 
