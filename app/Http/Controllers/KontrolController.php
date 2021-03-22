@@ -113,6 +113,8 @@ class KontrolController extends Controller
             'patient_profile_id' => $patientId,
             'note' => $request->input('note'),
             'nurse_note' => $request->input('nurse_note'),
+            'hasil_penunjang' => $request->input('hasil_penunjang', null),
+            'terapi_pulang' => $request->input('terapi_pulang', null),
             'mode' => $request->input('mode'),
         ]);
 

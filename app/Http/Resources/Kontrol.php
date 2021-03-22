@@ -27,6 +27,8 @@ class Kontrol extends JsonResource
             'image' => asset($this->image->filename),
             'note' => $this->note,
             'nurse_note' => $this->nurse_note,
+            'hasil_penunjang' => $this->hasil_penunjang,
+            'terapi_pulang' => $this->terapi_pulang,
             'advices' => showAdvices::handle($this->advices),
         ];
     }
