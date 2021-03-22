@@ -284,6 +284,12 @@ class KontrolController extends Controller
 
             Storage::delete($image->filename);
             $image->delete();
+
+            if ($kontrol->advices) {
+                foreach ($kontrol->advices as $advice) {
+                    $advice->kontrols()->detach($request->id);
+                }
+            }
             $kontrol->delete();
         } else {
             $kontrol = Kontrol::find($request->id);
@@ -291,6 +297,12 @@ class KontrolController extends Controller
 
             Storage::delete($image->filename);
             $image->delete();
+
+            if ($kontrol->advices) {
+                foreach ($kontrol->advices as $advice) {
+                    $advice->kontrols()->detach($request->id);
+                }
+            }
             $kontrol->delete();
         }
 
