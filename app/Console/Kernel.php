@@ -65,6 +65,20 @@ class Kernel extends ConsoleKernel
                 }
             }
         })->everyMinute();
+
+        $schedule->call(function () {
+            $users = User::where('role_id', 10)->get();
+
+            foreach ($users as $user) {
+                $kontrol = $user->userable->kontrols->orderBy('order', 'desc')->limit(1)->get();
+
+                foreach ($kontrol->advices as $advice) {
+                    $title = $advice->name;
+                    $des = $advice->description;
+                    PushNotification::handle($user->fcm_token, $title, $des);
+                }
+            }
+        })->everyMinute();
     }
 
     /**
