@@ -228,32 +228,15 @@ class AdminController extends Controller
 
         $color = ['#00f7ff', '#ff0000', '#ffd500', '#1bb525', '#1957bd'];
         $data = array();
-<<<<<<< HEAD
-        $data2 = array();
-        $data3 = array();
-
-        if ($surveys) {
-            foreach ($surveys as $survey) {
-                foreach ($survey->questions as $question) {
-                    for ($i = 0; $i<=4; $i++) {
-                        $count = DB::table('patient_survey')->where([
-=======
         foreach ($surveys as $survey) {
             foreach ($survey->questions as $question) {
                 for ($i = 0; $i<=4; $i++) {
                     $count = DB::table('patient_survey')->where([
->>>>>>> parent of 77c5ac2 (adding handle for empty data)
 //                        ['survey_id', $survey->id],
                         ['question_id', $question->id],
                         ['answer', $i+1]
                     ])->count();
 
-<<<<<<< HEAD
-                    }
-                    $data2 = [
-                        'question' => $question->question,
-                        'jawaban' => $data
-=======
                     $data[$i] = [
                         'name' => $i+1,
                         'choice_type' => $survey->choice_type,
@@ -261,24 +244,9 @@ class AdminController extends Controller
                         'color' => $color[$i],
                         'legendFontColor'=> "#7F7F7F",
                         'legendFontSize'=> 15
->>>>>>> parent of 77c5ac2 (adding handle for empty data)
                     ];
 
                 }
-<<<<<<< HEAD
-                $data3 = [
-                    'survey' => $survey->title,
-                    'pertanyaan' => $data2
-                ];
-            }
-            return response($data3);
-        }
-
-
-        return response()->json([
-            'message' => 'no survey',
-        ]);
-=======
                 $data2[] = [
                     'question' => $question->question,
                     'jawaban' => $data
@@ -291,7 +259,6 @@ class AdminController extends Controller
         }
 
         return response($data3);
->>>>>>> parent of 77c5ac2 (adding handle for empty data)
     }
 
     public function listQuiz(Request $request)
