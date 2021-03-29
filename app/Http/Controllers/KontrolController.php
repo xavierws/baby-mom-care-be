@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CountFormula;
+use App\Actions\PushNotification;
 use App\Models\Image;
 use App\Models\Kontrol;
 use App\Models\NotificationLog;
@@ -244,6 +245,7 @@ class KontrolController extends Controller
             $image->filename = $filename;
             $image->save();
         }
+        PushNotification::handle($kontrol->patient->user, 'Resume', 'Resume telah diubah');
         return response()->json([
             'message' => 'kontrol is updated'
         ]);
