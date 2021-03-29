@@ -259,10 +259,13 @@ class AdminController extends Controller
                     'pertanyaan' => $data2
                 ];
             }
+            return response($data3);
         }
 
 
-        return response($data3);
+        return response()->json([
+            'message' => 'no survey',
+        ]);
     }
 
     public function listQuiz(Request $request)
