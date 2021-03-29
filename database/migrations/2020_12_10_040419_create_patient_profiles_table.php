@@ -29,7 +29,7 @@ class CreatePatientProfilesTable extends Migration
             $table->string('mother_education');
             $table->string('mother_job');
             $table->string('paritas');
-            $table->integer('jumlah_anak');
+            $table->enum('jumlah_anak', ['ld2', 'kds2']);
             $table->boolean('pengalaman_merawat');
             $table->boolean('tinggal_dengan_suami');
             $table->string('father_name');
