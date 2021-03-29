@@ -64,11 +64,8 @@
                     <div class="form-group">
                         <label for="education">Tingkat Pendidikan</label>
                         <Select class="form-control" id="education" name="education" required>
-                            <option value="sma">SMA Sederajat</option>
                             <option value="diploma">Diploma</option>
-                            <option value="s1">Sarjana/S1</option>
-                            <option value="s2">Magister/S2</option>
-                            <option value="s3">Doktoral/S3</option>
+                            <option value="s1">Sarjana</option>
                         </Select>
                     </div>
                     <div class="form-group">
