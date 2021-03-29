@@ -228,6 +228,8 @@ class AdminController extends Controller
 
         $color = ['#00f7ff', '#ff0000', '#ffd500', '#1bb525', '#1957bd'];
         $data = array();
+        $data2 = array();
+        $data3 = array();
 
         if ($surveys) {
             foreach ($surveys as $survey) {
@@ -249,12 +251,12 @@ class AdminController extends Controller
                         ];
 
                     }
-                    $data2[] = [
+                    $data2 = [
                         'question' => $question->question,
                         'jawaban' => $data
                     ];
                 }
-                $data3[] = [
+                $data3 = [
                     'survey' => $survey->title,
                     'pertanyaan' => $data2
                 ];
