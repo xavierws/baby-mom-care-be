@@ -228,6 +228,7 @@ class AdminController extends Controller
 
         $color = ['#00f7ff', '#ff0000', '#ffd500', '#1bb525', '#1957bd'];
         $data = array();
+
         foreach ($surveys as $survey) {
             foreach ($survey->questions as $question) {
                 for ($i = 0; $i<=4; $i++) {
@@ -236,16 +237,6 @@ class AdminController extends Controller
                         ['question_id', $question->id],
                         ['answer', $i+1]
                     ])->count();
-
-                    $data[$i] = [
-                        'name' => $i+1,
-                        'choice_type' => $survey->choice_type,
-                        'count' => $count,
-                        'color' => $color[$i],
-                        'legendFontColor'=> "#7F7F7F",
-                        'legendFontSize'=> 15
-                    ];
-
                 }
                 $data2[] = [
                     'question' => $question->question,
@@ -257,7 +248,6 @@ class AdminController extends Controller
                 'pertanyaan' => $data2
             ];
         }
-
         return response($data3);
     }
 
