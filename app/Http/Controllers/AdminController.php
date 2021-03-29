@@ -237,6 +237,15 @@ class AdminController extends Controller
                         ['question_id', $question->id],
                         ['answer', $i+1]
                     ])->count();
+
+                    $data[$i] = [
+                        'name' => $i+1,
+                        'choice_type' => $survey->choice_type,
+                        'count' => $count,
+                        'color' => $color[$i],
+                        'legendFontColor'=> "#7F7F7F",
+                        'legendFontSize'=> 15
+                    ];
                 }
                 $data2[] = [
                     'question' => $question->question,
