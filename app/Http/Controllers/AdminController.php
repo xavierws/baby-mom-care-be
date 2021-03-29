@@ -251,12 +251,12 @@ class AdminController extends Controller
                         ];
 
                     }
-                    $data2 = [
+                    $data2[] = [
                         'question' => $question->question,
                         'jawaban' => $data
                     ];
                 }
-                $data3 = [
+                $data3[] = [
                     'survey' => $survey->title,
                     'pertanyaan' => $data2
                 ];
