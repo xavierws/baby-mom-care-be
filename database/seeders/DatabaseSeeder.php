@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             TopicSeeder::class,
             ChatSeeder::class,
             SurveySeeder::class,
+            MateriSeeder::class
         ]);
     }
 }
