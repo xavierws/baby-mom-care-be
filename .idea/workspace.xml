@@ -11,7 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KontrolController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +164,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/dataset" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Xavier\Documents\GitHub\backend_kontrolIbuDanBayi\database\seeders\dataset" />
       <recent name="C:\Users\Xavier\Documents\GitHub\backend_kontrolIbuDanBayi" />
     </key>
   </component>
@@ -257,7 +259,8 @@
       <workItem from="1616425254998" duration="1536000" />
       <workItem from="1616426811198" duration="128000" />
       <workItem from="1616426948246" duration="3566000" />
-      <workItem from="1616430984545" duration="639000" />
+      <workItem from="1616430984545" duration="1234000" />
+      <workItem from="1617020117470" duration="6248000" />
     </task>
     <servers />
   </component>
