@@ -154,7 +154,7 @@ class QuizController extends Controller
                     $arr[$n] = $o->pivot->order;
                     ++$n;
                 }
-                rsort($arr);
+                rsort($arr[]);
                 $order = $arr[0] + 1;
             } else {
                 $order = 1;
