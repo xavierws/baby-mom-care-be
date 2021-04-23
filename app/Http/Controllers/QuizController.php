@@ -147,10 +147,10 @@ class QuizController extends Controller
             $choice = QuestionChoice::find($answer);
             $oldAnswer = $choice->with(['patients' => function ($query) {
                 $query->orderBy('order', 'desc');
-            }])->pluck('order')->firstOrFail();
+            }])->firstOrFail();
 
             if ($oldAnswer) {
-                $order = $oldAnswer + 1;
+                $order = $oldAnswer->pivot->order + 1;
             } else {
                 $order = 1;
             }
