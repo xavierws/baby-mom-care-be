@@ -151,12 +151,11 @@ class QuizController extends Controller
                 $n = 0;
                 $arr = array();
                 foreach ($oldAnswer as $o) {
-                    $arr[$n] = $o->pivot->order;
+                    $arr[$n] = $o->pivot->order == null? 0:$o->pivot->order;
                     $n++;
                 }
-                dd($arr);
-//                rsort($arr);
-//                $order = $arr[0] + 1;
+                rsort($arr);
+                $order = $arr[0] + 1;
             } else {
                 $order = 1;
             }
