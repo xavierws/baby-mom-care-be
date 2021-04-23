@@ -30,6 +30,6 @@ class QuestionChoice extends Model
     {
         return $this->belongsToMany(PatientProfile::class, 'user_answer', 'answer_id', 'patient_id')
             ->withTimestamps()
-            ->withPivot('point', 'question_id', 'quiz_id');
+            ->withPivot('point', 'question_id', 'quiz_id', 'order');
     }
 }

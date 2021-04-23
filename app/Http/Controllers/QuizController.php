@@ -145,10 +145,18 @@ class QuizController extends Controller
 
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
+            $oldAnswer = $choice->patients()->pivot;
+
+            if ($oldAnswer) {
+                $order = $oldAnswer->order + 1;
+            } else {
+                $order = 1;
+            }
             $choice->patients()->attach($user->userable_id, [
                 'point' => $choice->is_true ? 1 : 0,
                 'question_id' => $choice->question_id,
                 'quiz_id' => $choice->question->quiz_id,
+                'order' => $order,
             ]);
         }
         return response()->json([
@@ -160,13 +168,17 @@ class QuizController extends Controller
     {
         $user = $request->user();
 
-        $quizzes = $user->userable->quizzes;
+        $quizzes = $user->userable->with(['quizzes' => function ($query) {
+            $query->groupBy('quiz_id');
+        }])->get();
+
+        $order = $quizzes->where('quiz_id', $request->quiz_id)->orderBy('order', 'desc')->first();
 
         $data = array();
         $point = 0;
         $i = 0;
         foreach ($quizzes as $quiz) {
-            if ($quiz->pivot->quiz_id == $request->quiz_id) {
+            if ($quiz->pivot->quiz_id == $request->quiz_id && $quiz->pivot->order == $order) {
                 $data[$i] = [
                     'question' => Question::find($quiz->question_id)->question,
                     'point' => $quiz->pivot->point,
