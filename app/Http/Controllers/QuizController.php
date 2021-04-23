@@ -152,9 +152,9 @@ class QuizController extends Controller
                 $arr = array();
                 foreach ($oldAnswer as $o) {
                     $arr[$n] = $o->pivot->order;
-                    ++$n;
+                    $n++;
                 }
-                rsort($arr[]);
+                rsort($arr);
                 $order = $arr[0] + 1;
             } else {
                 $order = 1;
