@@ -147,17 +147,17 @@ class QuizController extends Controller
             $choice = QuestionChoice::find($answer);
             $oldAnswer = $choice->patients;
 
-            if ($oldAnswer) {
+            if (!$oldAnswer) {
+                $order = 1;
+            } else {
                 $n = 0;
                 $arr = array();
                 foreach ($oldAnswer as $o) {
-                    $arr[$n] = $o->pivot->order == null? 0:$o->pivot->order;
+                    $arr[$n] = $o->pivot->order === null? 0:$o->pivot->order;
                     $n++;
                 }
                 rsort($arr);
                 $order = $arr[0] + 1;
-            } else {
-                $order = 1;
             }
             $choice->patients()->attach($user->userable_id, [
                 'point' => $choice->is_true ? 1 : 0,
