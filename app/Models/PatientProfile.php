@@ -86,7 +86,7 @@ class PatientProfile extends Model
     {
         return $this->belongsToMany(QuestionChoice::class, 'user_answer', 'patient_id', 'answer_id')
             ->withTimestamps()
-            ->withPivot('point', 'question_id', 'quiz_id');
+            ->withPivot('point', 'question_id', 'quiz_id', 'order');
     }
 
     public function getResumePulangAttribute()
