@@ -151,6 +151,7 @@ class QuizController extends Controller
                 $n = 0;
                 foreach ($oldAnswer as $o) {
                     $arr[$n] = $o->pivot->order;
+                    ++$n;
                 }
                 rsort($arr);
                 $order = $arr[0] + 1;
