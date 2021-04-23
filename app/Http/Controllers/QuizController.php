@@ -145,12 +145,15 @@ class QuizController extends Controller
 
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
-            $oldAnswer = $choice->with(['patients' => function ($query) {
-                $query->orderBy('order', 'desc');
-            }])->firstOrFail();
+            $oldAnswer = $choice->patients;
 
             if ($oldAnswer) {
-                $order = $oldAnswer->pivot->order + 1;
+                $n = 0;
+                foreach ($oldAnswer as $o) {
+                    $arr[$n] = $o->pivot->order;
+                }
+                rsort($arr);
+                $order = $arr[0] + 1;
             } else {
                 $order = 1;
             }
