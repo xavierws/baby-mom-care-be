@@ -145,7 +145,7 @@ class QuizController extends Controller
 
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
-            $oldAnswer = $choice->patients()->pivot;
+            $oldAnswer = $choice->patients->pivot;
 
             if ($oldAnswer) {
                 $order = $oldAnswer->order + 1;
