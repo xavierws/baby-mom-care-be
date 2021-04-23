@@ -147,7 +147,7 @@ class QuizController extends Controller
             $choice = QuestionChoice::find($answer);
             $oldAnswer = $choice->patients;
 
-            if (!$oldAnswer) {
+            if ($oldAnswer->isEmpty()) {
                 $order = 1;
             } else {
                 $n = 0;
@@ -159,6 +159,7 @@ class QuizController extends Controller
                 rsort($arr);
                 $order = $arr[0] + 1;
             }
+            
             $choice->patients()->attach($user->userable_id, [
                 'point' => $choice->is_true ? 1 : 0,
                 'question_id' => $choice->question_id,
