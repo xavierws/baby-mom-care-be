@@ -197,7 +197,12 @@ class QuizController extends Controller
 //            }
 //        }
 
-        $quizzes = DB::table('user_answer')->where('quiz_id', $request->quiz_id)->orderBy('question_id')->orderBy('order', 'desc')->get();
+        $quizzes = DB::table('user_answer')
+            ->where('quiz_id', $request->quiz_id)
+            ->orderBy('question_id')
+            ->max('order')
+            ->get();
+//            ->orderBy('order', 'desc')
 
         return response()->json([
 //            'data' => $data,
