@@ -203,13 +203,18 @@ class QuizController extends Controller
 //            }
 //        }
 
-        $maxOrder = DB::table('user_answer')
-            ->where('quiz_id', $request->quiz_id)
-            ->max('order');
+        if ($request->has('order')) {
+            $order = $request->order;
+        } else {
+            $order = DB::table('user_answer')
+                ->where('quiz_id', $request->quiz_id)
+                ->max('order');
+        }
+
 
         $quizzes = DB::table('user_answer')
             ->where('quiz_id', $request->quiz_id)
-            ->where('order', '=', $maxOrder)
+            ->where('order', '=', $order)
             ->orderBy('question_id')
             ->get();
 
@@ -228,7 +233,6 @@ class QuizController extends Controller
             }
             $status = 1;
         }
-
 
         return response()->json([
             'data' => $data,
@@ -299,5 +303,19 @@ class QuizController extends Controller
                 'status' => "not_available",
             ]);
         }
+    }
+
+    public function showHistory(Request $request)
+    {
+        $materi = Materi::with('quiz')->find($request->id);
+        $order = DB::table('user_answer')
+            ->where('quiz_id', '=', $materi->quiz->id)
+            ->distinct()
+            ->orderByDesc('order')
+            ->pluck('order');
+
+        return response()->json([
+            'order' => $order
+        ]);
     }
 }
