@@ -241,7 +241,7 @@ class QuizController extends Controller
     public function showStatus(Request $request)
     {
         $patient = $request->user()->userable;
-        $materi = Materi::find($request->id)->with('quiz');
+        $materi = Materi::with('quiz')->find($request->id);
         if ($materi->quiz) {
 //            $quizId = $materi->quiz->id;
 //            $status = 0;
