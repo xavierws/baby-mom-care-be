@@ -144,21 +144,27 @@ class QuizController extends Controller
 
         $user = $request->user();
 
+//        DB::table('user_answer')->where('')
+
         foreach ($request->answers as $answer) {
             $choice = QuestionChoice::find($answer);
-            $oldAnswer = $choice->patients;
+            $question = $choice->question;
+            $oldAnswer = DB::table('user_answer')
+                ->where('patient_id', $user->userable_id)
+                ->where('question_id', $question);
 
-            if ($oldAnswer->isEmpty()) {
+            if ($oldAnswer->get()->isEmpty()) {
                 $order = 1;
             } else {
-                $n = 0;
-                $arr = array();
-                foreach ($oldAnswer as $o) {
-                    $arr[$n] = $o->pivot->order === null? 0:$o->pivot->order;
-                    $n++;
-                }
-                rsort($arr);
-                $order = $arr[0] + 1;
+//                $n = 0;
+//                $arr = array();
+//                foreach ($oldAnswer as $o) {
+//                    $arr[$n] = $o->pivot->order === null? 0:$o->pivot->order;
+//                    $n++;
+//                }
+//                rsort($arr);
+//                $order = $arr[0] + 1;
+                $order = $oldAnswer->max('order') + 1;
             }
 
             $choice->patients()->attach($user->userable_id, [
@@ -197,16 +203,15 @@ class QuizController extends Controller
 //            }
 //        }
 
-//        $maxOrder = DB::table('user_answer')
-//            ->where('quiz_id', $request->quiz_id)
-//            ->orderBy('question_id')
-//            ->max('order');
+        $maxOrder = DB::table('user_answer')
+            ->where('quiz_id', $request->quiz_id)
+            ->max('order');
 
         $quizzes = DB::table('user_answer')
             ->where('quiz_id', $request->quiz_id)
+            ->where('order', '=', $maxOrder)
             ->orderBy('question_id')
-            ->max('order');
-
+            ->get();
         return response()->json([
 //            'data' => $data,
 //            'total_question' => $i,
