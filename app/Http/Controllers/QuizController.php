@@ -151,7 +151,7 @@ class QuizController extends Controller
             $question = $choice->question;
             $oldAnswer = DB::table('user_answer')
                 ->where('patient_id', $user->userable_id)
-                ->where('question_id', $question);
+                ->where('question_id', $question->id);
 
             if ($oldAnswer->get()->isEmpty()) {
                 $order = 1;
