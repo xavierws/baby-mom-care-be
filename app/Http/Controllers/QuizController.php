@@ -312,7 +312,7 @@ class QuizController extends Controller
             $materi = Materi::with('quiz')->find($request->id);
             $quiz_id = $materi->quiz->id;
         }
-        
+
         if ($request->has('quiz_id')) {
             $quiz_id = $request->quiz_id;
         }
@@ -324,7 +324,8 @@ class QuizController extends Controller
             ->pluck('order');
 
         return response()->json([
-            'order' => $order
+            'order' => $order,
+            'quiz_id' =>$quiz_id,
         ]);
     }
 }
