@@ -212,11 +212,24 @@ class QuizController extends Controller
             ->where('order', '=', $maxOrder)
             ->orderBy('question_id')
             ->get();
+
+        $data = array();
+        $point = 0;
+        $i = 0;
+        foreach ($quizzes as $quiz) {
+            $data[$i] = [
+                'question' => Question::find($quiz->question_id)->question,
+                'point' => $quiz->pivot->point,
+            ];
+            $i++;
+            $point = $point + $quiz->pivot->point;
+        }
+
         return response()->json([
-//            'data' => $data,
-//            'total_question' => $i,
-//            'total_point' => $point,
-            'dd' => $quizzes
+            'data' => $data,
+            'total_question' => $i,
+            'total_point' => $point,
+//            'dd' => $quizzes
         ]);
     }
 
