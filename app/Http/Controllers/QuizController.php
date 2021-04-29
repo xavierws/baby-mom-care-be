@@ -219,10 +219,10 @@ class QuizController extends Controller
         foreach ($quizzes as $quiz) {
             $data[$i] = [
                 'question' => Question::find($quiz->question_id)->question,
-                'point' => $quiz->pivot->point,
+                'point' => $quiz->point,
             ];
             $i++;
-            $point = $point + $quiz->pivot->point;
+            $point = $point + $quiz->point;
         }
 
         return response()->json([
