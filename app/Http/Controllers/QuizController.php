@@ -323,9 +323,29 @@ class QuizController extends Controller
             ->orderByDesc('order')
             ->pluck('order');
 
+        $data = array();
+        $i = 0;
+        foreach ($order as $row) {
+            $points = DB::table('user_answer')
+                ->where('order', $row)
+                ->where('quiz_id', $quiz_id)
+                ->pluck('point');
+
+            $score = 0;
+            foreach ($points as $point) {
+                $score += $point;
+            }
+
+            $data[$i] = [
+                'order' => $order,
+                'quiz_id' => $quiz_id,
+                'point' => $score,
+            ];
+            ++$i;
+        }
+
         return response()->json([
-            'order' => $order,
-            'quiz_id' =>$quiz_id,
+            'data' => $data,
         ]);
     }
 }
