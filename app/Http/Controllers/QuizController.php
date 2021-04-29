@@ -199,12 +199,12 @@ class QuizController extends Controller
 
         $quizzes = DB::table('user_answer')->where('quiz_id', $request->quiz_id)->orderBy('question_id')->groupBy('order')->orderBy('order')->get();
 
-        dd($quizzes);
-//        return response()->json([
+        return response()->json([
 //            'data' => $data,
 //            'total_question' => $i,
 //            'total_point' => $point,
-//        ]);
+            'dd' => $quizzes
+        ]);
     }
 
     public function showStatus(Request $request)
