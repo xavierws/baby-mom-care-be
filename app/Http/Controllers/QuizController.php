@@ -8,6 +8,7 @@ use App\Models\QuestionChoice;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Http\Resources\Quiz as QuizRes;
+use Illuminate\Support\Facades\DB;
 
 class QuizController extends Controller
 {
@@ -159,7 +160,7 @@ class QuizController extends Controller
                 rsort($arr);
                 $order = $arr[0] + 1;
             }
-            
+
             $choice->patients()->attach($user->userable_id, [
                 'point' => $choice->is_true ? 1 : 0,
                 'question_id' => $choice->question_id,
@@ -174,33 +175,36 @@ class QuizController extends Controller
 
     public function showAnswer(Request $request)
     {
-        $user = $request->user();
+//        $user = $request->user();
+//
+//        $quizzes = $user->userable->with(['quizzes' => function ($query) {
+//            $query->groupBy('quiz_id');
+//        }])->get();
+//
+//        $order = $quizzes->where('quiz_id', $request->quiz_id)->orderBy('order', 'desc')->first();
+//
+//        $data = array();
+//        $point = 0;
+//        $i = 0;
+//        foreach ($quizzes as $quiz) {
+//            if ($quiz->pivot->quiz_id == $request->quiz_id && $quiz->pivot->order == $order) {
+//                $data[$i] = [
+//                    'question' => Question::find($quiz->question_id)->question,
+//                    'point' => $quiz->pivot->point,
+//                ];
+//                $i++;
+//                $point = $point + $quiz->pivot->point;
+//            }
+//        }
 
-        $quizzes = $user->userable->with(['quizzes' => function ($query) {
-            $query->groupBy('quiz_id');
-        }])->get();
+        $quizzes = DB::table('user_answer')->where('quiz_id', $request->quiz_id)->orderBy('question_id')->groupBy('order')->orderBy('order')->get();
 
-        $order = $quizzes->where('quiz_id', $request->quiz_id)->orderBy('order', 'desc')->first();
-
-        $data = array();
-        $point = 0;
-        $i = 0;
-        foreach ($quizzes as $quiz) {
-            if ($quiz->pivot->quiz_id == $request->quiz_id && $quiz->pivot->order == $order) {
-                $data[$i] = [
-                    'question' => Question::find($quiz->question_id)->question,
-                    'point' => $quiz->pivot->point,
-                ];
-                $i++;
-                $point = $point + $quiz->pivot->point;
-            }
-        }
-
-        return response()->json([
-            'data' => $data,
-            'total_question' => $i,
-            'total_point' => $point,
-        ]);
+        dd($quizzes);
+//        return response()->json([
+//            'data' => $data,
+//            'total_question' => $i,
+//            'total_point' => $point,
+//        ]);
     }
 
     public function showStatus(Request $request)
