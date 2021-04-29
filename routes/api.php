@@ -126,6 +126,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('quiz/answer/show', [QuizController::class, 'showAnswer']);
     //show quiz status to specific user
     Route::post('quiz/status', [QuizController::class, 'showStatus']);
+    //show quiz history
+    Route::post('quiz/history', [QuizController::class, 'showHistory']);
     //search quiz
     Route::post('quiz/search', [QuizController::class, 'search']);
     //list all quiz
