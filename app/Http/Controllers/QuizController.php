@@ -307,9 +307,18 @@ class QuizController extends Controller
 
     public function showHistory(Request $request)
     {
-        $materi = Materi::with('quiz')->find($request->id);
+        $quiz_id = null;
+        if ($request->has('materi_id')) {
+            $materi = Materi::with('quiz')->find($request->id);
+            $quiz_id = $materi->quiz->id;
+        }
+        
+        if ($request->has('quiz_id')) {
+            $quiz_id = $request->quiz_id;
+        }
+
         $order = DB::table('user_answer')
-            ->where('quiz_id', '=', $materi->quiz->id)
+            ->where('quiz_id', '=', $quiz_id)
             ->distinct()
             ->orderByDesc('order')
             ->pluck('order');
