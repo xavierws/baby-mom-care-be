@@ -216,45 +216,83 @@ class QuizController extends Controller
         $data = array();
         $point = 0;
         $i = 0;
-        foreach ($quizzes as $quiz) {
-            $data[$i] = [
-                'question' => Question::find($quiz->question_id)->question,
-                'point' => $quiz->point,
-            ];
-            $i++;
-            $point = $point + $quiz->point;
+        $status = 0;
+        if ($quizzes->isNotEmpty()) {
+            foreach ($quizzes as $quiz) {
+                $data[$i] = [
+                    'question' => Question::find($quiz->question_id)->question,
+                    'point' => $quiz->point,
+                ];
+                $i++;
+                $point = $point + $quiz->point;
+            }
+            $status = 1;
         }
+
 
         return response()->json([
             'data' => $data,
             'total_question' => $i,
             'total_point' => $point,
-//            'dd' => $quizzes
+            'status' => $status,
         ]);
     }
 
     public function showStatus(Request $request)
     {
         $patient = $request->user()->userable;
-        $a = Materi::find($request->id);
-        if ($a->quiz) {
-            $quizId = $a->quiz->id;
-            $status = 0;
+        $materi = Materi::find($request->id)->with('quiz');
+        if ($materi->quiz) {
+//            $quizId = $materi->quiz->id;
+//            $status = 0;
+//            $data = array();
+//            $point = 0;
+//            $i = 0;
+//            foreach ($patient->quizzes as $quiz) {
+//                if ($quiz->pivot->quiz_id == $quizId) {
+//                    $i++;
+//                    $point = $point + $quiz->pivot->point;
+//                    $status = 1;
+//                }
+//            }
+//
+//            return response()->json([
+//                'status' => $status,
+//                'total_question' => $i,
+//                'total_point' => $point,
+//            ]);
+            $maxOrder = DB::table('user_answer')
+                ->where('quiz_id', $materi->quiz->id)
+                ->max('order');
+
+            $quizzes = DB::table('user_answer')
+                ->where('quiz_id', $materi->quiz->id)
+                ->where('order', '=', $maxOrder)
+                ->orderBy('question_id')
+                ->get();
+
             $data = array();
             $point = 0;
             $i = 0;
-            foreach ($patient->quizzes as $quiz) {
-                if ($quiz->pivot->quiz_id == $quizId) {
+            $status = 0;
+            if ($quizzes->isNotEmpty()) {
+                foreach ($quizzes as $quiz) {
+                    $data[$i] = [
+                        'question' => Question::find($quiz->question_id)->question,
+                        'point' => $quiz->point,
+                    ];
                     $i++;
-                    $point = $point + $quiz->pivot->point;
-                    $status = 1;
+                    $point = $point + $quiz->point;
                 }
+                $status = 1;
             }
 
+
             return response()->json([
-                'status' => $status,
+                'data' => $data,
                 'total_question' => $i,
                 'total_point' => $point,
+                'status' => $status,
             ]);
         } else {
             return response()->json([
