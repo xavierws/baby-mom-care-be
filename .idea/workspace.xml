@@ -11,14 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_23_132907_add_order_field_to_user_answer_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/backend_kontrolIbuDanBayi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend_kontrolIbuDanBayi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_03_2021_20_25_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_03_2021_20_25__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/QuestionChoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/QuestionChoice.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +266,8 @@
       <workItem from="1616426948246" duration="3566000" />
       <workItem from="1616430984545" duration="1234000" />
       <workItem from="1617020117470" duration="6248000" />
-      <workItem from="1619159066236" duration="3352000" />
+      <workItem from="1619159066236" duration="17330000" />
+      <workItem from="1619353501414" duration="9483000" />
     </task>
     <servers />
   </component>
