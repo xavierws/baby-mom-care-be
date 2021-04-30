@@ -38,6 +38,6 @@ Route::get('/kuis/{id}', [QuizController::class, 'createNew'])->name('kuis.add')
 Route::get('/kuis/{id}/add', [QuizController::class, 'savePage'])->name('kuis.page');
 Route::post('/kuis/{id}/add', [QuizController::class, 'saveKuis'])->name('kuis.save');
 Route::get('/kuis/{id}/edit', [QuizController::class, 'editPage'])->name('kuis.edit');
-Route::post('/kuis/{id}/edit', [QuizController::class, 'editKuis'])->name('kuis.update');
+Route::put('/kuis/{id}/edit', [QuizController::class, 'editKuis'])->name('kuis.update');
 
 
