@@ -38,15 +38,13 @@ class AdviceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'frequency' => 'required|integer',
-            'description' => 'required',
+            'name' => 'required'
         ]);
 
         Advice::create([
             'name' => $request->input('name'),
-            'frequency' => $request->input('frequency'),
-            'description' => $request->input('description'),
+            'frequency' => '',
+            'description' => ''
         ]);
 
         return response()->json([
@@ -61,8 +59,6 @@ class AdviceController extends Controller
     {
         $advice = Advice::find($request->id);
         $advice->name = $request->input('name');
-        $advice->frequency = $request->input('frequency');
-        $advice->description = $request->input('description');
         $advice->save();
         return response()->json([
             'message' => 'advice is updated',
