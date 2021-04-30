@@ -10,7 +10,183 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="" />
+    <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthWebController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/css/adminlte.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/css/adminlte.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/css/adminlte.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/css/adminlte.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/img/AdminLTELogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/js/adminlte.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/js/adminlte.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/js/adminlte.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/adminlte/dist/js/adminlte.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/brands.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/brands.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/fontawesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/fontawesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/regular.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/regular.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/solid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/solid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/svg-with-js.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/svg-with-js.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/v4-shims.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/css/v4-shims.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-regular-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-regular-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-regular-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/jquery/jquery.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/css/OverlayScrollbars.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/css/OverlayScrollbars.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/js/OverlayScrollbars.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/js/OverlayScrollbars.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/js/jquery.overlayScrollbars.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper-utils.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper-utils.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/esm/popper.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper-utils.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper-utils.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/popper.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper-utils.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper-utils.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper.js.flow" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/popper/umd/popper.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ar/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ca/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/de/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/de/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/en/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/en/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/es/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/es/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/fa/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/fr/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/hr/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/hu/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/id/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/id/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/it/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ja/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ja/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/la/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/la/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/nl/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/pl/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/pt-br/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/pt-br/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ru/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/ru/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/tr/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/tr/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/uk/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/uk/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/vi/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/vi/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/zh-CN/adminlte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/adminlte/zh-CN/menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/list-kuis.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/auth-page.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/common/brand-logo-xl.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/common/brand-logo-xs.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/footer/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/dropdown-item-link.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/dropdown-item-submenu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/dropdown-item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-dropdown-menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-dropdown-user-menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-left-sidebar-toggler.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-link.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-logout-link.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-right-sidebar-toggler.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item-search-form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/menu-item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/navbar-layout-topnav.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/navbar/navbar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/left-sidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/menu-item-header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/menu-item-link.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/menu-item-search-form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/menu-item-treeview-menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/menu-item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/partials/sidebar/right-sidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/plugins.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_03_2021_20_25_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_03_2021_20_25__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_03_2021_20_25__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,6 +322,12 @@
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/vendor/almasaeed2010/adminlte" />
+      <path value="$PROJECT_DIR$/vendor/jeroennoten/laravel-adminlte" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lQfsS4HVsEcvSjijIDGe9SJRmo" />
@@ -163,7 +345,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/dataset" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -258,6 +440,9 @@
       <workItem from="1616426948246" duration="3566000" />
       <workItem from="1616430984545" duration="1234000" />
       <workItem from="1617020117470" duration="6729000" />
+      <workItem from="1617097302487" duration="1231000" />
+      <workItem from="1617208831196" duration="28000" />
+      <workItem from="1619719211446" duration="27000" />
     </task>
     <servers />
   </component>
