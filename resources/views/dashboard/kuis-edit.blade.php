@@ -14,6 +14,7 @@
             <div class="row">
                 <form action="{{ route('kuis.edit', $id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="">Pertanyaan 1</label>
                         <textarea type="text" class="form-control" name="question[1]" placeholder="pertanyaan satu">{{ array_key_exists(0, $data)? $data[0]['question'] : null }}</textarea>
