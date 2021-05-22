@@ -337,7 +337,7 @@ class QuizController extends Controller
             }
 
             $data[$i] = [
-                'order' => $order,
+                'order' => count($order)-$i,
                 'quiz_id' => $quiz_id,
                 'point' => $score,
             ];
