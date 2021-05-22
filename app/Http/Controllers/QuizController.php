@@ -340,6 +340,7 @@ class QuizController extends Controller
                 'order' => count($order)-$i,
                 'quiz_id' => $quiz_id,
                 'point' => $score,
+                'total' => count($points)
             ];
             ++$i;
         }
