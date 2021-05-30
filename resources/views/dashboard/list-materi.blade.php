@@ -27,7 +27,7 @@
                                 <td>{{ $m->id }}</td>
                                 <td>{{ $m->title }}</td>
                                 <td>
-                                    <a class="btn btn-success text-white" href="{{ route('kuis.add', $m->id) }}">KUIS</a>
+                                    <a class="btn btn-success text-white" href="{{ route('kuis.show', $m->id) }}">KUIS</a>
                                 </td>
                             </tr>
                             @empty

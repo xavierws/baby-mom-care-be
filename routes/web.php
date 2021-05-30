@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthWebController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -31,13 +32,16 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/kuis', [QuizController::class, 'dumpMateri'])->name('kuis.materi');
+Route::prefix('/kuis')->group( function (){
+    Route::get('/', [DashboardController::class, 'index'])->name('kuis.index');
 
-Route::get('/kuis/{id}', [QuizController::class, 'createNew'])->name('kuis.add');
+    Route::get('/{id}', [DashboardController::class, 'show'])->name('kuis.show');
 
-Route::get('/kuis/{id}/add', [QuizController::class, 'savePage'])->name('kuis.page');
-Route::post('/kuis/{id}/add', [QuizController::class, 'saveKuis'])->name('kuis.save');
-Route::get('/kuis/{id}/edit', [QuizController::class, 'editPage'])->name('kuis.edit');
-Route::put('/kuis/{id}/edit', [QuizController::class, 'editKuis'])->name('kuis.update');
+    Route::get('/{id}/add', [DashboardController::class, 'create'])->name('kuis.create');
+    Route::post('/{id}/add', [DashboardController::class, 'store'])->name('kuis.store');
+    Route::get('/{id}/edit', [DashboardController::class, 'edit'])->name('kuis.edit');
+    Route::put('/{id}/edit', [DashboardController::class, 'update'])->name('kuis.update');
+});
+
 
 

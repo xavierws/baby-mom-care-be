@@ -34,7 +34,7 @@
                 @else
                     <p class='col'>Kuis belum tersedia, silakan buat kuis</p>
                     <br>
-                    <a id="tambahKuis" class="btn btn-success text-white col-3" href="{{ route('kuis.page', $id) }}">Tambah KUIS</a>
+                    <a id="tambahKuis" class="btn btn-success text-white col-3" href="{{ route('kuis.create', $id) }}">Tambah KUIS</a>
                 @endif
             </div>
         </div>
