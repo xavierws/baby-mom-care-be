@@ -79,7 +79,6 @@ class AdminController extends Controller
                 'mother_name' => $patient->mother_name,
             ];
             $i++;
-
         }
 
         return response()->json([
@@ -99,7 +98,6 @@ class AdminController extends Controller
                 'name' => $patient->baby_name,
             ];
             $i++;
-
         }
 
         return response()->json([
@@ -144,7 +142,8 @@ class AdminController extends Controller
     }
 
     public function showPatient()
-    { }
+    {
+    }
 
     public function destroyNurse(Request $request)
     {
@@ -228,23 +227,23 @@ class AdminController extends Controller
 
         $color = ['#00f7ff', '#ff0000', '#ffd500', '#1bb525', '#1957bd'];
         $data = array();
-
+        $data2 = array();
         foreach ($surveys as $survey) {
             foreach ($survey->questions as $question) {
-                for ($i = 0; $i<=4; $i++) {
+                for ($i = 0; $i <= 4; $i++) {
                     $count = DB::table('patient_survey')->where([
-//                        ['survey_id', $survey->id],
+                        //                        ['survey_id', $survey->id],
                         ['question_id', $question->id],
-                        ['answer', $i+1]
+                        ['answer', $i + 1]
                     ])->count();
 
                     $data[$i] = [
-                        'name' => $i+1,
+                        'name' => $i + 1,
                         'choice_type' => $survey->choice_type,
                         'count' => $count,
                         'color' => $color[$i],
-                        'legendFontColor'=> "#7F7F7F",
-                        'legendFontSize'=> 15
+                        'legendFontColor' => "#7F7F7F",
+                        'legendFontSize' => 15
                     ];
                 }
                 $data2[] = [
@@ -252,10 +251,10 @@ class AdminController extends Controller
                     'jawaban' => $data
                 ];
             }
-            $data3[] = [
-                'survey' => $survey->title,
-                'pertanyaan' => $data2
-            ];
+                $data3[] = [
+                    'survey' => $survey->title,
+                    'pertanyaan' => $data2
+                ];
         }
         return response($data3);
     }
@@ -263,7 +262,7 @@ class AdminController extends Controller
     public function listQuiz(Request $request)
     {
         $quizzes = Quiz::all();
-//        $patient = PatientProfile::find('id', $request->patient_id);
+        //        $patient = PatientProfile::find('id', $request->patient_id);
 
         $point = 0;
         $data = array();
@@ -300,7 +299,7 @@ class AdminController extends Controller
         $data = array();
         $n = 0;
         foreach ($surveys as $survey) {
-            for ($i = 1; $i<=3; $i++) {
+            for ($i = 1; $i <= 3; $i++) {
                 $answers = DB::table('patient_survey')->where([
                     ['patient_id', $request->patient_id],
                     ['survey_id', $survey->id],
@@ -344,7 +343,6 @@ class AdminController extends Controller
                 ];
                 $i++;
             }
-
         }
 
         return response($data);
