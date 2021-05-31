@@ -52,24 +52,26 @@ class DashboardController extends Controller
         ]);
 
         $i=1;
-        foreach($request->question as $question) {
+        foreach($request->input('question.*') as $question) {
             if ($question != null){
                 $q = Question::create([
                     'question' => $question,
                     'quiz_id' => $quiz->id,
                 ]);
-                foreach($request->choice[$i] as $choice) {
+                $j=1;
+                foreach($request->input('choice.'.$i.".*") as $choice) {
                     QuestionChoice::create([
                         'choice' => $choice,
-                        'is_true' => $choice == $request->choice[true][$i]? 1:0,
+                        'is_true' => $request->input('choice.true.'.$i)==$j? 1:0,
                         'question_id' => $q->id,
                     ]);
+                    $j++;
                 }
                 ++$i;
             }
         }
 
-        return redirect()->route('kuis.create', $id)->with('message', 'success');
+        return redirect()->route('kuis.show', $id)->with('message', 'success');
     }
 
     public function edit($id)
@@ -77,44 +79,35 @@ class DashboardController extends Controller
         $quiz = Quiz::findOrFail($id);
         $questions = Question::with('choices')->where('quiz_id', $quiz->id)->orderBy('id')->get();
 
-        $i = 0;
-        foreach($questions as $question){
-            $data[$i]['question'] = $question->question;
+        // $i = 0;
+        // foreach($questions as $question){
+        //     $data[$i]['question'] = $question->question;
 
-            $k = 1;
-            foreach($question->choices as $choice) {
-                $data[$i]['choice'.$k] = $choice->choice;
-                ++$k;
-            }
-            ++$i;
+        //     $k = 1;
+        //     foreach($question->choices as $choice) {
+        //         $data[$i]['choice'.$k] = $choice->choice;
+        //         ++$k;
+        //     }
+        //     ++$i;
+        // }
+
+        if (!$questions) {
+            $questions == null;
         }
-        return view('dashboard.kuis-edit')->with(compact('quiz', 'questions', 'id', 'data'));
+        return view('dashboard.kuis-edit')->with(compact('quiz', 'questions', 'id'));
 
         // dd($questions);
     }
 
     public function update(Request $request, $id)
     {
-        // $quiz = Quiz::updateOrCreate([
-        //     'title' => Materi::find($id)->title,
-        //     'materi_id' => $id,
-        // ]);
-
         $quiz = Quiz::findOrFail($id);
 
         $i=1;
         foreach($quiz->questions as $question) {
 
-            if ($question){
-                $question->question = $request->input('question.'.$i);
-                $question->save();
-            } else {
-                $question = Question::create([
-                    'question' => $request->input('question.'.$i),
-                    'quiz_id' => $id,
-                ]);
-            }
-
+            $question->question = $request->input('question.'.$i);
+            $question->save();
 
             $j = 1;
 
@@ -129,12 +122,12 @@ class DashboardController extends Controller
 
             // if ($question->choices != null) {
 
-            //     foreach($question->choices as $choice){
-            //         $choice->choice = $request->input('choice.'.$i.'.'.$j);
-            //         $choice->is_true = $request->input('choice.true.'.$i) == $j? 1:0;
-            //         $choice->save();
-            //         $j++;
-            //     }
+            foreach($question->choices as $choice){
+                $choice->choice = $request->input('choice.'.$i.'.'.$j);
+                $choice->is_true = $request->input('choice.true.'.$i) == $j? 1:0;
+                $choice->save();
+                $j++;
+            }
             // } else {
 
             //     foreach ($request->)
@@ -149,22 +142,26 @@ class DashboardController extends Controller
             $j=1;
         }
 
-        // foreach($request->question as $question) {
-        //     if ($question != null){
-        //         $q = Question::updateOrCreate([
-        //             'question' => $question,
-        //             'quiz_id' => $quiz->id,
-        //         ]);
-        //         foreach($request->choice as $choice) {
-        //             QuestionChoice::updateOrCreate([
-        //                 'choice' => $choice,
-        //                 'is_true' => $choice == $request->choice[true][$i]? 1:0,
-        //                 'question_id' => $q->id,
-        //             ]);
-        //         }
-        //         ++$i;
-        //     }
-        // }
+        $k = $request->has('numbQ')? $request->input('numbQ'):1;
+        if ($request->has('question.new')) {
+            foreach ($request->input('question.new.*') as $q) {
+                $question = Question::create([
+                    'question' => $q,
+                    'quiz_id' =>$quiz->id,
+                ]);
+
+                $l=1;
+                foreach($request->input('choice.new.'.$k.'.*') as $c) {
+                    QuestionChoice::create([
+                        'choice' => $c,
+                        'is_true' => $request->input('choice.new.true.'.$k)==$l? 1:0,
+                        'question_id' => $question->id,
+                    ]);
+                    $l++;
+                }
+                ++$k;
+            }
+        }
 
         $id = $quiz->materi->id;
         return redirect()->route('kuis.show', $id)->with('message', 'success');
@@ -173,6 +170,23 @@ class DashboardController extends Controller
         // $j=1;
         // $param = 'question.'.$i;
         // return $request->input($param);
+
+    }
+
+    public function destroy($id)
+    {
+        $question = Question::findOrFail($id);
+        foreach ($question->choices as $choice) {
+            $choice->delete();
+        }
+
+        $question->delete();
+
+        return redirect()->back();
+    }
+
+    public function indexSurvey()
+    {
 
     }
 }

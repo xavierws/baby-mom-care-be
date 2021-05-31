@@ -17,20 +17,27 @@
         <div class="card-body">
             <div class="row">
                 @if ($quiz)
-                    @forelse ($questions as $question)
                     <form>
+                        @forelse ($questions as $question)
                         <div class="mb-3 form-group">
-                            <label for="answer">{{ $question->question }}</label>
-                            <select multiple name="" id="answer" class="form-control">
-                                @foreach ($question->choices as $choice)
-                                    <option value="" disabled {{ $choice->is_true == 1? "selected":""}}>{{ $choice->choice }}</option>
-                                @endforeach
-                            </select>
+                            <div class="row">
+                                <div class="col">
+                                        <label for="answer">{{ $question->question }}</label>
+                                        <select multiple name="" id="answer" class="form-control">
+                                            @foreach ($question->choices as $choice)
+                                                <option value="" disabled {{ $choice->is_true == 1? "selected":""}}>{{ $choice->choice }}</option>
+                                            @endforeach
+                                        </select>
+                                </div>
+                                <div class="col-1 align-self-center">
+                                    <a type="submit" class="btn btn-danger" href="{{ route('kuis.destroy', $question->id) }}">Hapus Pertanyaan</a>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                    @empty
+                        @empty
 
-                    @endforelse
+                        @endforelse
+                    </form>
                 @else
                     <p class='col'>Kuis belum tersedia, silakan buat kuis</p>
                     <br>

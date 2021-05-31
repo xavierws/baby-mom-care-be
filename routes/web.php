@@ -41,6 +41,11 @@ Route::prefix('/kuis')->group( function (){
     Route::post('/{id}/add', [DashboardController::class, 'store'])->name('kuis.store');
     Route::get('/{id}/edit', [DashboardController::class, 'edit'])->name('kuis.edit');
     Route::put('/{id}/edit', [DashboardController::class, 'update'])->name('kuis.update');
+    Route::get('/{id}/delete', [DashboardController::class, 'destroy'])->name('kuis.destroy');
+});
+
+Route::prefix('/survey')->group(function (){
+    Route::get('/', [DashboardController::class, 'indexSurvey'])->name('survey.index');
 });
 
 
