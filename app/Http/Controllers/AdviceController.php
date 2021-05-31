@@ -33,7 +33,8 @@ class AdviceController extends Controller
     }
 
     public function show()
-    { }
+    {
+    }
 
     public function store(Request $request)
     {
@@ -53,7 +54,8 @@ class AdviceController extends Controller
     }
 
     public function edit()
-    { }
+    {
+    }
 
     public function update(Request $request)
     {
@@ -89,24 +91,23 @@ class AdviceController extends Controller
         $data = array();
         $i = 0;
         $user = $request->user();
-        if ($user->user_type == 'patient') {
-            $notification = NotificationLog::where('type', 'advice')->orderBy('created_at', 'desc')->get();
+        if ($user->role_id == 10) {
+            $notification = NotificationLog::where('type', 'advice')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
             foreach ($notification as $log) {
                 $date = Carbon::parse($log->created_at);
-
                 if ($now->diffInDays($date) == 0) {
                     $data[$i] = $log;
                     $i++;
                 }
             }
-        } else {
-            $notification = NotificationLog::where('type', 'kontrol')->orderBy('created_at', 'desc')->get();
-            foreach ($notification as $log) {
-                if ($log->nurse_id == $user->userable->id) {
+
+            $notification_survey = NotificationLog::where('type', 'survey')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
+            foreach ($notification_survey as $log) {
                     $data[$i] = $log;
                     $i++;
-                }
             }
+        } else {
+            $data = NotificationLog::where('type', 'kontrol')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
         }
 
         return response($data);

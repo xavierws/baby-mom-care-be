@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Resources\User as UserRes;
+use App\Models\NotificationLog;
 
 class AuthController extends Controller
 {
@@ -102,6 +103,13 @@ class AuthController extends Controller
             $userable_type = 'App\Models\PatientProfile';
 
             NurseProfile::find($nurse->userable_id)->patients()->attach($userable_id);
+
+            NotificationLog::create([
+                'notification' => 'Jangan lupa isi survey yang pertama',
+                'nurse_id' => $userable_id,
+                'type' => 'survey',
+            ]);
+
         }
 
         User::create([

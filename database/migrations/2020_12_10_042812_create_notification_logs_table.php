@@ -20,7 +20,7 @@ class CreateNotificationLogsTable extends Migration
                 ->constrained('nurse_profiles')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->enum('type', ['kontrol', 'advice']);
+            $table->enum('type', ['kontrol', 'advice','survey']);
 //            $table->enum('for', ['nurse', 'patient']);
 //            $table->foreignId('advice_id')->constrained('advices');
 //            $table->foreignId('patient_profile_id')->constrained('patient_profiles');
