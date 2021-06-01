@@ -171,7 +171,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/dataset" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -268,6 +268,14 @@
       <workItem from="1617020117470" duration="6248000" />
       <workItem from="1619159066236" duration="17330000" />
       <workItem from="1619353501414" duration="9483000" />
+      <workItem from="1617020117470" duration="6729000" />
+      <workItem from="1617097302487" duration="1231000" />
+      <workItem from="1617208831196" duration="28000" />
+      <workItem from="1619719211446" duration="27000" />
+      <workItem from="1620280795221" duration="1000" />
+      <workItem from="1620371770442" duration="1509000" />
+      <workItem from="1622388517814" duration="170000" />
+      <workItem from="1622389274426" duration="214000" />
     </task>
     <servers />
   </component>
