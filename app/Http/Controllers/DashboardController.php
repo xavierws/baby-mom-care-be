@@ -6,6 +6,9 @@ use App\Models\Materi;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\Quiz;
+use App\Models\Survey;
+use App\Models\SurveyQuestion;
+use App\Models\UserLog;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,17 +27,6 @@ class DashboardController extends Controller
             $questions = Question::with('choices')->where('quiz_id', $quiz->id)->get();
             $id = $quiz->id;
         }
-
-        // $data = array();
-        // $i=0;
-        // foreach ($questions as $question) {
-        //     $choices = $question->choices;
-        //     $data[$i] = [
-        //         $choices,
-        //     ];
-        //     ++$i;
-        // }
-
 
         return view('dashboard.kuis-show')->with(compact('quiz', 'questions', 'id'));
     }
@@ -79,18 +71,6 @@ class DashboardController extends Controller
         $quiz = Quiz::findOrFail($id);
         $questions = Question::with('choices')->where('quiz_id', $quiz->id)->orderBy('id')->get();
 
-        // $i = 0;
-        // foreach($questions as $question){
-        //     $data[$i]['question'] = $question->question;
-
-        //     $k = 1;
-        //     foreach($question->choices as $choice) {
-        //         $data[$i]['choice'.$k] = $choice->choice;
-        //         ++$k;
-        //     }
-        //     ++$i;
-        // }
-
         if (!$questions) {
             $questions == null;
         }
@@ -111,32 +91,12 @@ class DashboardController extends Controller
 
             $j = 1;
 
-            // foreach($request->input('choice.'.$j.'.*') as $c){
-            //     $choice = QuestionChoice::updateOrCreate([
-            //         'choice' => $c,
-            //         'is_true' => $request->input('choice.true.'.$i) == $j? 1:0,
-            //         'question_id' => $question->id,
-            //     ]);
-            //     $j++;
-            // }
-
-            // if ($question->choices != null) {
-
             foreach($question->choices as $choice){
                 $choice->choice = $request->input('choice.'.$i.'.'.$j);
                 $choice->is_true = $request->input('choice.true.'.$i) == $j? 1:0;
                 $choice->save();
                 $j++;
             }
-            // } else {
-
-            //     foreach ($request->)
-            //     $choice = QuestionChoice::create([
-            //         'choice' => $request->input('choice.'.$i.'.'.$j),
-            //         'is_true' => $request->input('choice.true.'.$i) == $j? 1:0,
-            //         'question_id' => $question->id,
-            //     ]);
-            // }
 
             $i++;
             $j=1;
@@ -187,6 +147,99 @@ class DashboardController extends Controller
 
     public function indexSurvey()
     {
+        $survey = Survey::all();
+        return view('dashboard.survey.list-survey')->with('survey', $survey);
+    }
 
+    public function showSurvey($id)
+    {
+        $survey = Survey::findOrFail($id);
+        $questions = $survey->questions;
+
+        return view('dashboard.survey.survey-show')->with(['survey' => $survey, 'questions' => $questions, 'id' => $id]);
+    }
+
+    public function createSurvey()
+    {
+        return view('dashboard.survey.survey-create');
+    }
+
+    public function storeSurvey(Request $request)
+    {
+        $survey = Survey::create([
+            'title' => $request->input('title'),
+            'choice_type' => $request->input('choice_type'),
+        ]);
+
+        $i=1;
+        foreach($request->input('question.*') as $question) {
+            SurveyQuestion::create([
+                'question' => $question,
+                'survey_id' => $survey->id,
+                'number' => $i,
+            ]);
+            $i++;
+        }
+
+        return redirect()->route('survey.index')->with('message', 'success');
+    }
+
+    public function editSurvey($id)
+    {
+        $survey = Survey::findOrFail($id);
+        $questions = $survey->questions;
+
+        return view('dashboard.survey.survey-edit')->with(compact('survey', 'questions', 'id'));
+    }
+
+    public function updateSurvey(Request $request, $id)
+    {
+        $survey = Survey::findOrFail($id);
+
+        $i = 1;
+        foreach($survey->questions as $question) {
+            $question->question = $request->input('question.'.$i);
+            $question->save();
+            $i++;
+        }
+
+        $k = $request->has('numbQ')? $request->input('numbQ'):1;
+        if ($request->has('question.new')) {
+            foreach ($request->input('question.new.*') as $q) {
+                $question = SurveyQuestion::create([
+                    'question' => $q,
+                    'survey_id' => $survey->id,
+                    'number' => $k,
+                ]);
+                ++$k;
+            }
+        }
+
+        return redirect()->route('survey.show', $id)->with('message', 'success');
+    }
+
+    public function destroySurvey($id)
+    {
+        $survey = Survey::findOrFail($id);
+
+        foreach ($survey->questions as $question) {
+            $question->delete();
+        }
+
+        $survey->delete();
+        return redirect()->back();
+    }
+
+    public function destroySurveyQ($id)
+    {
+        SurveyQuestion::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
+    public function dumpLogData()
+    {
+        $userLog = UserLog::with(['user'])->orderBy('created_at', 'desc')->get();
+
+        return view('dashboard.userlog.user-log')->with('userlog', $userLog);
     }
 }

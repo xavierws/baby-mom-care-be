@@ -231,17 +231,35 @@ return [
             'active' => ['/home']
         ],
         [
-            'text' => 'KUIS',
+            'text' => 'Kuis',
             'url' => '/kuis',
             'icon' => 'far fa-fw fa-file',
             'active' => ['/kuis']
         ],
         [
-            'text' => 'SURVEY',
+            'text' => 'Survey',
             'url' => '/survey',
             'icon' => 'fa fa-fw fa-scroll',
             'active' => ['/survey']
         ],
+        [
+            'text' => 'User Log',
+            'url' => '/user-log',
+            'icon' => 'fa fa-fw fa-users',
+            'active' => ['/user-log']
+        ],
+        [
+            'text' => 'Pasien',
+            'url' => '/pasien',
+            'icon' => 'fa fa-fw fa-users',
+            'active' => ['/pasien']
+        ],
+        [
+            'text' => 'Perawat',
+            'url' => '/perawat',
+            'icon' => 'fa fa-fw fa-users',
+            'active' => ['/perawat']
+        ]
         // [
         //     'text' => 'search',
         //     'search' => true,
@@ -259,17 +277,17 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // ['header' => 'account_settings'],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',
@@ -362,21 +380,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
