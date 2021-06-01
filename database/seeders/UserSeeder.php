@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 'working_exp' => 1,
                 'education' => 'S1',
-                'phone' => '088888',
+                'phone' => '089765432100',
                 'hospital_id' => 1,
                 'is_approved' => true,
             ],
@@ -27,7 +28,15 @@ class UserSeeder extends Seeder
                 'name' => 'super_admin',
                 'working_exp' => 1,
                 'education' => 'S1',
-                'phone' => '088888',
+                'phone' => '089765432100',
+                'hospital_id' => 1,
+                'is_approved' => true,
+            ],
+            [
+                'name' => 'Raka',
+                'working_exp' => 1,
+                'education' => 'S1',
+                'phone' => '089765432100',
                 'hospital_id' => 1,
                 'is_approved' => true,
             ]
@@ -36,7 +45,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'username' => 'admin',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'password' => Hash::make('admin-123'),
                 'role_id' => 21,
                 'email' => null,
                 'userable_id' => 1,
@@ -44,10 +53,18 @@ class UserSeeder extends Seeder
             ],
             [
                 'username' => 'super_admin',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'password' => Hash::make('admin-123'),
                 'role_id' => 22,
                 'email' => null,
                 'userable_id' => 2,
+                'userable_type' => 'App\Models\NurseProfile'
+            ],
+            [
+                'username' => 'raka',
+                'password' => Hash::make('admin-123'),
+                'role_id' => 20,
+                'email' => null,
+                'userable_id' => 3,
                 'userable_type' => 'App\Models\NurseProfile'
             ]
         ]);
