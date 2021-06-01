@@ -242,4 +242,14 @@ class DashboardController extends Controller
 
         return view('dashboard.userlog.user-log')->with('userlog', $userLog);
     }
+
+    public function showPatient()
+    {
+
+    }
+
+    public function showNurse()
+    {
+
+    }
 }
