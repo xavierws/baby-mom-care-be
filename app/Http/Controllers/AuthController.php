@@ -215,7 +215,7 @@ class AuthController extends Controller
             'userable_type' => $userable_type,
         ]);
 
-        return redirect('register')->with('status', 'Perawat berhasil register');
+        return redirect(route('register'))->with('status', 'Perawat berhasil register');
     }
 
     public function updatePassword(Request $request)
