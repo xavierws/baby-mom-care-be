@@ -8,6 +8,7 @@ use App\Models\QuestionChoice;
 use App\Models\Quiz;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
+use App\Models\User;
 use App\Models\UserLog;
 use Illuminate\Http\Request;
 
@@ -245,11 +246,18 @@ class DashboardController extends Controller
 
     public function showPatient()
     {
-
+        $user = User::with('userable')->where('role_id', 10)->get();
+        return view('dashboard.patient.patient-show')->with('user', $user);
     }
 
     public function showNurse()
     {
+        $user = User::with('userable')->where([
+            ['role_id', 20],
+            ['role_id', 21],
+            ['role_id', 22]
+        ])->get();
 
+        return view('')->with('user', $user);
     }
 }
