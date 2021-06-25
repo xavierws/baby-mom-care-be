@@ -209,7 +209,7 @@ class MateriController extends Controller
         $materi->save();
         if ($request->base64_image) {
             $image = $materi->image;
-            if ($image->filename) {Storage::delete($image->filename);}
+            if ($image) {Storage::delete($image->filename);}
             $newImg = base64_decode($request->input('base64_image'));
             $str = Str::random(10);
             $filename = 'public/materi/' . (string) $materi->id . $request->input('title') . '$' . $str . '.jpg';
