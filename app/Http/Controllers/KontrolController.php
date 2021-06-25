@@ -66,9 +66,9 @@ class KontrolController extends Controller
             'title' => 'required',
             'date' => 'required',
             'tempat_kontrol' => 'required',
-            'weight' => 'required',
-            'length' => 'required',
-            'lingkar_kepala' => 'required',
+//            'weight' => 'required',
+//            'length' => 'required',
+//            'lingkar_kepala' => 'required',
             'temperature' => 'required',
             'base64_img' => 'required',
             'mode' => 'required'
