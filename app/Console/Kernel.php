@@ -64,7 +64,7 @@ class Kernel extends ConsoleKernel
                     $user->userable->save();
                 }
 
-                $tanggal_dibuat = Carbon::parse($user->created_at);
+                $tanggal_dibuat = Carbon::parse($user->userable->resume_pulang->created_at);
                 if ($now->diffInDays($tanggal_dibuat) == 28) {
                     NotificationLog::create([
                         'notification' => "jangan lupa isi survey ketiga",
