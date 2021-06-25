@@ -215,8 +215,16 @@ class MateriController extends Controller
             $filename = 'public/materi/' . (string) $materi->id . $request->input('title') . '$' . $str . '.jpg';
             Storage::put($filename, $newImg);
 
-            $image->filename = $filename;
-            $image->save();
+            if ($image) {
+                $image->filename = $filename;
+                $image->save();
+            } else {
+                Image::create([
+                    'filename' => $filename,
+                    'imageable_id' => $request->id,
+                    'imageable_type' => 'App\Models\Materi'
+                ]);
+            }
         }
         return response()->json([
             'message' => 'materi is updated'
