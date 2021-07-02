@@ -48,6 +48,8 @@ class PatientProfile extends JsonResource
             'user_id' => $this->user->id,
             'username' => $this->user->username,
             'phone' => $this->phone,
+            'diagnosa_medis' => $this->diagnosa_medis,
+            'hospital_entry' => $this->hospital_entry,
             'email' => $this->user->email,
             'created_at' => $this->user->created_at,
         ];
