@@ -225,7 +225,7 @@ class QuizController extends Controller
         if ($quizzes->isNotEmpty()) {
             foreach ($quizzes as $quiz) {
                 $data[$i] = [
-                    'question' => Question::find($quiz->question_id)->question,
+                    'question' => Question::findOrFail($quiz->question_id)->question,
                     'point' => $quiz->point,
                 ];
                 $i++;
