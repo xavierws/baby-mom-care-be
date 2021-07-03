@@ -173,16 +173,19 @@ class MateriController extends Controller
 
         $materiId = Materi::orderBy('id', 'desc')->pluck('id')->first();
 
-        $image = base64_decode($request->input('base64_image'));
-        $str = Str::random(10);
-        $filename = 'public/materi/' . (string) $materiId . $request->input('title') . '$' . $str . '.jpg';
-        Storage::put($filename, $image);
+        if ($request->has('base64_image')) {
+            $image = base64_decode($request->input('base64_image'));
+            $str = Str::random(10);
+            $filename = 'public/materi/' . (string) $materiId . $request->input('title') . '$' . $str . '.jpg';
+            Storage::put($filename, $image);
 
-        Image::create([
-            'filename' => $filename,
-            'imageable_id' => $materiId,
-            'imageable_type' => 'App\Models\Materi'
-        ]);
+            Image::create([
+                'filename' => $filename,
+                'imageable_id' => $materiId,
+                'imageable_type' => 'App\Models\Materi'
+            ]);
+        }
+
 
         return response()->json([
             'message' => 'materi created'
