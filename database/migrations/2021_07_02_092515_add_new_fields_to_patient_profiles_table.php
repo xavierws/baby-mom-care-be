@@ -27,7 +27,8 @@ class AddNewFieldsToPatientProfilesTable extends Migration
     public function down()
     {
         Schema::table('patient_profiles', function (Blueprint $table) {
-            //
+            $table->dropColumn('diagnosa_medis');
+            $table->dropColumn('hospital_entry');
         });
     }
 }
