@@ -36,6 +36,7 @@ class PatientController extends Controller
             $patient->baby_gender = $request->baby_gender;
             $patient->usia_gestas = $request->usia_gestas;
             $patient->harapan_orangtua = $request->harapan_orangtua;
+            $request->hospital_entry = $request->hospital_entry;
         }
         if ($request->mother_name) {
             $patient->mother_name = $request->mother_name;
