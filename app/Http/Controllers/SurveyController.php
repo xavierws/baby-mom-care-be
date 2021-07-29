@@ -23,18 +23,21 @@ class SurveyController extends Controller
         ]);
 
         $survey = Survey::find($request->id);
+        $data = $survey->url;
 
-        $data = array();
-        $i = 0;
-        foreach ($survey->questions as $question) {
-            $data[$i] = [
-                'id' => $question->id,
-                'question' => $question->question,
-                'number' => $question->number,
-            ];
-            $i++;
+        if ($survey->choice_type !== 'link') {
+            $data = array();
+            $i = 0;
+            foreach ($survey->questions as $question) {
+                $data[$i] = [
+                    'id' => $question->id,
+                    'question' => $question->question,
+                    'number' => $question->number,
+                ];
+                $i++;
+            }
         }
-
+        
         return response($data);
     }
 
