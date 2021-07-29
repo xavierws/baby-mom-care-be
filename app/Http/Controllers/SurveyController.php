@@ -49,19 +49,23 @@ class SurveyController extends Controller
         Survey::create([
             'title' => $request->input('title'),
             'choice_type' => $request->input('choice_type'),
+            'url' => $request->input('url', null),
 //            'choice_type' => $request->choice[$i]
         ]);
         $survey_id = Survey::orderBy('id', 'desc')->pluck('id')->first();
 
-        $i = 0;
-        foreach ($request->questions as $question) {
-            SurveyQuestion::create([
-                'question' => $question,
-                'survey_id' => $survey_id,
-                'number' => $i+1,
-            ]);
-            $i++;
+        if ($request->input('choice_type') !== 'link') {
+            $i = 0;
+            foreach ($request->questions as $question) {
+                SurveyQuestion::create([
+                    'question' => $question,
+                    'survey_id' => $survey_id,
+                    'number' => $i+1,
+                ]);
+                $i++;
+            }
         }
+
 
         return response()->json([
             'message' => 'survey is created'

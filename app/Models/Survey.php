@@ -14,6 +14,7 @@ class Survey extends Model
     protected $fillable = [
         'title',
         'choice_type',
+        'url',
     ];
 
     protected $with = [
