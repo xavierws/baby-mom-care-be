@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\ReversePoint;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -133,40 +134,90 @@ class SurveyController extends Controller
         }
         */
 
-        $i = 0;
-        $a = DB::table('patient_survey')->where('question_id', $request->id[$i]);
-        if ($a->exists()) {
-            $order = $a->orderBy('order', 'desc')->first()->order+1;
-        } else {
-            $order = 1;
-        }
+//        $i = 0;
+//        $a = DB::table('patient_survey')->where('question_id', $request->id[$i]);
+//        if ($a->exists()) {
+//            $order = $a->orderBy('order', 'desc')->first()->order+1;
+//        } else {
+//            $order = 1;
+//        }
 
-        foreach ($request->answers as $answer) {
-            $question = SurveyQuestion::find($request->id[$i]);
-            if ($question->survey_id == 1) {
+        $answers = json_decode($request->answers);
+        foreach ($answers['answers'] as $i => $v) {
+            $oldAnswer = DB::table('patient_survey')
+                ->where('patient_id', $user->userable_id)
+                ->where('question_id', $v['id']);
+
+            if ($oldAnswer->get()->isEmpty()) {
+                $order = 1;
+            } else {
+                $order = $oldAnswer->max('order') + 1;
+            }
+
+            if ($order > 3) {
+                return response()->json([
+                    'message' => 'patient already fill 3 times'
+                ]);
+            }
+
+            $question = SurveyQuestion::find($v['id']);
+//            $patient = $user->userable;
+//            if ($question->patients->contains($patient)) {
+//
+//            }
+
+            if ($v['id'] == 1) {
                 if ($question->number == 2 || $question->number == 4 || $question->number == 5 || $question->number == 10) {
-                    $point = ReversePoint::PSS($answer);
+                    $point = ReversePoint::PSS($v['value']);
                 } else {
-                    $point = $answer;
+                    $point = $v['value'];
                 }
-            } elseif ($question->survey_id == 2) {
+            } elseif ($$v['id'] == 2) {
                 if ($question->number == 10 || $question->number == 12) {
-                    $point = ReversePoint::MCS($answer);
+                    $point = ReversePoint::MCS($v['value']);
                 } else {
-                    $point = $answer;
+                    $point = $v['value'];
                 }
             } else {
-                $point = $answer;
+                $point = $v['value'];
             }
 
             $question->patients()->attach($user->userable_id, [
-                'answer' => $answer,
+                'answer' => $v['value'],
                 'point' => $point,
                 'order' => $order,
                 'survey_id' => $question->survey_id,
             ]);
-            $i++;
+
+
         }
+
+//        foreach ($request->answers as $answer) {
+//            $question = SurveyQuestion::find($request->id[$i]);
+//            if ($question->survey_id == 1) {
+//                if ($question->number == 2 || $question->number == 4 || $question->number == 5 || $question->number == 10) {
+//                    $point = ReversePoint::PSS($answer);
+//                } else {
+//                    $point = $answer;
+//                }
+//            } elseif ($question->survey_id == 2) {
+//                if ($question->number == 10 || $question->number == 12) {
+//                    $point = ReversePoint::MCS($answer);
+//                } else {
+//                    $point = $answer;
+//                }
+//            } else {
+//                $point = $answer;
+//            }
+//
+//            $question->patients()->attach($user->userable_id, [
+//                'answer' => $answer,
+//                'point' => $point,
+//                'order' => $order,
+//                'survey_id' => $question->survey_id,
+//            ]);
+//            $i++;
+//        }
 
         return response()->json([
             'message' => 'survey answers are stored',
