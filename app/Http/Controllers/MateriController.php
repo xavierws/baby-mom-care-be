@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\StoreImage;
+use App\Models\PatientProfile;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Materi;
@@ -277,8 +278,11 @@ class MateriController extends Controller
     public function assignMateri(Request $request)
     {
 
+        $patientId = $request->id;
+        PatientProfile::find($patientId)->materis->detach();
+
         foreach ($request->materis as $materi) {
-            Materi::find($materi)->patients()->attach($request->id);
+            Materi::find($materi)->patients()->attach($patientId);
         }
 
         return response()->json([
