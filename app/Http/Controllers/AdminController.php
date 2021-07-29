@@ -120,7 +120,9 @@ class AdminController extends Controller
         $nurse = NurseProfile::find($request->nurse_id);
 
         foreach ($request->patients as $patient) {
-            $nurse->patients()->attach($patient);
+            if (!$nurse->patients->contains($patient)) {
+                $nurse->patients()->attach($patient);
+            
         }
 
         return response()->json([
