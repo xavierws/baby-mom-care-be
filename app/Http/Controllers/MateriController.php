@@ -279,7 +279,7 @@ class MateriController extends Controller
     {
 
         $patientId = $request->id;
-        PatientProfile::find($patientId)->materis->detach();
+        PatientProfile::find($patientId)->materis()->detach();
 
         foreach ($request->materis as $materi) {
             Materi::find($materi)->patients()->attach($patientId);
