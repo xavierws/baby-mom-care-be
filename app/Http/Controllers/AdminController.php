@@ -122,7 +122,7 @@ class AdminController extends Controller
         foreach ($request->patients as $patient) {
             if (!$nurse->patients->contains($patient)) {
                 $nurse->patients()->attach($patient);
-            
+            }
         }
 
         return response()->json([
