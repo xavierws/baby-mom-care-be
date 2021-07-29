@@ -30,20 +30,15 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('/test', function () {
-    $date1 = Carbon::parse('2021-01-09');
-    $date2 = Carbon::parse('2021-01-16');
-    $divisor = (float)$date2->diffInDays($date1);
-
-    $diffWeight = 594.0 - 500.0;
-
-    if ($diffWeight/$divisor >= 15.0) {
-        return 'normal' . ' ' . $divisor . ' ' . $diffWeight;
-    } elseif ($diffWeight/$divisor >= 13.5 && $diffWeight/$divisor < 15.0) {
-        return 'warning' . ' ' . $divisor . ' ' . $diffWeight;
-    } else {
-        return 'danger' . ' ' . $divisor . ' ' . $diffWeight;
+Route::get('/test', function (Request $request) {
+    $total = 0;
+    foreach ($request->input('answers.*') as $value) {
+        $total = $total + $value['value'];
     }
+
+    return response()->json([
+        'value' => $total
+    ]);
 });
 
 //login
