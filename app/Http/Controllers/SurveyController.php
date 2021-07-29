@@ -157,7 +157,7 @@ class SurveyController extends Controller
             if ($order > 3) {
                 return response()->json([
                     'message' => 'patient already fill 3 times',
-                    'error'=>'error'
+                    'error'=>1
                 ]);
             }
 
