@@ -143,7 +143,7 @@ class SurveyController extends Controller
 //        }
 
 //        $answers = json_decode($request->answers, true);
-        foreach ($request->answers as $i => $v) {
+        foreach ($request->answers as $v) {
             $oldAnswer = DB::table('patient_survey')
                 ->where('patient_id', $user->userable_id)
                 ->where('question_id', $v['id']);
