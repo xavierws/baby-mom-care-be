@@ -172,7 +172,7 @@ class SurveyController extends Controller
                 } else {
                     $point = $v['value'];
                 }
-            } elseif ($$v['id'] == 2) {
+            } elseif ($v['id'] == 2) {
                 if ($question->number == 10 || $question->number == 12) {
                     $point = ReversePoint::MCS($v['value']);
                 } else {
