@@ -287,16 +287,16 @@ class DashboardController extends Controller
         //     ];
         // }
 
-        $answers = DB::table('patient_survey')->get();
+        $answers = DB::table('patient_survey')->distinct()->get();
 
         $data = array();
         $i = 1;
         foreach ($answers as $answer) {
             $data[$i] = [
                 'patient_id' => $answer->patient_id,
-                'name' => PatientProfile::find($answer->patient_id)->value('mother_name'),
+                'name' => PatientProfile::find($answer->patient_id)->first('mother_name'),
                 'survey_id' => $answer->survey_id,
-                'survey_title' => Survey::find($answer->survey_id)->value('title'),
+                'survey_title' => Survey::find($answer->survey_id)->first('title'),
                 'order' => $answer->order
             ];
             $i++;
