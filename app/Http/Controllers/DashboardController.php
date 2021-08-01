@@ -291,7 +291,7 @@ class DashboardController extends Controller
 
         $data = array();
         foreach ($answers as $answer) {
-            $data[$answers->patient_id . $answer->order] = [
+            $data[$answer->patient_id . $answer->order] = [
                 'patient_id' => $answer->patient_id,
                 'name' => PatientProfile::find($answer->patient_id)->pluck('mother_name'),
                 'survey_id' => $answer->survey_id,
