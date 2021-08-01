@@ -22,24 +22,29 @@
                         </div>
                         <div class="form-group">
                             <label for="choice_type">Tipe Survey</label>
-                            <select name="choice_type" id="" class="form-control col-3">
+                            <select name="choice_type" id="" class="form-control col-3" onchange="showLink(this.value)">
                                 <option value="number">angka 1-5</option>
                                 <option value="text">text</option>
                                 <option value="yes_no">ya/tidak</option>
+                                <option value="link">link google form</option>
                             </select>
                         </div>
-                        <div class="card">
+                        <div id="" class="card">
                             <div class="card-body">
-                                <div class="form-group">
+                                <div id="urlForm" class="form-group d-none">
+                                    <label for="url">URL</label>
+                                    <input id="urlInput" type="url" class="form-control mb-3" name="url" required/>
+                                </div>
+                                <div id="qForm" class="form-group">
                                     <label for="question[1]">Pertanyaan 1</label>
-                                    <textarea type="text" class="form-control mb-3" name="question[1]" required></textarea>
+                                    <textarea id="qInput" type="text" class="form-control mb-3" name="question[1]" required></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{-- <input type="number" class="d-none" name="total" value=""> --}}
-                    <button type="button" class="btn btn-outline-secondary mt-2 mr-3" onclick="GFG_Fun()">Tambah
+                    <button id="qButton" type="button" class="btn btn-outline-secondary mt-2 mr-3" onclick="GFG_Fun()">Tambah
                         Pertanyaan</button>
                     <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                 </form>
@@ -244,6 +249,28 @@
         let k = i-1;
         let rBTN = document.getElementById("btn_"+ k);
         rBTN.setAttribute("class", "btn btn-danger");
+    }
+
+    function showLink(type) {
+        var card = document.getElementById("qForm");
+        var btn = document.getElementById("qButton");
+        var urlForm = document.getElementById("urlForm");
+        var urlInput = document.getElementById("urlInput");
+        var qInput = document.getElementById("qInput");
+
+        if (type == "link") {
+            card.classList.add('d-none');
+            btn.classList.add('d-none');
+            urlForm.classList.remove('d-none');
+            urlInput.required = true;
+            qInput.required = false;
+        } else {
+            card.classList.remove('d-none');
+            btn.classList.remove('d-none');
+            urlForm.classList.add('d-none');
+            urlInput.required = false;
+            qInput.required = true;
+        }
     }
 
 </script>

@@ -59,6 +59,11 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/user-log')->group(function (){
         Route::get('/', [DashboardController::class, 'dumpLogData'])->name('user.log');
     });
+
+    Route::prefix('/user-survey')->group(function() {
+        Route::get('/', [DashboardController::class, 'dumpUserSurvey'])->name('usersurvey.index');
+        Route::get('/{id}/{order}', [DashboardController::class, 'showUserSurvey'])->name('usersurvey.show');
+    });
 });
 
 

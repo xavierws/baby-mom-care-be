@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materi;
+use App\Models\PatientProfile;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\Quiz;
@@ -11,6 +12,7 @@ use App\Models\SurveyQuestion;
 use App\Models\User;
 use App\Models\UserLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -167,20 +169,26 @@ class DashboardController extends Controller
 
     public function storeSurvey(Request $request)
     {
+        $url = $request->has('url')? $request->input('url'):null;
+
         $survey = Survey::create([
             'title' => $request->input('title'),
             'choice_type' => $request->input('choice_type'),
+            'url' =>  $url,
         ]);
 
         $i=1;
-        foreach($request->input('question.*') as $question) {
-            SurveyQuestion::create([
-                'question' => $question,
-                'survey_id' => $survey->id,
-                'number' => $i,
-            ]);
-            $i++;
+        if ($request->has('question.*')) {
+            foreach($request->input('question.*') as $question) {
+                SurveyQuestion::create([
+                    'question' => $question,
+                    'survey_id' => $survey->id,
+                    'number' => $i,
+                ]);
+                $i++;
+            }
         }
+
 
         return redirect()->route('survey.index')->with('message', 'success');
     }
@@ -258,6 +266,59 @@ class DashboardController extends Controller
             ['role_id', 22]
         ])->get();
 
-        return view('')->with('user', $user);
+        return view('dashboard.nurse.nurse-show')->with('user', $user);
+    }
+
+    public function dumpUserSurvey()
+    {
+        // $patients = PatientProfile::with(['surveys' => function($query) {
+        //     $query->orderBy('survey_id');
+        // }]);
+        // $survey = Survey::all();
+
+        // $data = [];
+        // foreach ($patients as $patient) {
+        //     if (condition) {
+        //         # code...
+        //     }
+        //     $data[] = [
+        //         'name' => $patient->mother_name,
+        //         ''
+        //     ];
+        // }
+
+        $answers = DB::table('patient_survey')->distinct()->get();
+
+        $data = array();
+        foreach ($answers as $answer) {
+            $data[$answers->patient_id . $answer->order] = [
+                'patient_id' => $answer->patient_id,
+                'name' => PatientProfile::find($answer->patient_id)->pluck('mother_name'),
+                'survey_id' => $answer->survey_id,
+                'survey_title' => Survey::find($answer->survey_id)->pluck('title'),
+                'order' => $answer->order
+            ];
+        }
+        return view('dashboard.userSurvey.user-survey')->with(['patients' => $data]);
+    }
+
+    public function showUserSurvey($id, $order)
+    {
+        $answers = DB::table('patient_survey')
+        ->where('patient_id', $id)
+        ->where('order', $order)
+        ->get();
+
+        $patient = PatientProfile::find($id);
+        $data = array();
+        foreach ($answers as $answer) {
+            $data[$answer->question_id] = [
+                'question' => SurveyQuestion::find($answer->question_id),
+                'ans' => $answer->$answer,
+                'point' => $answer->point,
+            ];
+        }
+
+        return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data]);
     }
 }

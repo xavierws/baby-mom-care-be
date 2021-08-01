@@ -259,7 +259,13 @@ return [
             'url' => '/perawat',
             'icon' => 'fa fa-fw fa-users',
             'active' => ['/perawat']
-        ]
+        ],
+        [
+            'text' => 'Hasil Kuisioner',
+            'url' => '/user-survey',
+            'icon' => 'fa fa-fw fa-users',
+            'active' => ['/user-survey']
+        ],
         // [
         //     'text' => 'search',
         //     'search' => true,
