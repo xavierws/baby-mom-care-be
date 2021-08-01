@@ -294,9 +294,9 @@ class DashboardController extends Controller
         foreach ($answers as $answer) {
             $data[$i] = [
                 'patient_id' => $answer->patient_id,
-                'name' => PatientProfile::find($answer->patient_id)->pluck('mother_name'),
+                'name' => PatientProfile::find($answer->patient_id)->value('mother_name'),
                 'survey_id' => $answer->survey_id,
-                'survey_title' => Survey::find($answer->survey_id)->pluck('title'),
+                'survey_title' => Survey::find($answer->survey_id)->value('title'),
                 'order' => $answer->order
             ];
             $i++;
