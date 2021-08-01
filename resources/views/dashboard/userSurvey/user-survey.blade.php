@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($patients[] as $patient)
+                            @forelse ($patients as $patient)
                             <tr>
                                 <td>{{ $patient['patient_id'] }}</td>
                                 <td>{{ $patient['name'] }}</td>
