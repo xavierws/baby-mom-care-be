@@ -263,7 +263,7 @@ return [
         [
             'text' => 'Hasil Kuisioner',
             'url' => '/user-survey',
-            'icon' => 'fa fa-fw fa-users',
+            'icon' => 'fa fa-fw fa-scroll',
             'active' => ['/user-survey']
         ],
         // [
