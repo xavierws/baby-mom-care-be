@@ -316,7 +316,7 @@ class DashboardController extends Controller
         foreach ($answers as $answer) {
             $data[$answer->question_id] = [
                 'question' => SurveyQuestion::find($answer->question_id),
-                'ans' => $answer->$answer,
+                'ans' => $answer->answer,
                 'point' => $answer->point,
             ];
         }
