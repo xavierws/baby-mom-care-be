@@ -290,14 +290,16 @@ class DashboardController extends Controller
         $answers = DB::table('patient_survey')->groupBy('patient_id')->get();
 
         $data = array();
+        $i = 1;
         foreach ($answers as $answer) {
-            $data[$answer->patient_id . $answer->order] = [
+            $data[$i] = [
                 'patient_id' => $answer->patient_id,
                 'name' => PatientProfile::find($answer->patient_id)->pluck('mother_name'),
                 'survey_id' => $answer->survey_id,
                 'survey_title' => Survey::find($answer->survey_id)->pluck('title'),
                 'order' => $answer->order
             ];
+            $i++;
         }
         return view('dashboard.userSurvey.user-survey')->with(['patients' => $data]);
     }
