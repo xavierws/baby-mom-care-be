@@ -12,6 +12,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6">
+                    <h6>$patient->mother_name</h6>
                     <table class="table table-hover table-bordered" id="data-table">
                         <thead>
                             <tr>
@@ -36,6 +37,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <h6>total point : {{ $total }}</h6>
                 </div>
             </div>
         </div>

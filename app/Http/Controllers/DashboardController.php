@@ -313,14 +313,17 @@ class DashboardController extends Controller
 
         $patient = PatientProfile::find($id);
         $data = array();
+        $total = 0;
         foreach ($answers as $answer) {
             $data[$answer->question_id] = [
                 'question' => SurveyQuestion::find($answer->question_id)->question,
                 'ans' => $answer->answer,
                 'point' => $answer->point,
             ];
+
+            $total += $answer->point;
         }
 
-        return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data]);
+        return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data, 'total' => $total]);
     }
 }
