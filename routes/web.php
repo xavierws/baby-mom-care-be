@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/user-survey')->group(function() {
         Route::get('/', [DashboardController::class, 'dumpUserSurvey'])->name('usersurvey.index');
-        Route::get('/{id}/{order}', [DashboardController::class, 'showUserSurvey'])->name('usersurvey.show');
+        Route::get('/{id}/{survey_id}/{order}', [DashboardController::class, 'showUserSurvey'])->name('usersurvey.show');
     });
 });
 
