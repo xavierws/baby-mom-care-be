@@ -313,6 +313,7 @@ class DashboardController extends Controller
         ->get();
 
         $patient = PatientProfile::find($id);
+        $survey = Survey::find($surveyId)->title;
         $data = array();
         $total = 0;
         foreach ($answers as $answer) {
@@ -325,6 +326,6 @@ class DashboardController extends Controller
             $total += $answer->point;
         }
 
-        return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data, 'total' => $total]);
+        return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data, 'total' => $total, 'survey' => $survey]);
     }
 }
