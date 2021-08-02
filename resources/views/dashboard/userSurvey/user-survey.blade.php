@@ -30,7 +30,7 @@
                                 <td>{{ $patient['survey_title'] }}</td>
                                 <td>{{ $patient['order'] }}</td>
                                 <td>
-                                    <a class="btn btn-success text-white" href="{{ route('usersurvey.show', ['id' => $patient['patient_id'], 'order' => $patient['order']]) }}">Lihat</a>
+                                    <a class="btn btn-success text-white" href="{{ route('usersurvey.show', ['id' => $patient['patient_id'], 'survey_id' => $patient['survey_id'], 'order' => $patient['order']]) }}">Lihat</a>
                                     {{-- <a class="btn btn-danger text-white ml-3" href="{{ route('survey.destroy', $s->id) }}">Hapus Survey</a> --}}
                                 </td>
                             </tr>
