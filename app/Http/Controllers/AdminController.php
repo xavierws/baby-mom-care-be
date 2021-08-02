@@ -20,7 +20,9 @@ class AdminController extends Controller
 {
     public function listUnApprovedNurse()
     {
-        $nurses = NurseProfile::where('is_approved', false)->get();
+        $nurses = NurseProfile::with(['user'], function($query) {
+            $query->where('role_id', '20', '21');
+        })->where('is_approved', false)->get();
 
         return NurseRes::collection($nurses);
     }
@@ -40,7 +42,9 @@ class AdminController extends Controller
 
     public function listApprovedNurse()
     {
-        $nurses = NurseProfile::where('is_approved', true)->get();
+        $nurses = NurseProfile::with(['user'], function($query) {
+            $query->where('role_id', '20', '21');
+        })->where('is_approved', true)->get();
 
         return NurseRes::collection($nurses);
     }
