@@ -287,7 +287,7 @@ class DashboardController extends Controller
         //     ];
         // }
 
-        $answers = DB::table('patient_survey')->groupBy('patient_id', 'order')->distinct()->get();
+        $answers = DB::table('patient_survey')->groupBy('patient_id', 'survey_id', 'order')->distinct()->get();
 
         $data = array();
         $i = 1;
