@@ -12,7 +12,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <h6>{{ $patient->mother_name }}</h6>
+                    <h5>Nama Pasien : {{ $patient->mother_name }}</h5>
+                    <h5>Jenis Survey : {{ $survey }}</h5>
                     <table class="table table-hover table-bordered" id="data-table">
                         <thead>
                             <tr>
