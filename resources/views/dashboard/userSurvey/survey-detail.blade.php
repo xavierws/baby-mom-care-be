@@ -38,7 +38,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <h6>total point : {{ $total }}</h6>
+                    <h5>total point : {{ $total }}</h5>
                 </div>
             </div>
         </div>
