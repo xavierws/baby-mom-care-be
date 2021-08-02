@@ -304,11 +304,12 @@ class DashboardController extends Controller
         return view('dashboard.userSurvey.user-survey')->with(['patients' => $data]);
     }
 
-    public function showUserSurvey($id, $order)
+    public function showUserSurvey($id, $surveyId, $order)
     {
         $answers = DB::table('patient_survey')
         ->where('patient_id', $id)
         ->where('order', $order)
+        ->where('survey_id', $surveyId)
         ->get();
 
         $patient = PatientProfile::find($id);
