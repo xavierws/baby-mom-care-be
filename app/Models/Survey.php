@@ -15,6 +15,7 @@ class Survey extends Model
         'title',
         'choice_type',
         'url',
+        'instruction'
     ];
 
     protected $with = [

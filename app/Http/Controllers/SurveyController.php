@@ -37,8 +37,11 @@ class SurveyController extends Controller
                 $i++;
             }
         }
-        
-        return response($data);
+
+        return response()->json([
+            'instruction' => $survey->instruction,
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request)
@@ -53,6 +56,7 @@ class SurveyController extends Controller
             'title' => $request->input('title'),
             'choice_type' => $request->input('choice_type'),
             'url' => $request->input('url', null),
+            'instruction' => $request->input('instruction', null),
 //            'choice_type' => $request->choice[$i]
         ]);
         $survey_id = Survey::orderBy('id', 'desc')->pluck('id')->first();
@@ -91,6 +95,8 @@ class SurveyController extends Controller
         $survey = Survey::find($request->id);
         $survey->title = $request->input('title');
         $survey->choice_type = $request->input('choice_type');
+        $survey->url = $request->input('url');
+        $survey->instruction = $request->input('instruction');
         $survey->save();
 
 //        $question[] = $request->input('questions');
