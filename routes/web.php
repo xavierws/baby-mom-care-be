@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
+
 Route::get('register-nurse', [AuthController::class, 'showRegisterPage']);
 Route::post('register-nurse', [AuthController::class, 'registerNurse'])->name('register');
 
