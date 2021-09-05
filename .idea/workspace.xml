@@ -11,16 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthWebController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +287,7 @@
       <workItem from="1625587265322" duration="2639000" />
       <workItem from="1627566282528" duration="9889000" />
       <workItem from="1627578513906" duration="2057000" />
-      <workItem from="1630811633628" duration="600000" />
+      <workItem from="1630811633628" duration="1152000" />
     </task>
     <servers />
   </component>

@@ -34,7 +34,7 @@ class AdviceController extends Controller
 
     public function listForPatient(Request $request)
     {
-        $resume = $request->user()->userable->kontrols()->where('mode', 'resume')->first();
+        $resume = $request->user()->userable->kontrols()->where('mode', 'resume');
         $advice = $resume->advices;
 
         return response()->json([
@@ -113,8 +113,8 @@ class AdviceController extends Controller
 
             $notification_survey = NotificationLog::where('type', 'survey')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
             foreach ($notification_survey as $log) {
-                    $data[$i] = $log;
-                    $i++;
+                $data[$i] = $log;
+                $i++;
             }
         } else {
             $data = NotificationLog::where('type', 'kontrol')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
