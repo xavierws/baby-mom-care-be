@@ -17,18 +17,28 @@ class AdviceController extends Controller
 
     public function list()
     {
-        $materi = Advice::all();
+        $advice = Advice::all();
 
         $data = array();
-        for ($i = 0; $i < count($materi); $i++) {
+        for ($i = 0; $i < count($advice); $i++) {
             $data[$i] = [
-                'id'  => $materi[$i]->id,
-                'name' => $materi[$i]->name
+                'id'  => $advice[$i]->id,
+                'name' => $advice[$i]->name
             ];
         }
 
         return response()->json([
             'data' => $data,
+        ]);
+    }
+
+    public function listForPatient(Request $request)
+    {
+        $resume = $request->user()->userable->kontrols()->where('mode', 'resume')->first();
+        $advice = $resume->advices;
+
+        return response()->json([
+            'data' => $advice
         ]);
     }
 

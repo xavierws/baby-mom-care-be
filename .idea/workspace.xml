@@ -12,6 +12,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdviceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthWebController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,9 +178,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/dataset" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -276,6 +285,18 @@
       <workItem from="1620371770442" duration="1509000" />
       <workItem from="1622388517814" duration="170000" />
       <workItem from="1622389274426" duration="214000" />
+      <workItem from="1623404465041" duration="9000" />
+      <workItem from="1624614581518" duration="36000" />
+      <workItem from="1624614672781" duration="1214000" />
+      <workItem from="1624637113680" duration="442000" />
+      <workItem from="1625140988256" duration="223000" />
+      <workItem from="1625141249039" duration="5977000" />
+      <workItem from="1625191860681" duration="7828000" />
+      <workItem from="1625307033034" duration="3745000" />
+      <workItem from="1625587265322" duration="2639000" />
+      <workItem from="1627566282528" duration="9889000" />
+      <workItem from="1627578513906" duration="2057000" />
+      <workItem from="1630811633628" duration="600000" />
     </task>
     <servers />
   </component>

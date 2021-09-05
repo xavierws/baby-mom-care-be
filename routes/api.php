@@ -168,6 +168,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
+    //patient list advices
+    Route::get('advice/patient/list', [AdviceController::class, 'listForPatient']);
 
     //nurse - dashboard
     //list patient that related to the nurse
