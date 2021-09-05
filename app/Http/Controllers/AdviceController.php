@@ -35,7 +35,10 @@ class AdviceController extends Controller
     public function listForPatient(Request $request)
     {
         $resume = $request->user()->userable->kontrols()->where('mode', 'resume')->get();
-        $advice = $resume->advices;
+        $advice = '';
+        foreach ($resume as $r) {
+            $advice = $r->advices;
+        }
 
         return response()->json([
             'data' => $advice
