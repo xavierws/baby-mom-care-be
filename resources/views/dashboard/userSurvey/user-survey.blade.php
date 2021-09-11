@@ -17,8 +17,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Pasien</th>
-                                <th>Nama Kuisioner</th>
-                                <th>Urutan Kuisioner</th>
+                                <th>Nama Kuesioner</th>
+                                <th>Urutan Kuesioner</th>
                                 <th>Rumah Sakit</th>
                                 <th>Aksi</th>
                             </tr>

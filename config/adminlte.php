@@ -237,7 +237,7 @@ return [
             'active' => ['/kuis']
         ],
         [
-            'text' => 'Kuisioner',
+            'text' => 'Kuesioner',
             'url' => '/survey',
             'icon' => 'fa fa-fw fa-scroll',
             'active' => ['/survey']
@@ -261,7 +261,7 @@ return [
             'active' => ['/perawat']
         ],
         [
-            'text' => 'Hasil Kuisioner',
+            'text' => 'Hasil Kuesioner',
             'url' => '/user-survey',
             'icon' => 'fa fa-fw fa-scroll',
             'active' => ['/user-survey']
