@@ -18,7 +18,7 @@ class CreateSurveysTable extends Migration
             $table->string('title');
             $table->string('instruction', 10000);
             $table->enum('choice_type', ['number', 'text', 'yes_no', 'link']);
-            $table->string('url', 500);
+            $table->string('url', 500)->nullable();
             $table->timestamps();
         });
     }
