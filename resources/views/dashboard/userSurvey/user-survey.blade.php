@@ -3,7 +3,7 @@
 @section('title', 'Survey')
 
 @section('content_header')
-    <h1 class="d-inline">JAWABAN KUISIONER</h1>
+    <h1 class="d-inline">JAWABAN KUESIONER</h1>
     @include('components.validation')
 @stop
 
