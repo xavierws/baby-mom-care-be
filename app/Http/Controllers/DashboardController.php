@@ -24,14 +24,15 @@ class DashboardController extends Controller
 
     public function show($id)
     {
-        $quiz = Materi::findOrFail($id)->quiz;
+        $materi = Materi::findOrFail($id);
+        $quiz = $materi->quiz;
         $questions = null;
         if ($quiz){
             $questions = Question::with('choices')->where('quiz_id', $quiz->id)->get();
             $id = $quiz->id;
         }
 
-        return view('dashboard.kuis-show')->with(compact('quiz', 'questions', 'id'));
+        return view('dashboard.kuis-show')->with(compact('quiz', 'questions', 'id', 'materi'));
     }
 
     public function create($id)
@@ -204,6 +205,9 @@ class DashboardController extends Controller
     public function updateSurvey(Request $request, $id)
     {
         $survey = Survey::findOrFail($id);
+        $survey->title = $request->input('title');
+        $survey->choice_type = $request->input('choice_type');
+        $survey->save();
 
         $i = 1;
         foreach($survey->questions as $question) {

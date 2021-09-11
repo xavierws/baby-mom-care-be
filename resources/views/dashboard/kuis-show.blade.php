@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="card mb-0">
-        <div class="card-header">Daftar Kuis
+        <div class="card-header">{{ $materi->title }}
             @if ($quiz)
             <a class="btn btn-primary text-white float-right" href="{{route('kuis.edit', $id)}}">Ubah</a>
             @endif
@@ -30,7 +30,7 @@
                                         </select>
                                 </div>
                                 <div class="col-1 align-self-center">
-                                    <a type="submit" class="btn btn-danger" href="{{ route('kuis.destroy', $question->id) }}">Hapus Pertanyaan</a>
+                                    {{-- <a type="submit" class="btn btn-danger" href="{{ route('kuis.destroy', $question->id) }}">Hapus Pertanyaan</a> --}}
                                 </div>
                             </div>
                         </div>

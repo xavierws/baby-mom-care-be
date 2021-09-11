@@ -11,7 +11,7 @@
 <div class="card mb-0">
   <div class="card-header">Rumah Admin</div>
   <div class="card-body">
-    <h4>Halo {{$user['userable']['name']}}</h4>
+    <h4>Halo {{$user->profile_name}}</h4>
     {{-- <p>Jumlah peserta :</p>
     <div class="row">
       <div class="col-12 col-md-6">

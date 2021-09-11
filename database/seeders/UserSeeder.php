@@ -77,10 +77,10 @@ class UserSeeder extends Seeder
             // ]
             [
                 'username' => 'kristiawati',
-                'password' => Hash::make('admin-123'),
+                'password' => Hash::make('Cektokosebelah123'),
                 'role_id' => 22,
                 'email' => null,
-                'userable_id' => 6,
+                'userable_id' => 1,
                 'userable_type' => 'App\Models\NurseProfile'
             ]
         ]);

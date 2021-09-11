@@ -21,6 +21,7 @@
                                 <th>ID</th>
                                 <th>Materi</th>
                                 <th>Tipe Pertanyaan</th>
+                                <th>URL</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -30,9 +31,14 @@
                                 <td>{{ $s->id }}</td>
                                 <td>{{ $s->title }}</td>
                                 <td>{{ $s->choice_type }}</td>
+                                <td><a href="{{ $s->url? $s->url:'' }}" target="_blank">{{ $s->url? $s->url:'----' }}</a></td>
                                 <td>
+                                    @if ($s->choice_type === 'link')
+                                        <div></div>
+                                    @else
                                     <a class="btn btn-success text-white" href="{{ route('survey.show', $s->id) }}">Lihat</a>
-                                    <a class="btn btn-danger text-white ml-3" href="{{ route('survey.destroy', $s->id) }}">Hapus Survey</a>
+                                    @endif
+                                    {{-- <a class="btn btn-danger text-white ml-3" href="{{ route('survey.destroy', $s->id) }}">Hapus Survey</a> --}}
                                 </td>
                             </tr>
                             @empty

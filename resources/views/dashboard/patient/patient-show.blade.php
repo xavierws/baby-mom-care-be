@@ -1,22 +1,22 @@
 @extends('adminlte::page')
 
-@section('title', 'User Log')
+@section('title', 'Pasien')
 
 @section('content_header')
-    <h1 class="d-inline">USER LOG</h1>
+    <h1 class="d-inline">PASIEN</h1>
     @include('components.validation')
 @stop
 
 @section('content')
     <div class="card mb-0">
-        <div class="card-header">Daftar Materi</div>
+        <div class="card-header">Daftar Pasien</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
                     <table class="table table-hover table-bordered" id="example2">
                         <thead>
                             <tr>
-                                <th>Log</th>
+{{--                                <th>Log</th>--}}
                                 <th>Nama</th>
                                 <th>Role</th>
                                 <th>Rumah Sakit</th>
@@ -24,12 +24,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($userlog as $u)
+                            @forelse ($user as $u)
                             <tr>
-                                <td>{{ $u->log }}</td>
-                                <td>{{ $u->user->profile_name }}</td>
-                                <td>{{ $u->user->user_role }}</td>
-                                <td>{{ $u->user->userable->hospital->name }}</td>
+{{--                                <td>{{ $u->log }}</td>--}}
+                                <td>{{ $u->profile_name }}</td>
+                                <td>{{ $u->user_role }}</td>
+                                <td>{{ $u->userable->hospital->name }}</td>
                                 <td>{{ $u->created_at }}</td>
                             </tr>
                             @empty

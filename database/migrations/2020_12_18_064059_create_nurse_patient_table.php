@@ -22,7 +22,7 @@ class CreateNursePatientTable extends Migration
             $table->foreignId('patient_id')
                 ->constrained('patient_profiles')
                 ->cascadeOnUpdate()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

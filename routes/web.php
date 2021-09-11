@@ -68,6 +68,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [DashboardController::class, 'dumpUserSurvey'])->name('usersurvey.index');
         Route::get('/{id}/{survey_id}/{order}', [DashboardController::class, 'showUserSurvey'])->name('usersurvey.show');
     });
+
+    Route::get('/pasien', [DashboardController::class, 'showPatient']);
+    Route::get('/perawat', [DashboardController::class, 'showNurse']);
 });
 
 

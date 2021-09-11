@@ -16,7 +16,7 @@
                     <table class="table table-hover table-bordered" id="example2">
                         <thead>
                             <tr>
-                                <th>Log</th>
+{{--                                <th>Log</th>--}}
                                 <th>Nama</th>
                                 <th>Role</th>
                                 <th>Rumah Sakit</th>
@@ -24,12 +24,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($userlog as $u)
+                            @forelse ($user as $u)
                             <tr>
-                                <td>{{ $u->log }}</td>
-                                <td>{{ $u->user->profile_name }}</td>
-                                <td>{{ $u->user->user_role }}</td>
-                                <td>{{ $u->user->userable->hospital->name }}</td>
+{{--                                <td>{{ $u->log }}</td>--}}
+                                <td>{{ $u->profile_name }}</td>
+                                <td>{{ $u->user_role }}</td>
+                                <td>{{ $u->userable->hospital->name }}</td>
                                 <td>{{ $u->created_at }}</td>
                             </tr>
                             @empty

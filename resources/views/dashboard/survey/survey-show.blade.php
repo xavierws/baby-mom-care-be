@@ -31,7 +31,7 @@
                                     <td>{{ $question->number }}</td>
                                     <td>{{ $question->question }}</td>
                                     <td>
-                                        <a type="submit" class="btn btn-danger" href="{{ route('survey.destroy.q', $question->id) }}">Hapus Pertanyaan</a>
+                                        {{-- <a type="submit" class="btn btn-danger" href="{{ route('survey.destroy.q', $question->id) }}">Hapus Pertanyaan</a> --}}
                                     </td>
                                 </tr>
                                 {{-- <div class="mb-3 form-group">

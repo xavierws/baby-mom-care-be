@@ -21,6 +21,7 @@ class CategorySeeder extends Seeder
             ['name' => 'Kegawatan bayi', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Imunisasi', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Pertumbuhan dan perkembangan', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Tips untuk ibu', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

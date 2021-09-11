@@ -27,6 +27,7 @@
                                 <option value="number" {{ $survey->choice_type == 'number'? 'selected':'' }}>angka 1-5</option>
                                 <option value="text" {{ $survey->choice_type == 'text'? 'selected':'' }}>text</option>
                                 <option value="yes_no" {{ $survey->choice_type == 'yes_no'? 'selected':'' }}>ya/tidak</option>
+                                <option value="link" {{ $survey->choice_type == 'link'? 'selected':'' }}>link google form</option>
                             </select>
                         </div>
 
@@ -48,8 +49,8 @@
                     </div>
 
                     {{-- <input type="number" class="d-none" name="total" value=""> --}}
-                    <button type="button" class="btn btn-outline-secondary mt-2 mr-3" onclick="GFG_Fun()">Tambah
-                        Pertanyaan</button>
+                    {{-- <button type="button" class="btn btn-outline-secondary mt-2 mr-3" onclick="GFG_Fun()">Tambah
+                        Pertanyaan</button> --}}
                     <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                 </form>
             </div>

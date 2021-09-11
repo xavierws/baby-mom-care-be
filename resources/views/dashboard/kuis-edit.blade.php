@@ -71,8 +71,8 @@
 
 
 
-                        <button type="button" class="btn btn-outline-secondary" onclick="GFG_Fun()">Tambah
-                            Pertanyaan</button>
+                        {{-- <button type="button" class="btn btn-outline-secondary" onclick="GFG_Fun()">Tambah
+                            Pertanyaan</button> --}}
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>

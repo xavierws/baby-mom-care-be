@@ -11,9 +11,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/backend_kontrolIbuDanBayi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/baby-mom-care.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Survey.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Survey.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042349_create_surveys_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042349_create_surveys_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_10_042727_create_user_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_18_064059_create_nurse_patient_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_105510_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_105510_create_comments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_05_210817_create_advice_kontrol_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_05_210817_create_advice_kontrol_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_22_220410_add_new_field_to_kontrols_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_22_220410_add_new_field_to_kontrols_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/SurveySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SurveySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/kuis-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/kuis-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/kuis-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/kuis-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/list-materi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/list-materi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/nurse/nurse-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/patient/patient-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/survey/list-survey.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/survey/list-survey.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/survey/survey-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/survey/survey-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/survey/survey-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/survey/survey-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +311,8 @@
       <workItem from="1625587265322" duration="2639000" />
       <workItem from="1627566282528" duration="9889000" />
       <workItem from="1627578513906" duration="2057000" />
-      <workItem from="1630811633628" duration="3763000" />
+      <workItem from="1630811633628" duration="4916000" />
+      <workItem from="1631329006668" duration="11800000" />
     </task>
     <servers />
   </component>

@@ -16,20 +16,22 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Materi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <div class="d-none">{{ $i = 1 }}</div>
                             @forelse ($materi as $m)
                             <tr>
-                                <td>{{ $m->id }}</td>
+                                <td>{{ $i }}</td>
                                 <td>{{ $m->title }}</td>
                                 <td>
                                     <a class="btn btn-success text-white" href="{{ route('kuis.show', $m->id) }}">KUIS</a>
                                 </td>
                             </tr>
+                            <div class="d-none">{{ $i++ }}</div>
                             @empty
                                 <td>TIDAK ADA DATA</td>
                             @endforelse
@@ -46,5 +48,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    {{-- <script> console.log('Hi!'); </script> --}}
 @stop
