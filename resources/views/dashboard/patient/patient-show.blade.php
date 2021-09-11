@@ -17,8 +17,11 @@
                         <thead>
                             <tr>
 {{--                                <th>Log</th>--}}
-                                <th>Nama</th>
-                                <th>Role</th>
+                                <th>Nama bayi</th>
+                                <th>Nama Ibu</th>
+                                <th>Nama Ayah</th>
+                                <th>phone</th>
+                                {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
                                 <th>Waktu</th>
                             </tr>
@@ -27,8 +30,11 @@
                             @forelse ($user as $u)
                             <tr>
 {{--                                <td>{{ $u->log }}</td>--}}
-                                <td>{{ $u->profile_name }}</td>
-                                <td>{{ $u->user_role }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->mother_name }}</td>
+                                <td>{{ $u->userable->father_name }}</td>
+                                <td>{{ $u->userable->phone }}</td>
+                                {{-- <td>{{ $u->user_role }}</td> --}}
                                 <td>{{ $u->userable->hospital->name }}</td>
                                 <td>{{ $u->created_at }}</td>
                             </tr>

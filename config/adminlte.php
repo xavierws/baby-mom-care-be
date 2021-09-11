@@ -237,7 +237,7 @@ return [
             'active' => ['/kuis']
         ],
         [
-            'text' => 'Survey',
+            'text' => 'Kuisioner',
             'url' => '/survey',
             'icon' => 'fa fa-fw fa-scroll',
             'active' => ['/survey']

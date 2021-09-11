@@ -11,7 +11,7 @@
     <div class="card mb-0">
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12">
                     <table class="table table-hover table-bordered" id="data-table">
                         <thead>
                             <tr>
@@ -19,6 +19,7 @@
                                 <th>Pasien</th>
                                 <th>Jenis Survey</th>
                                 <th>Urutan Survey</th>
+                                <th>Rumah Sakit</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@
                                 <td>{{ $patient['name'] }}</td>
                                 <td>{{ $patient['survey_title'] }}</td>
                                 <td>{{ $patient['order'] }}</td>
+                                <td>{{ $patient['hospital'] }}</td>
                                 <td>
                                     <a class="btn btn-success text-white" href="{{ route('usersurvey.show', ['id' => $patient['patient_id'], 'survey_id' => $patient['survey_id'], 'order' => $patient['order']]) }}">Lihat</a>
                                     {{-- <a class="btn btn-danger text-white ml-3" href="{{ route('survey.destroy', $s->id) }}">Hapus Survey</a> --}}

@@ -18,7 +18,9 @@
                             <tr>
 {{--                                <th>Log</th>--}}
                                 <th>Nama</th>
-                                <th>Role</th>
+                                <th>Pendidikan</th>
+                                <th>phone</th>
+                                {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
                                 <th>Waktu</th>
                             </tr>
@@ -28,7 +30,9 @@
                             <tr>
 {{--                                <td>{{ $u->log }}</td>--}}
                                 <td>{{ $u->profile_name }}</td>
-                                <td>{{ $u->user_role }}</td>
+                                <td>{{ $u->userable->education }}</td>
+                                <td>{{ $u->userable->phone }}</td>
+                                {{-- <td>{{ $u->user_role }}</td> --}}
                                 <td>{{ $u->userable->hospital->name }}</td>
                                 <td>{{ $u->created_at }}</td>
                             </tr>
