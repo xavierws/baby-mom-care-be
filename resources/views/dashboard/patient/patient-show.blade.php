@@ -17,10 +17,10 @@
                         <thead>
                             <tr>
 {{--                                <th>Log</th>--}}
-                                <th>Nama bayi</th>
+                                <th>Nama Bayi</th>
                                 <th>Nama Ibu</th>
                                 <th>Nama Ayah</th>
-                                <th>phone</th>
+                                <th>Telepon</th>
                                 {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
                                 <th>Waktu</th>

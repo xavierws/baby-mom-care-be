@@ -17,8 +17,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Pasien</th>
-                                <th>Jenis Survey</th>
-                                <th>Urutan Survey</th>
+                                <th>Nama Kuisioner</th>
+                                <th>Urutan Kuisioner</th>
                                 <th>Rumah Sakit</th>
                                 <th>Aksi</th>
                             </tr>

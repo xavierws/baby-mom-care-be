@@ -19,7 +19,7 @@
 {{--                                <th>Log</th>--}}
                                 <th>Nama</th>
                                 <th>Pendidikan</th>
-                                <th>phone</th>
+                                <th>Telepon</th>
                                 {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
                                 <th>Waktu</th>
