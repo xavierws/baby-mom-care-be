@@ -264,11 +264,11 @@ class DashboardController extends Controller
 
     public function showNurse()
     {
-        $user = User::with('userable')->where([
-            ['role_id', 20],
-            ['role_id', 21],
-            ['role_id', 22]
-        ])->get();
+        $user = User::with('userable')
+        ->where('role_id', 20)
+        ->orWhere('role_id', 21)
+        ->orWhere('role_id', 22)
+        ->get();
 
         return view('dashboard.nurse.nurse-show')->with('user', $user);
     }
