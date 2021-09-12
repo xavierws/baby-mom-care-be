@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
 
-            $users = User::where('role_id', 10)->get();
+            $users = User::with('userable')->where('role_id', 10)->get();
             $now = now();
 
             foreach ($users as $user) {
@@ -62,6 +62,13 @@ class Kernel extends ConsoleKernel
 
                     $user->userable->marked_date = $now;
                     $user->userable->save();
+                }
+
+                $resume_date = Carbon::parse($user->userable->resume_pulang->date);
+                if ($now->diffInDays($resume_date) == 0 && $user->fcm_token) {
+                    $title = 'reminder kontrol';
+                    $des = 'jangan lupa untuk mengisi kontrol';
+                    PushNotification::handle($user->fcm_token, $title, $des);
                 }
 
                 $tanggal_dibuat = Carbon::parse($user->userable->resume_pulang->created_at);
