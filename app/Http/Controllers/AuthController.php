@@ -57,7 +57,7 @@ class AuthController extends Controller
         ]);
 
         if ($request->role == 'nurse') {
-            NurseProfile::create([
+            $nurse = NurseProfile::create([
                 'name' => $request->input('nurse_name'),
                 'working_exp' => $request->input('working_exp'),
                 'education' => $request->input('education'),
@@ -66,11 +66,11 @@ class AuthController extends Controller
                 'is_approved' => true,
             ]);
 
-            $userable_id = NurseProfile::orderBy('id', 'desc')->pluck('id')->first();
+            $userable_id = $nurse->id;
             $userable_type = 'App\Models\NurseProfile';
         } elseif ($request->role == 'patient') {
             $nurse = $request->user();
-            PatientProfile::create([
+            $patient = PatientProfile::create([
                 'baby_name' => $request->input('baby_name'),
                 'baby_birthday' => $request->input('baby_birthday'),
                 'born_weight' => $request->input('born_weight'),
@@ -101,20 +101,20 @@ class AuthController extends Controller
                 'hospital_id' => $nurse->userable->hospital_id,
             ]);
 
-            $userable_id = PatientProfile::orderBy('id', 'desc')->pluck('id')->first();
+            $userable_id = $patient->id;
             $userable_type = 'App\Models\PatientProfile';
 
             NurseProfile::find($nurse->userable_id)->patients()->attach($userable_id);
 
-            // NotificationLog::create([
-            //     'notification' => 'Jangan lupa isi survey yang pertama',
-            //     'nurse_id' => $userable_id,
-            //     'type' => 'survey',
-            // ]);
+            NotificationLog::create([
+                'notification' => 'Jangan lupa isi survey yang pertama',
+                'nurse_id' => $userable_id,
+                'type' => 'survey',
+            ]);
 
         }
 
-        User::create([
+        $user = User::create([
             'role_id' => Role::where('name', $request->role)->value('id'),
             'username' => $request->input('username'),
             'password' => Hash::make($request->input('password')),
@@ -126,6 +126,7 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'account created',
             'id' => $userable_id,
+            'user_id' => $user->id,
         ]);
     }
 
