@@ -106,11 +106,11 @@ class AuthController extends Controller
 
             NurseProfile::find($nurse->userable_id)->patients()->attach($userable_id);
 
-            NotificationLog::create([
-                'notification' => 'Jangan lupa isi survey yang pertama',
-                'nurse_id' => $userable_id,
-                'type' => 'survey',
-            ]);
+            // NotificationLog::create([
+            //     'notification' => 'Jangan lupa isi survey yang pertama',
+            //     'nurse_id' => $userable_id,
+            //     'type' => 'survey',
+            // ]);
 
         }
 
