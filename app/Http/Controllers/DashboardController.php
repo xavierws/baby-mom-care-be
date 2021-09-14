@@ -302,7 +302,7 @@ class DashboardController extends Controller
                 'survey_id' => $answer->survey_id,
                 'survey_title' => Survey::find($answer->survey_id)->title,
                 'order' => $answer->order,
-                'order' => PatientProfile::find($answer->patient_id)->hospital->name,
+                'hospital' => PatientProfile::find($answer->patient_id)->hospital->name,
             ];
             $i++;
         }
