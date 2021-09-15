@@ -131,11 +131,25 @@ class AdviceController extends Controller
     public function getUnreadNotif(Request $request)
     {
         $user = $request->user();
-        $data = NotificationLog::where('type', 'kontrol')
-            ->where('nurse_id', $user->userable->id)
-            ->where('isRead', 0)
-            ->orderBy('created_at', 'desc')
-            ->get();
+
+        if ($user->role_id == 10) {
+            $data = NotificationLog::where('type', 'survey')
+                ->where('isRead', 0)
+                ->where('nurse_id', $user->userable->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+//            foreach ($notification_survey as $log) {
+//                $data[$i] = $log;
+//                $i++;
+//            }
+        } else {
+            $data = NotificationLog::where('type', 'kontrol')
+                ->where('nurse_id', $user->userable->id)
+                ->where('isRead', 0)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+
 
         return response()->json([
             'data' => count($data),
