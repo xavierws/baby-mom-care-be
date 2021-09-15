@@ -17,7 +17,7 @@
                         @csrf
                         @method('PUT')
 
-                        <p class="d-none">{{ $i = 1; $r=['A','B','C'] }}</p>
+                        <p class="d-none">{{ $i = 1; $r=['A','B','C']; }}</p>
                         <div class="question">
                             @foreach ($questions as $q)
                             <div class="card">
