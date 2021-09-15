@@ -35,7 +35,7 @@
                                 <th>Pengalaman Merawat BBLR</th>
 
                                 {{-- <th>Nama Ayah</th> --}}
-                                {{-- <th>Telepon</th> --}}
+                                <th>Telepon</th>
                                 {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
                                 {{-- <th>Waktu</th> --}}
@@ -63,7 +63,7 @@
                                 <td>{{ $u->userable->pengalaman_merawat }}</td>
 
                                 {{-- <td>{{ $u->userable->father_name }}</td> --}}
-                                {{-- <td>{{ $u->userable->phone }}</td> --}}
+                                <td>{{ $u->userable->phone }}</td>
                                 {{-- <td>{{ $u->user_role }}</td> --}}
                                 <td>{{ $u->userable->hospital->name }}</td>
                                 {{-- <td>{{ $u->created_at }}</td> --}}
