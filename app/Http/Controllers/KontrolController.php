@@ -144,42 +144,42 @@ class KontrolController extends Controller
             foreach ($patient->nurses as $nurse) {
                 if ($berat == 'danger') {
                     NotificationLog::create([
-                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Pertumbuhan berat bayi kurang dari standar.',
+                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Penambahan berat badan bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);
                 }
                 if ($panjang == 'danger') {
                     NotificationLog::create([
-                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Pertumbuhan panjang bayi kurang dari standar.',
+                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Penambahan panjang badan bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);
                 }
                 if ($lingkar == 'danger') {
                     NotificationLog::create([
-                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Pertumbuhan lingkar kepala bayi kurang dari standar.',
+                        'notification' => 'DANGER. Cek pasien ' . $patient->mother_name . '. Penambahan lingkar kepala bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);
                 }
                 if ($berat == 'warning') {
                     NotificationLog::create([
-                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Pertumbuhan berat bayi kurang dari standar.',
+                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Penambahan berat bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);
                 }
                 if ($panjang == 'warning') {
                     NotificationLog::create([
-                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Pertumbuhan panjang bayi kurang dari standar.',
+                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Penambahan panjang bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);
                 }
                 if ($lingkar == 'warning') {
                     NotificationLog::create([
-                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Pertumbuhan lingkar kepala bayi kurang dari standar.',
+                        'notification' => 'WARNING. Cek pasien ' . $patient->mother_name . '. Penambahan lingkar kepala bayi kurang dari standar.',
                         'nurse_id' => $nurse->id,
                         'type' => 'kontrol',
                     ]);

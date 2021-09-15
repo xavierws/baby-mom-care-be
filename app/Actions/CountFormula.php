@@ -14,13 +14,14 @@ class CountFormula
     {
         $date1 = Carbon::parse($kontrol1->date);
         $date2 = Carbon::parse($kontrol2->date);
-        $divisor = (float) $date2->diffInDays($date1);
-        if ($divisor != 0) {
-            $diffWeight = (float) $kontrol2->weight - (float) $kontrol1->weight;
+        $dateDiff = (float) $date2->diffInDays($date1);
+        $standar = 15 * $kontrol1->weight * $dateDiff;
+        if ($dateDiff != 0) {
+            $weightDiff = (float) $kontrol2->weight - (float) $kontrol1->weight;
 
-            if ($diffWeight / $divisor >= 15.0) {
+            if ($weightDiff >= $standar) {
                 return 'normal';
-            } elseif ($diffWeight / $divisor < 15.0) {
+            } else {
                 return 'warning';
             }
         } else {
@@ -36,7 +37,7 @@ class CountFormula
         if ($divisor != 0) {
             $diffLength = (float) $kontrol2->length - (float) $kontrol1->length;
 
-            if ($diffLength / $divisor >= 0.8 && $diffLength / $divisor <= 1) {
+            if ($diffLength / $divisor >= (0.8 / 7)) {
                 return 'normal';
             } else {
                 return 'warning';
