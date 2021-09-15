@@ -117,7 +117,7 @@ class AdviceController extends Controller
             $data1 = NotificationLog::where('type', 'survey')
                 ->where('nurse_id', $user->userable->id)
                 ->orderBy('created_at', 'desc');
-            $data1->update(['isRead', 1]);
+            $data1->update(['isRead' => 1]);
             $notification_survey = $data1->get();
             foreach ($notification_survey as $log) {
                 $data[$i] = $log;
