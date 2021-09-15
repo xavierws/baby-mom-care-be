@@ -123,7 +123,7 @@ class KontrolController extends Controller
         if ($request->mode == 'resume') {
             $kontrol->advices()->attach($request->advices);
             NotificationLog::create([
-                'notification' => 'Jangan lupa isi survey yang kedua',
+                'notification' => 'Jangan lupa isi kuesioner yang kedua',
                 'nurse_id' => $patientId,
                 'type' => 'survey',
             ]);
