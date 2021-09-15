@@ -18,6 +18,13 @@
                             <tr>
 {{--                                <th>Log</th>--}}
                                 <th>Nama Bayi</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Lama Rawat</th>
+                                <th>Usia Gestasi</th>
+                                <th>Berat Badan Lahir</th>
+                                <th>Berat Badan Bayi</th>
+                                <th>Panjang Badan Lahir</th>
+                                <th>Panjang Badan Bayi</th>
                                 <th>Nama Ibu</th>
                                 <th>Nama Ayah</th>
                                 <th>Telepon</th>
@@ -30,6 +37,12 @@
                             @forelse ($user as $u)
                             <tr>
 {{--                                <td>{{ $u->log }}</td>--}}
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
                                 <td>{{ $u->userable->mother_name }}</td>
                                 <td>{{ $u->userable->father_name }}</td>
