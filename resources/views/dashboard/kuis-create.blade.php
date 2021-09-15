@@ -23,28 +23,28 @@
                                     <textarea type="text" class="form-control mb-3" name="question[1]" required></textarea>
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="choice[1][1]">Pilihan 1</label>
+                                            <label for="choice[1][1]">Pilihan A</label>
                                             <textarea type="text" class="form-control" name="choice[1][1]"
-                                                placeholder="pilihan 1" required></textarea>
+                                                placeholder="pilihan A" required></textarea>
                                         </div>
                                         <div class="col">
-                                            <label for="choice[1][2]">Pilihan 2</label>
+                                            <label for="choice[1][2]">Pilihan B</label>
                                             <textarea type="text" class="form-control" name="choice[1][2]"
-                                                placeholder="pilihan 2" required></textarea>
+                                                placeholder="pilihan B" required></textarea>
                                         </div>
                                         <div class="col">
-                                            <label for="choice[1][3]">Pilihan 3</label>
+                                            <label for="choice[1][3]">Pilihan C</label>
                                             <textarea type="text" class="form-control" name="choice[1][3]"
-                                                placeholder="pilihan 3" required></textarea>
+                                                placeholder="pilihan C" required></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-3">
                                             <label for="choice[true][1]">Jawaban Benar</label>
                                             <select name="choice[true][1]" class="form-control" id="true_answer" required>
-                                                <option value="1">pilihan 1</option>
-                                                <option value="2">pilihan 2</option>
-                                                <option value="3">pilihan 3</option>
+                                                <option value="1">pilihan A</option>
+                                                <option value="2">pilihan B</option>
+                                                <option value="3">pilihan C</option>
                                             </select>
                                         </div>
                                         {{-- <div class="col align-self-end text-right">
@@ -124,14 +124,14 @@
                             //create label c1
                             var CL1 = document.createElement("label");
                             CL1.setAttribute("for", "choice["+i+"]["+1+"]");
-                            CL1.innerHTML = "Pilihan 1";
+                            CL1.innerHTML = "Pilihan A";
 
                             //create choice 1
                             var C1 = document.createElement("textarea");
                             C1.setAttribute("type", "text");
                             C1.setAttribute("class", "form-control");
                             C1.setAttribute("name", "choice["+i+"]["+1+"]");
-                            C1.setAttribute("placeholder", "pilihan 1")
+                            C1.setAttribute("placeholder", "pilihan A")
                             C1.required = true;
 
                         //create div col 2
@@ -141,14 +141,14 @@
                             //create label c2
                             var CL2 = document.createElement("label");
                             CL2.setAttribute("for", "choice["+i+"]["+2+"]");
-                            CL2.innerHTML = "Pilihan 2";
+                            CL2.innerHTML = "Pilihan B";
 
                             //create choice 2
                             var C2 = document.createElement("textarea");
                             C2.setAttribute("type", "text");
                             C2.setAttribute("class", "form-control");
                             C2.setAttribute("name", "choice["+i+"]["+2+"]");
-                            C2.setAttribute("placeholder", "pilihan 1")
+                            C2.setAttribute("placeholder", "pilihan B")
                             C2.required = true;
 
                         //create div col 3
@@ -158,14 +158,14 @@
                             //create label c3
                             var CL3 = document.createElement("label");
                             CL3.setAttribute("for", "choice["+i+"]["+3+"]");
-                            CL3.innerHTML = "Pilihan 3";
+                            CL3.innerHTML = "Pilihan C";
 
                             //create choice 3
                             var C3 = document.createElement("textarea");
                             C3.setAttribute("type", "text");
                             C3.setAttribute("class", "form-control");
                             C3.setAttribute("name", "choice["+i+"]["+3+"]");
-                            C3.setAttribute("placeholder", "pilihan 1")
+                            C3.setAttribute("placeholder", "pilihan C")
                             C3.required = true;
 
                     //create row 2
@@ -190,15 +190,15 @@
                                 //create option
                                 var opt1 = document.createElement("option");
                                 opt1.setAttribute("value", "1");
-                                opt1.innerHTML = "Pilihan 1"
+                                opt1.innerHTML = "Pilihan A"
 
                                 var opt2 = document.createElement("option");
                                 opt2.setAttribute("value", "2");
-                                opt2.innerHTML = "Pilihan 2"
+                                opt2.innerHTML = "Pilihan B"
 
                                 var opt3 = document.createElement("option");
                                 opt3.setAttribute("value", "3");
-                                opt3.innerHTML = "Pilihan 3"
+                                opt3.innerHTML = "Pilihan C"
 
                         //create col
                         var col5 = document.createElement("div");
