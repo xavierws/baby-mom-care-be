@@ -44,6 +44,7 @@
                                 <td>{{ $u->userable->baby_name }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_name }}</td>
                                 <td>{{ $u->userable->mother_name }}</td>
                                 <td>{{ $u->userable->father_name }}</td>
                                 <td>{{ $u->userable->phone }}</td>
