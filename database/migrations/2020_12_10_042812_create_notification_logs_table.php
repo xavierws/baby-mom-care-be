@@ -21,6 +21,7 @@ class CreateNotificationLogsTable extends Migration
 //                ->cascadeOnUpdate()
 //                ->cascadeOnDelete();
             $table->enum('type', ['kontrol', 'advice','survey']);
+            $table->boolean('isRead')->default(false);
 //            $table->enum('for', ['nurse', 'patient']);
 //            $table->foreignId('advice_id')->constrained('advices');
 //            $table->foreignId('patient_profile_id')->constrained('patient_profiles');

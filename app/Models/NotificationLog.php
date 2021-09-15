@@ -15,6 +15,7 @@ class NotificationLog extends Model
         'notification',
         'nurse_id',
         'type',
+        'isRead'
     ];
 
 //    public function advice()

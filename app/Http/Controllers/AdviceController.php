@@ -121,6 +121,7 @@ class AdviceController extends Controller
             }
         } else {
             $data = NotificationLog::where('type', 'kontrol')->where('nurse_id', $user->userable->id)->orderBy('created_at', 'desc')->get();
+            $data->update(['isRead' => true]);
         }
 
         return response($data);

@@ -41,7 +41,7 @@ class Kernel extends ConsoleKernel
                     NotificationLog::create([
                         'notification' => $advice->name,
                         'nurse_id' => null,
-                        'type' => 'advice',
+                        'type' => 'advice'
                     ]);
                 }
             }
