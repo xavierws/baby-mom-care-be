@@ -15,11 +15,11 @@ class CountFormula
         $date1 = Carbon::parse($kontrol1->date);
         $date2 = Carbon::parse($kontrol2->date);
         $dateDiff = (float) $date2->diffInDays($date1);
-        $standar = 15 * $kontrol1->weight * $dateDiff;
+        $standard = 15 * $kontrol1->weight * $dateDiff;
         if ($dateDiff != 0) {
             $weightDiff = (float) $kontrol2->weight - (float) $kontrol1->weight;
 
-            if ($weightDiff >= $standar) {
+            if ($weightDiff >= $standard) {
                 return 'normal';
             } else {
                 return 'warning';
