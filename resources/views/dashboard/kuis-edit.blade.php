@@ -17,7 +17,7 @@
                         @csrf
                         @method('PUT')
 
-                        <p class="d-none">{{ $i = 1 }}</p>
+                        <p class="d-none">{{ $i = 1; $r=['A','B','C'] }}</p>
                         <div class="question">
                             @foreach ($questions as $q)
                             <div class="card">
@@ -30,7 +30,7 @@
                                             <p class="d-none">{{ $trueAnswer = null }}</p>
                                             @forelse ($q->choices as $c)
                                                 <div class="col">
-                                                    <label for="{{ 'choice['.$i.']['.$j.']'}}">pilihan {{ $j }}</label>
+                                                    <label for="{{ 'choice['.$i.']['.$j.']'}}">pilihan {{ $r[$j-1] }}</label>
                                                     <textarea type="text" name="{{ 'choice['.$i.']['.$j.']'}}" placeholder="pilihan 1" class="form-control" required>{{ $c->choice }}</textarea>
                                                     <p class="d-none">{{ $trueAnswer = $c->is_true==1? $j:$trueAnswer }}</p>
                                                     <p class="d-none">{{ $j++ }}</p>
