@@ -116,6 +116,7 @@ class KontrolController extends Controller
             'nurse_note' => $request->input('nurse_note'),
             'hasil_penunjang' => $request->input('hasil_penunjang', null),
             'terapi_pulang' => $request->input('terapi_pulang', null),
+            'intervensi_keperawatan' => $request->input('intervensi_keperawatan', null),
             'mode' => $request->input('mode'),
         ]);
 
@@ -237,6 +238,9 @@ class KontrolController extends Controller
         $kontrol->lingkar_kepala = $request->input('lingkar_kepala');
         $kontrol->temperature = $request->input('temperature');
         $kontrol->note = $request->input('note');
+        $kontrol->hasil_penunjang = $request->input('hasil_penunjang');
+        $kontrol->terapi_pulang = $request->input('terapi_pulang');
+        $kontrol->intervensi_keperawatan = $request->input('intervensi_keperawatan');
         $kontrol->save();
         if ($request->input('base64_img') != "") {
             $image = $kontrol->image;

@@ -29,7 +29,8 @@ class Kontrol extends JsonResource
             'nurse_note' => $this->nurse_note,
             'hasil_penunjang' => $this->hasil_penunjang,
             'terapi_pulang' => $this->terapi_pulang,
-            'masalah_keperawatan' => $this->masalah_keperawatan,
+            'intervensi_keperawatan' => $this->intervensi_keperawatan,
+//            'masalah_keperawatan' => $this->masalah_keperawatan,
             'advices' => showAdvices::handle($this->advices),
         ];
     }

@@ -16,7 +16,8 @@ class AddNewFieldToKontrolsTable extends Migration
         Schema::table('kontrols', function (Blueprint $table) {
             $table->string('hasil_penunjang')->nullable()->after('nurse_note');
             $table->string('terapi_pulang')->nullable()->after('hasil_penunjang');
-            $table->string('masalah_keperawatan')->nullable()->after('terapi_pulang');
+//            $table->string('masalah_keperawatan')->nullable()->after('terapi_pulang');
+            $table->string('intervensi_keperawatan', 5000)->nullable()->after('terapi_pulang');
         });
     }
 

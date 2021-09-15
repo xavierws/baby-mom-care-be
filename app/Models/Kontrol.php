@@ -24,6 +24,7 @@ class Kontrol extends Model
         'nurse_note',
         'hasil_penunjang',
         'terapi_pulang',
+        'intervensi_keperawatan',
         'mode',
     ];
 
