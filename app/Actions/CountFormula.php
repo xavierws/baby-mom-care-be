@@ -55,7 +55,7 @@ class CountFormula
         if ($divisor != 0) {
             $diffLingkar = (float) $kontrol2->lingkar_kepala - (float) $kontrol1->lingkar_kepala;
 
-            if ($diffLingkar / $divisor >= 0.5 && $diffLingkar / $divisor <= 0.8) {
+            if ($diffLingkar / $divisor >= (0.5/7)) {
                 return 'normal';
             } else {
                 return 'warning';
