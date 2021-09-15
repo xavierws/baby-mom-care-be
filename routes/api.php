@@ -168,6 +168,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('advice/send_fcm', [AdviceController::class, 'send_fcm']);
     //show notification
     Route::get('advice/notification', [AdviceController::class, 'showNotification']);
+    Route::get('advice/unread-notification', [AdviceController::class, 'getUnreadNotif']);
     //patient list advices
     Route::get('advice/patient/list', [AdviceController::class, 'listForPatient']);
 

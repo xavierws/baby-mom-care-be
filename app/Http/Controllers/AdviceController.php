@@ -127,4 +127,18 @@ class AdviceController extends Controller
 
         return response($data);
     }
+
+    public function getUnreadNotif(Request $request)
+    {
+        $user = $request->user();
+        $data = NotificationLog::where('type', 'kontrol')
+            ->where('nurse_id', $user->userable->id)
+            ->where('isRead', 0)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'data' => count($data),
+        ]);
+    }
 }
