@@ -25,12 +25,20 @@
                                 <th>Berat Badan Bayi</th>
                                 <th>Panjang Badan Lahir</th>
                                 <th>Panjang Badan Bayi</th>
+
                                 <th>Nama Ibu</th>
-                                <th>Nama Ayah</th>
-                                <th>Telepon</th>
+                                <th>Usia Ibu</th>
+                                <th>Pendidikan Ibu</th>
+                                <th>Pekerjaan Ibu</th>
+                                <th>Paritas</th>
+                                <th>Pendapatan Keluarga</th>
+                                <th>Pengalaman Merawat BBLR</th>
+
+                                {{-- <th>Nama Ayah</th> --}}
+                                {{-- <th>Telepon</th> --}}
                                 {{-- <th>Role</th> --}}
                                 <th>Rumah Sakit</th>
-                                <th>Waktu</th>
+                                {{-- <th>Waktu</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -38,19 +46,27 @@
                             <tr>
 {{--                                <td>{{ $u->log }}</td>--}}
                                 <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->baby_gender }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->usia_gestas }}</td>
+                                <td>{{ $u->userable->born_weight }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
+                                <td>{{ $u->userable->born_length }}</td>
                                 <td>{{ $u->userable->baby_name }}</td>
-                                <td>{{ $u->userable->baby_name }}</td>
-                                <td>{{ $u->userable->baby_name }}</td>
-                                <td>{{ $u->userable->baby_name }}</td>
-                                <td>{{ $u->userable->baby_name }}</td>
+
                                 <td>{{ $u->userable->mother_name }}</td>
-                                <td>{{ $u->userable->father_name }}</td>
-                                <td>{{ $u->userable->phone }}</td>
+                                <td>{{ $u->userable->mother_name }}</td>
+                                <td>{{ $u->userable->mother_education }}</td>
+                                <td>{{ $u->userable->mother_job }}</td>
+                                <td>{{ $u->userable->paritas }}</td>
+                                <td>{{ $u->userable->pendapatan_keluarga }}</td>
+                                <td>{{ $u->userable->pengalaman_merawat }}</td>
+
+                                {{-- <td>{{ $u->userable->father_name }}</td> --}}
+                                {{-- <td>{{ $u->userable->phone }}</td> --}}
                                 {{-- <td>{{ $u->user_role }}</td> --}}
                                 <td>{{ $u->userable->hospital->name }}</td>
-                                <td>{{ $u->created_at }}</td>
+                                {{-- <td>{{ $u->created_at }}</td> --}}
                             </tr>
                             @empty
                                 <td>TIDAK ADA DATA</td>
