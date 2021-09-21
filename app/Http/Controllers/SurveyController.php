@@ -182,20 +182,23 @@ class SurveyController extends Controller
 
             if ($question->survey_id == 1) {
                 // perceived stress scale
+                $val = $v['value'];
                 if ($question->number == 2 || $question->number == 4 || $question->number == 5 || $question->number == 10) {
-                    $point = ReversePoint::PSS($v['value']);
+                    $point = ReversePoint::PSS($val);
                 } else {
-                    $point = $v['value'];
+                    $point = $val;
                 }
             } elseif ($question->survey_id == 2) {
                 // Maternal Confidence Scale
+                $val = $v['value'] + 1;
                 if ($question->number == 10 || $question->number == 12) {
-                    $point = ReversePoint::MCS($v['value'] + 1);
+                    $point = ReversePoint::MCS($val);
                 } else {
-                    $point = $v['value'] + 1;
+                    $point = $val;
                 }
             } elseif ($question->survey_id == 3) {
                 //Parental Stress scale
+                $val = $v['value'] + 1;
                 if (
                     $question->number == 1 ||
                     $question->number == 2 ||
@@ -206,16 +209,17 @@ class SurveyController extends Controller
                     $question->number == 17 ||
                     $question->number == 18
                 ) {
-                    $point = ReversePoint::MCS($v['value'] + 1);
+                    $point = ReversePoint::MCS($val);
                 } else {
-                    $point = $v['value'] + 1;
+                    $point = $val;
                 }
             } else {
-                $point = $v['value'];
+                $val = $v['value'];
+                $point = $val;
             }
 
             $question->patients()->attach($user->userable_id, [
-                'answer' => $v['value'],
+                'answer' => $val,
                 'point' => $point,
                 'order' => $order,
                 'survey_id' => $question->survey_id,
