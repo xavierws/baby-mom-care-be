@@ -18,11 +18,12 @@ use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
-    public function listUnApprovedNurse()
+    public function listUnApprovedNurse(Request $request)
     {
+        $user = $request->user();
         $nurses = NurseProfile::whereHas('user', function($query) {
             $query->where('role_id', 20)->orWhere('role_id', 21);
-        })->where('is_approved', false)->get();
+        })->where('is_approved', false)->where('hospital_id', $user->userable->hospital_id)->get();
 
         return NurseRes::collection($nurses);
     }
@@ -40,18 +41,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function listApprovedNurse()
+    public function listApprovedNurse(Request $request)
     {
+        $user = $request->user();
+
         $nurses = NurseProfile::whereHas('user', function($query) {
             $query->where('role_id', 20)->orWhere('role_id', 21);
-        })->where('is_approved', true)->get();
+        })->where('is_approved', true)->where('hospital_id', $user->userable->hospital_id)->get();
 
         return NurseRes::collection($nurses);
     }
 
     public function listPatient(Request $request)
     {
-        $patients = PatientProfile::all();
+        $user = $request->user();
+        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
 
         $data = array();
         $i = 0;
@@ -71,7 +75,8 @@ class AdminController extends Controller
     }
     public function listPatient2(Request $request)
     {
-        $patients = PatientProfile::all();
+        $user = $request->user();
+        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
 
         $data = array();
         $i = 0;
@@ -91,7 +96,8 @@ class AdminController extends Controller
     }
     public function listPatient3(Request $request)
     {
-        $patients = PatientProfile::all();
+        $user = $request->user();
+        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
 
         $data = array();
         $i = 0;
