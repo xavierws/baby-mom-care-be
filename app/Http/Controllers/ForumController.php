@@ -8,6 +8,7 @@ use App\Models\Forum;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Http\Resources\Forum as ForumRes;
+use Illuminate\Database\Eloquent\Builder;
 
 class ForumController extends Controller
 {
@@ -68,7 +69,15 @@ class ForumController extends Controller
             'topic_id' => 'required',
         ]);
 
+        $user = $request->user();
         $topic = Topic::find($request->topic_id);
+        $forum = $topic->forums()
+            ->whereHas('user', function (Builder $query) use ($user) {
+                $query->whereHas('userable', function (Builder $query) use ($user) {
+                    $query->where('hospital_id', $user->userable->hospital_id);
+                });
+            })
+            ->get();
 
         $data = array();
         $n = 0;
