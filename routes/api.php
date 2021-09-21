@@ -228,6 +228,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('patient/show', [PatientController::class, 'showNurse']);
     //update patient's data
     Route::put('patient/data/update', [PatientController::class, 'update']);
+    //show profile
+    Route::get('patient/data', [PatientController::class, 'showProfile']);
 
     //survey
     //store survey

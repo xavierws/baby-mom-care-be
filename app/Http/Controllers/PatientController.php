@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\NurseProfile as NurseRes;
+use App\Http\Resources\PatientProfile as PatientRes;
 use App\Models\User;
 use App\Models\NurseProfile;
 use App\Models\PatientProfile;
@@ -71,5 +72,12 @@ class PatientController extends Controller
         return response()->json([
             'message' => 'patient\'s data is updated'
         ]);
+    }
+
+    public function showProfile(Request $request)
+    {
+        $user = $request->user();
+
+        return new PatientRes($user->userable);
     }
 }
