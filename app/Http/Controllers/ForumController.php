@@ -71,7 +71,7 @@ class ForumController extends Controller
 
         $user = $request->user();
         $topic = Topic::find($request->topic_id);
-        $forum = $topic->forums()
+        $forums = $topic->forums()
             ->whereHas('user', function (Builder $query) use ($user) {
                 $query->whereHas('userable', function (Builder $query) use ($user) {
                     $query->where('hospital_id', $user->userable->hospital_id);
@@ -81,7 +81,7 @@ class ForumController extends Controller
 
         $data = array();
         $n = 0;
-        foreach ($topic->forums as $forum) {
+        foreach ($forums as $forum) {
             $data[$n] = [
                 'id'  => $forum->id,
                 'title' => $forum->title,
