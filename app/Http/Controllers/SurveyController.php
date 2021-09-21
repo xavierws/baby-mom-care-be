@@ -180,21 +180,21 @@ class SurveyController extends Controller
 //
 //            }
 
-            if ($v['id'] == 1) {
+            if ($question->survey_id == 1) {
                 // perceived stress scale
                 if ($question->number == 2 || $question->number == 4 || $question->number == 5 || $question->number == 10) {
                     $point = ReversePoint::PSS($v['value']);
                 } else {
                     $point = $v['value'];
                 }
-            } elseif ($v['id'] == 2) {
+            } elseif ($question->survey_id == 2) {
                 // Maternal Confidence Scale
                 if ($question->number == 10 || $question->number == 12) {
                     $point = ReversePoint::MCS($v['value']);
                 } else {
                     $point = $v['value'];
                 }
-            } elseif ($v['id'] == 3) {
+            } elseif ($question->survey_id == 3) {
                 //Parental Stress scale
                 if (
                     $question->number == 1 ||
