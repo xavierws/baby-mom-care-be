@@ -21,9 +21,15 @@ class AdminController extends Controller
     public function listUnApprovedNurse(Request $request)
     {
         $user = $request->user();
-        $nurses = NurseProfile::whereHas('user', function($query) {
-            $query->where('role_id', 20)->orWhere('role_id', 21);
-        })->where('is_approved', false)->where('hospital_id', $user->userable->hospital_id)->get();
+        if ($user->role_id == 22) {
+            $nurses = NurseProfile::whereHas('user', function($query) {
+                $query->where('role_id', 20)->orWhere('role_id', 21);
+            })->where('is_approved', false)->get();
+        } else {
+            $nurses = NurseProfile::whereHas('user', function($query) {
+                $query->where('role_id', 20)->orWhere('role_id', 21);
+            })->where('is_approved', false)->where('hospital_id', $user->userable->hospital_id)->get();
+        }
 
         return NurseRes::collection($nurses);
     }
@@ -45,9 +51,16 @@ class AdminController extends Controller
     {
         $user = $request->user();
 
-        $nurses = NurseProfile::whereHas('user', function($query) {
-            $query->where('role_id', 20)->orWhere('role_id', 21);
-        })->where('is_approved', true)->where('hospital_id', $user->userable->hospital_id)->get();
+        if ($user->role_id == 22) {
+            $nurses = NurseProfile::whereHas('user', function($query) {
+                $query->where('role_id', 20)->orWhere('role_id', 21);
+            })->where('is_approved', true)->get();
+        } else {
+            $nurses = NurseProfile::whereHas('user', function($query) {
+                $query->where('role_id', 20)->orWhere('role_id', 21);
+            })->where('is_approved', true)->where('hospital_id', $user->userable->hospital_id)->get();
+        }
+
 
         return NurseRes::collection($nurses);
     }
@@ -55,7 +68,11 @@ class AdminController extends Controller
     public function listPatient(Request $request)
     {
         $user = $request->user();
-        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        if ($user->role_id == 22) {
+            $patients = PatientProfile::all();
+        } else {
+            $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        }
 
         $data = array();
         $i = 0;
@@ -76,7 +93,11 @@ class AdminController extends Controller
     public function listPatient2(Request $request)
     {
         $user = $request->user();
-        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        if ($user->role_id == 22) {
+            $patients = PatientProfile::all();
+        } else {
+            $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        }
 
         $data = array();
         $i = 0;
@@ -97,7 +118,11 @@ class AdminController extends Controller
     public function listPatient3(Request $request)
     {
         $user = $request->user();
-        $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        if ($user->role_id == 22) {
+            $patients = PatientProfile::all();
+        } else {
+            $patients = PatientProfile::where('hospital_id', $user->userable->hospital_id)->get();
+        }
 
         $data = array();
         $i = 0;
@@ -117,12 +142,24 @@ class AdminController extends Controller
 
     public function searchPatient(Request $request)
     {
-        return PatientRes::collection(
-            PatientProfile::where('mother_name', 'LIKE', '%' . $request->keyword . '%')
-                ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
-                ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
-                ->get()
-        );
+        $user = $request->user();
+
+        if ($user->role_id == 22) {
+            return PatientRes::collection(
+                PatientProfile::where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->get()
+            );
+        } else {
+            return PatientRes::collection(
+                PatientProfile::where('mother_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('baby_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('father_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->where('hospital_id', $user->userable->hospital_id)
+                    ->get()
+            );
+        }
     }
 
     public function addRelation(Request $request)
