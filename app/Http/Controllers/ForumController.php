@@ -71,13 +71,18 @@ class ForumController extends Controller
 
         $user = $request->user();
         $topic = Topic::find($request->topic_id);
-        $forums = $topic->forums()
+
+        if ($user->role_id == 22) {
+            $forums = $topic->forums;
+        } else {
+            $forums = $topic->forums()
             ->whereHas('user', function (Builder $query) use ($user) {
                 $query->whereHas('userable', function (Builder $query) use ($user) {
                     $query->where('hospital_id', $user->userable->hospital_id);
                 });
             })
             ->get();
+        }
 
         $data = array();
         $n = 0;
