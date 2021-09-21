@@ -65,6 +65,24 @@ class AdminController extends Controller
         return NurseRes::collection($nurses);
     }
 
+    public function searchNurse(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user->role_id == 22) {
+            return NurseRes::collection(
+                NurseProfile::where('name', 'LIKE', '%' . $request->keyword . '%')
+                    ->get()
+            );
+        } else {
+            return NurseRes::collection(
+                NurseProfile::where('name', 'LIKE', '%' . $request->keyword . '%')
+                    ->where('hospital_id', $user->userable->hospital_id)
+                    ->get()
+            );
+        }
+    }
+
     public function listPatient(Request $request)
     {
         $user = $request->user();

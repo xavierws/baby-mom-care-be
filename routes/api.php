@@ -191,6 +191,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/approve-nurse', [AdminController::class, 'approveNurse']);
     //list all approved nurses
     Route::get('admin/list/approved-nurse', [AdminController::class, 'listApprovedNurse']);
+    //search Nurse
+    Route::post('admin/search-nurse', [AdminController::class, 'searchNurse']);
     //list all patient that not in relation with the specific nurse
     Route::post('admin/list/patient-nurse', [AdminController::class, 'listPatient']);
     Route::post('admin/list/patient-nurse2', [AdminController::class, 'listPatient2']);
