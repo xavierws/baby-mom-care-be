@@ -25,13 +25,13 @@ class ReversePoint
 
     public static function MCS(int $answer)
     {
-        if ($answer == 0) {
+        if ($answer == 1) {
             $point = 5;
-        } elseif ($answer == 1) {
-            $point = 4;
         } elseif ($answer == 2) {
-            $point = 3;
+            $point = 4;
         } elseif ($answer == 3) {
+            $point = 3;
+        } elseif ($answer == 4) {
             $point = 2;
         } else {
             $point = 1;

@@ -190,9 +190,9 @@ class SurveyController extends Controller
             } elseif ($question->survey_id == 2) {
                 // Maternal Confidence Scale
                 if ($question->number == 10 || $question->number == 12) {
-                    $point = ReversePoint::MCS($v['value']);
+                    $point = ReversePoint::MCS($v['value'] + 1);
                 } else {
-                    $point = $v['value'];
+                    $point = $v['value'] + 1;
                 }
             } elseif ($question->survey_id == 3) {
                 //Parental Stress scale
@@ -206,9 +206,9 @@ class SurveyController extends Controller
                     $question->number == 17 ||
                     $question->number == 18
                 ) {
-                    $point = ReversePoint::MCS($v['value']);
+                    $point = ReversePoint::MCS($v['value'] + 1);
                 } else {
-                    $point = $v['value'];
+                    $point = $v['value'] + 1;
                 }
             } else {
                 $point = $v['value'];
