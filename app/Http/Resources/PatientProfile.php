@@ -52,6 +52,7 @@ class PatientProfile extends JsonResource
             'hospital_entry' => $this->hospital_entry,
             'email' => $this->user->email,
             'created_at' => $this->user->created_at,
+            'hospital' => $this->hospital_name,
         ];
     }
 }

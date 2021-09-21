@@ -122,4 +122,9 @@ class PatientProfile extends Model
 
         return $kontrol;
     }
+
+    public function getHospitalNameAttribute()
+    {
+        return $this->hospital->name;
+    }
 }
