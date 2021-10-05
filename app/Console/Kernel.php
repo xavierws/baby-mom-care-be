@@ -102,9 +102,6 @@ class Kernel extends ConsoleKernel
             }
         })->dailyAt('8:01');
 
-        $schedule->call(function () {
-            PushNotification::handle("c2qVGfT5TPOe7LqdAnyzla:APA91bEO8p7nk01aHbZpZeSy83IYR7-5dpNP9I9rc8HfCIZ4BurX0PNORBzNJgJwolC-yt4O7OY_5FIPNoVVA3gO8o0-jX4W8qbyQJSu5fIYhBeH6QoF0iKxRQbil2gDWKd0WvkKdHhB", "asdasd", "asdasd");
-        })->everyMinute();
     }
 
     /**
