@@ -30,22 +30,22 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function () {
-            $now = now();
-            $dayOfYear = $now->dayOfYear;
-
-            foreach (Advice::all() as $advice) {
-                $freq = $advice->frequency;
-
-                if ($dayOfYear % $freq == 0) {
-                    NotificationLog::create([
-                        'notification' => $advice->name,
-                        'nurse_id' => null,
-                        'type' => 'advice'
-                    ]);
-                }
-            }
-        })->everyMinute();
+//        $schedule->call(function () {
+//            $now = now();
+//            $dayOfYear = $now->dayOfYear;
+//
+//            foreach (Advice::all() as $advice) {
+//                $freq = $advice->frequency;
+//
+//                if ($dayOfYear % $freq == 0) {
+//                    NotificationLog::create([
+//                        'notification' => $advice->name,
+//                        'nurse_id' => null,
+//                        'type' => 'advice'
+//                    ]);
+//                }
+//            }
+//        })->everyMinute();
 
         $schedule->call(function () {
 
@@ -54,6 +54,12 @@ class Kernel extends ConsoleKernel
 
             foreach ($users as $user) {
                 $date = Carbon::parse($user->userable->marked_date);
+
+                NotificationLog::create([
+                    'notification' => "Mohon untuk cek anjuran",
+                    'nurse_id' => $user->userable->id,
+                    'type' => 'advice',
+                ]);
 
                 if ($now->diffInDays($date) == 7 && $user->fcm_token) {
                     $title = 'reminder kontrol';
@@ -79,9 +85,8 @@ class Kernel extends ConsoleKernel
                         'type' => 'survey',
                     ]);
                 }
-
             }
-        })->everyMinute();
+        })->dailyAt('8:00');
 
         $schedule->call(function () {
             $users = User::where('role_id', 10)->get();
@@ -95,7 +100,7 @@ class Kernel extends ConsoleKernel
                     PushNotification::handle($user->fcm_token, $title, $des);
                 }
             }
-        })->everyMinute();
+        })->dailyAt('8:00');
     }
 
     /**
