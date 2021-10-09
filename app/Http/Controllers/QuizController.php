@@ -342,7 +342,7 @@ class QuizController extends Controller
             }
 
             $data[$i] = [
-                'order' => count($order)-$i,
+                'order' => $row,
                 'quiz_id' => $quiz_id,
                 'point' => $score,
                 'total' => count($points)
@@ -351,7 +351,7 @@ class QuizController extends Controller
         }
 
         return response()->json([
-            'data' => $order,
+            'data' => $points,
         ]);
     }
 }
