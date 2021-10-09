@@ -326,7 +326,6 @@ class QuizController extends Controller
             ->orderByDesc('order')
             ->distinct()
             ->pluck('order');
-        dd($order);
 
         $data = array();
         $i = 0;
@@ -352,7 +351,7 @@ class QuizController extends Controller
         }
 
         return response()->json([
-            'data' => $data,
+            'data' => $order,
         ]);
     }
 }
