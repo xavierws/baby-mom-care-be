@@ -267,11 +267,13 @@ class QuizController extends Controller
 //            ]);
             $maxOrder = DB::table('user_answer')
                 ->where('quiz_id', $materi->quiz->id)
+                ->where('patient_id', $patient->id)
                 ->max('order');
 
             $quizzes = DB::table('user_answer')
                 ->where('quiz_id', $materi->quiz->id)
                 ->where('order', '=', $maxOrder)
+                ->where('patient_id', $patient->id)
                 ->orderBy('question_id')
                 ->get();
 
