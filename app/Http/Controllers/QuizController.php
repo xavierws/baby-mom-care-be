@@ -312,7 +312,7 @@ class QuizController extends Controller
         $patient = $request->user()->userable;
         $quiz_id = null;
         if ($request->has('materi_id')) {
-            $materi = Materi::with('quiz')->find($request->id);
+            $materi = Materi::with('quiz')->find($request->materi_id);
             $quiz_id = $materi->quiz->id;
         }
 
@@ -323,9 +323,10 @@ class QuizController extends Controller
         $order = DB::table('user_answer')
             ->where('quiz_id', '=', $quiz_id)
             ->where('patient_id', $patient->id)
-            ->distinct()
             ->orderByDesc('order')
+            ->distinct()
             ->pluck('order');
+        dd($order);
 
         $data = array();
         $i = 0;
