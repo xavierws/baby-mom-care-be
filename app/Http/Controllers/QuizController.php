@@ -351,7 +351,7 @@ class QuizController extends Controller
         }
 
         return response()->json([
-            'data' => $points,
+            'data' => $data,
         ]);
     }
 }
