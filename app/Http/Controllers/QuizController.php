@@ -309,7 +309,11 @@ class QuizController extends Controller
 
     public function showHistory(Request $request)
     {
-        $patient = $request->user()->userable;
+        $patientId = $request->user()->userable_id;
+        if ($request->has('patient_id')) {
+            $patientId = $request->input('patient_id');
+        }
+
         $quiz_id = null;
         if ($request->has('materi_id')) {
             $materi = Materi::with('quiz')->find($request->materi_id);
@@ -322,7 +326,7 @@ class QuizController extends Controller
 
         $order = DB::table('user_answer')
             ->where('quiz_id', '=', $quiz_id)
-            ->where('patient_id', $patient->id)
+            ->where('patient_id', $patientId)
             ->orderByDesc('order')
             ->distinct()
             ->pluck('order');
@@ -332,7 +336,7 @@ class QuizController extends Controller
         foreach ($order as $row) {
             $points = DB::table('user_answer')
                 ->where('order', $row)
-                ->where('patient_id', $patient->id)
+                ->where('patient_id', $patientId)
                 ->where('quiz_id', $quiz_id)
                 ->pluck('point');
 
