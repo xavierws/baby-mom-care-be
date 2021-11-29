@@ -73,6 +73,11 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col">
+                            <a href="{{ route('excelDownload') }}" class="btn btn-success">download</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

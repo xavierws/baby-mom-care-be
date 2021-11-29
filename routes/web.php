@@ -71,6 +71,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pasien', [DashboardController::class, 'showPatient']);
     Route::get('/perawat', [DashboardController::class, 'showNurse']);
+
+    //download excel
+    Route::get('/download-excel', [DashboardController::class, 'downloadToExcel'])->name('excelDownload');
 });
 
 
