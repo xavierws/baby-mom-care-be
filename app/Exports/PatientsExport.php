@@ -34,7 +34,7 @@ class PatientsExport implements FromQuery, withHeadings, withMapping, WithColumn
     {
         return [
             $patient->baby_name,
-            $patient->baby_gender,
+            $patient->baby_gender == 'male'? 'L':'P',
             Date::dateTimeToExcel(Carbon::parse($patient->hospital_entry)),
             Date::dateTimeToExcel(Carbon::parse($patient->return_date)),
             Carbon::parse($patient->return_date)->diffInHours(Carbon::parse($patient->hospital_entry)), //nb: lama rawat bayi
