@@ -7,10 +7,13 @@ use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class PatientsExport implements FromQuery, withHeadings, withMapping
+class PatientsExport implements FromQuery, withHeadings, withMapping, WithColumnFormatting
 {
     use Exportable;
 
@@ -32,23 +35,39 @@ class PatientsExport implements FromQuery, withHeadings, withMapping
         return [
             $patient->baby_name,
             $patient->baby_gender,
-            $patient->return_date, //nb: lama rawat bayi
+            Date::dateTimeToExcel(Carbon::parse($patient->hospital_entry)),
+            Date::dateTimeToExcel(Carbon::parse($patient->return_date)),
+            Carbon::parse($patient->return_date)->diffInHours(Carbon::parse($patient->hospital_entry)), //nb: lama rawat bayi
+            Carbon::parse($patient->return_date)->diffInDays(Carbon::parse($patient->hospital_entry)), //nb: lama rawat bayi
             $patient->usia_gestas,
             $patient->born_weight, // berat badan lahir
-            $patient->baby_name, // berat badan sekarang
+            $patient->current_weight, // berat badan sekarang
             $patient->born_length, // panjang badan lahir
-            $patient->baby_name, // panjang badan sekarang
+            $patient->current_length, // panjang badan sekarang
             $patient->mother_name,
+            Date::dateTimeToExcel(Carbon::parse($patient->mother_birthday)),
             Carbon::parse($patient->mother_birthday)->diffInYears(now()), // usia ibu
             $patient->mother_education,
             $patient->mother_job,
             $patient->paritas,
-            $patient->pendapatan_keluarga,
+            $patient->pendapatan_keluarga == 'kd3'? '<3 juta':'>=3 juta',
             $patient->pengalaman_merawat,
             $patient->father_name,
+            Date::dateTimeToExcel(Carbon::parse($patient->father_birthday)),
             Carbon::parse($patient->father_birthday)->diffInYears(now()), // usia bapak
             $patient->father_education,
             $patient->father_job,
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        // TODO: Implement columnFormats() method.
+        return [
+            'C' => NumberFormat::FORMAT_DATE_DATETIME,
+            'D' => NumberFormat::FORMAT_DATE_DATETIME,
+            'M' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'U' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];
     }
 
@@ -58,13 +77,17 @@ class PatientsExport implements FromQuery, withHeadings, withMapping
         return [
             'Nama Bayi',
             'Jenis Kelamin Bayi',
-            'Lama Rawat Bayi',
+            'Tanggal masuk rumah sakit',
+            'Tanggal keluar',
+            'Lama Rawat Bayi(jam)',
+            'Lama Rawat Bayi(hari)',
             'Usia Gestasi',
             'Berat Badan Lahir',
             'Berat Badan Bayi',
             'Panjang Badan Lahir',
             'Panjang Badan Bayi',
             'Nama Ibu',
+            'Ulang tahun ibu',
             'Usia Ibu',
             'Pendidikan Ibu',
             'Pekerjaan Ibu',
@@ -72,6 +95,7 @@ class PatientsExport implements FromQuery, withHeadings, withMapping
             'Pendapatan Keluarga',
             'Pengalaman merawat BBLR',
             'Nama Bapak',
+            'Ulang tahun Bapak',
             'Usia Bapak',
             'Pendidikan Bapak',
             'Pekerjaan Bapak',
