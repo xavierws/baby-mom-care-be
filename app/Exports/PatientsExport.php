@@ -52,11 +52,13 @@ class PatientsExport implements FromQuery, withHeadings, withMapping, WithColumn
             $patient->paritas,
             $patient->pendapatan_keluarga == 'kd3'? '<3 juta':'>=3 juta',
             $patient->pengalaman_merawat == 1? 'ya':'tidak',
+            $patient->harapan_orangtua == 1? 'ya':'tidak',
             $patient->father_name,
             Date::dateTimeToExcel(Carbon::parse($patient->father_birthday)),
             Carbon::parse($patient->father_birthday)->diffInYears(now()), // usia bapak
             $patient->father_education,
             $patient->father_job,
+            Date::dateTimeToExcel($patient->created_at),
         ];
     }
 
@@ -67,7 +69,8 @@ class PatientsExport implements FromQuery, withHeadings, withMapping, WithColumn
             'C' => NumberFormat::FORMAT_DATE_DATETIME,
             'D' => NumberFormat::FORMAT_DATE_DATETIME,
             'M' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'U' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'V' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'Z' => NumberFormat::FORMAT_DATE_DATETIME,
         ];
     }
 
@@ -94,11 +97,13 @@ class PatientsExport implements FromQuery, withHeadings, withMapping, WithColumn
             'Paritas',
             'Pendapatan Keluarga',
             'Pengalaman merawat BBLR',
+            'Anak yang diharapkan',
             'Nama Bapak',
             'Tanggal lahir Bapak',
             'Usia Bapak',
             'Pendidikan Bapak',
             'Pekerjaan Bapak',
+            'created at',
         ];
     }
 }
