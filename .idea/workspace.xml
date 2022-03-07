@@ -11,10 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d15c0e-2715-4f8a-9bd7-8177490fd766" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Actions/ReformatSurvey.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exports/SurveysExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exports/UserLogsExport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exports/UserLogsExport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/UserLogsExport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/userlog/user-log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,6 +348,8 @@
       <workItem from="1644495868146" duration="9000" />
       <workItem from="1645698126560" duration="162000" />
       <workItem from="1645698534186" duration="82000" />
+      <workItem from="1646449551078" duration="90000" />
+      <workItem from="1646619510595" duration="3510000" />
     </task>
     <servers />
   </component>

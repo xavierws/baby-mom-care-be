@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PatientsExport;
+use App\Exports\UserLogsExport;
 use App\Models\Materi;
 use App\Models\PatientProfile;
 use App\Models\Question;
@@ -335,8 +336,15 @@ class DashboardController extends Controller
         return view('dashboard.userSurvey.survey-detail')->with(['patient' => $patient, 'data' => $data, 'total' => $total, 'survey' => $survey]);
     }
 
-    public function downloadToExcel(){
+    public function downloadToExcel()
+    {
         $export = new PatientsExport();
         return $export->download('patients.xlsx');
+    }
+
+    public function downloadToExcel2()
+    {
+        $export = new UserLogsExport();
+        return $export->download('user-log.xlsx');
     }
 }
