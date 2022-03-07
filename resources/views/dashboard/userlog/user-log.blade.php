@@ -39,7 +39,7 @@
                     </table>
                     <div class="row">
                         <div class="col">
-                            <a href="{{ route('excelDownload2') }}" class="btn btn-success">download perhitungan log</a>
+                            <a href="{{ route('excelDownloadLog') }}" class="btn btn-success">download perhitungan log</a>
                         </div>
                     </div>
                 </div>

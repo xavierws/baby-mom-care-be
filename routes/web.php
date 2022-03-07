@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
 
     //download excel
     Route::get('/download-excel/patient', [DashboardController::class, 'downloadToExcel'])->name('excelDownload');
-    Route::get('/download-excel/log', [DashboardController::class, 'downloadToExcel2'])->name('excelDownload2');
+    Route::get('/download-excel/log', [DashboardController::class, 'downloadToExcel2'])->name('excelDownloadLog');
 });
 
 
